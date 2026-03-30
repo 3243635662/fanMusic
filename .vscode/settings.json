@@ -1,0 +1,90 @@
+{
+  // === ESLint配置 ===
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  // === TypeScript配置 ===
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  // === 编辑器美化配置 ===
+  "editor.inlayHints.enabled": "on",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.wordWrap": "on",
+  "editor.fontSize": 14.2,
+  "editor.lineHeight": 22,
+  "editor.letterSpacing": 0.5,
+  "editor.fontLigatures": true,
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  // === 光标配置（鲜绿色+动效）===
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 3,
+  "editor.cursorBlinking": "smooth",
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#00ff00",
+    "editorCursor.background": "#00ff00",
+    "terminalCursor.foreground": "#00ff00",
+    "editor.selectionBackground": "#264f78",
+    "editor.selectionHighlightBackground": "#add6ff26",
+    "editor.lineHighlightBackground": "#ffffff0f",
+    "editorBracketMatch.background": "#0064001a",
+    "editorBracketMatch.border": "#cf6722"
+  },
+  // === 界面动效配置 ===
+  "workbench.enableExperiments": true,
+  "workbench.list.smoothScrolling": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  // === 文件和搜索配置 ===
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.git": true
+  },
+  // === Git配置 ===
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  // === 终端配置 ===
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorBlinking": true,
+  "cSpell.words": [
+    "antfu",
+    "apikey",
+    "beginip",
+    "bodys",
+    "Bookfile",
+    "bookid",
+    "fanfan",
+    "ipify",
+    "nuxt",
+    "pinia",
+    "proicons",
+    "qiniu",
+    "skus",
+    "slidev",
+    "tsdown",
+    "turborepo",
+    "vite",
+    "vitepress",
+    "vitest",
+    "vueuse"
+  ],
+  "nuxt.isNuxtApp": false
+}
