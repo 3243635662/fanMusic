@@ -10,8 +10,23 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@audius/sdk": "^15.0.1",
+    "@nuxt/ui": "^4.6.0",
+    "@pinia/nuxt": "^0.11.3",
     "nuxt": "^4.4.2",
+    "pinia": "^3.0.4",
+    "tailwindcss": "^4.2.2",
     "vue": "^3.5.30",
     "vue-router": "^5.0.4"
+  },
+  "devDependencies": {
+    "@iconify-json/line-md": "^1.2.16",
+    "@iconify-json/lucide": "^1.2.100",
+    "@iconify-json/pepicons-pencil": "^1.2.3",
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
+    "crypto-browserify": "^3.12.1",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "vm-browserify": "^1.1.2"
   }
 }
