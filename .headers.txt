@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Authorization,X-Requested-With,Content-Type,Cache-Control
+Access-Control-Allow-Methods: PUT,POST,GET,DELETE,OPTIONS
+Access-Control-Allow-Origin: *
+Age: 0
+Cache-Control: max-age=40
+Content-Length: 70
+Content-Type: application/json; charset=utf-8
+Date: Wed, 01 Apr 2026 03:23:39 GMT
+Etag: W/"46-+7H1FJvxUdT0xhJ9pa9vqMSNOmg"
+Server: Vercel
+Set-Cookie: KUGOU_API_PLATFORM=lite; PATH=/; SameSite=None; Secure
+Set-Cookie: KUGOU_API_MID=92373702354313367121778854736517648170; PATH=/; SameSite=None; Secure
+Set-Cookie: KUGOU_API_GUID=8650b5bdda05c042f243d2459db3925c; PATH=/; SameSite=None; Secure
+Set-Cookie: KUGOU_API_DEV=WG0YTXMU3N; PATH=/; SameSite=None; Secure
+Set-Cookie: KUGOU_API_MAC=02:00:00:00:00:00; PATH=/; SameSite=None; Secure
+Set-Cookie: dfid=4EoctX0QX4zi47NqV54VW9IJ; PATH=/; SameSite=None; Secure
+Strict-Transport-Security: max-age=63072000
+X-Powered-By: Express
+X-Vercel-Cache: MISS
+X-Vercel-Id: hnd1::iad1::dj656-1775013819619-85d5865d404b
+

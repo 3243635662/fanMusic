@@ -24,10 +24,11 @@
             <slot />
           </div>
 
-          <AppleMusicPlayerBar />
+          <!-- <AppleMusicPlayerBar />  -- 改用新的 ThePlayer 全局组件 -->
 
         </div>
       </div>
+      <ThePlayer />
     </div>
   </div>
 </template>

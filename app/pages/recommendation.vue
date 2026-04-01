@@ -1,25 +1,22 @@
 <template>
-  <div class="flex flex-col h-full">
+  <div class="flex flex-col h-full overflow-y-auto pb-24 scrollbar-hide">
     <!-- Header -->
     <div class="flex items-start justify-between mb-5">
       <div>
-        <h1 class="text-3xl font-bold tracking-tight mb-0.5">今日推荐歌单</h1>
-        <p class="text-[13px] text-white/50">48 个歌单</p>
+        <h1 class="text-3xl font-bold tracking-tight mb-0.5">为你推荐</h1>
+        <p class="text-[13px] text-white/50">发现你的专属旋律</p>
       </div>
     </div>
 
-    <!-- Search Bar -->
-    <div class="relative mb-6">
-      <UIcon name="i-lucide-search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
-      <input type="text" placeholder="Search in Albums"
-        class="w-full bg-black/20 border border-transparent rounded-[10px] py-1.5 pl-9 pr-4 text-[13px] outline-none focus:ring-1 focus:ring-white/30 focus:bg-black/30 focus:border-white/10 placeholder:text-white/40 transition-all font-medium" />
-    </div>
-
-    <!-- Grid -->
-    <div class="grid grid-cols-3 gap-x-5 gap-y-7 overflow-y-auto pr-2 pb-24 scrollbar-hide">
 
 
-
+    <!-- Skeleton Grid (保留样式骨架) -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div v-for="i in 8" :key="i" class="space-y-3 animate-pulse">
+        <div class="aspect-square bg-white/5 rounded-2xl ring-1 ring-white/10"></div>
+        <div class="h-4 bg-white/10 rounded w-3/4"></div>
+        <div class="h-3 bg-white/5 rounded w-1/2"></div>
+      </div>
     </div>
   </div>
 </template>

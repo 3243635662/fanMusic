@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ["@nuxt/ui", "@pinia/nuxt", "@pinia-plugin-persistedstate/nuxt"],
   compatibilityDate: "2025-07-15",
@@ -8,14 +7,8 @@ export default defineNuxtConfig({
   },
   css: ["@/assets/css/main.css"],
   runtimeConfig: {
-    public: {
-      apiKey: "",
-      apiBearerToken: "",
-    },
-  },
-  vite: {
-    optimizeDeps: {
-      include: ["@audius/sdk"],
+    api: {
+      kugouApiSource: "",
     },
   },
   pinia: {
@@ -23,5 +16,10 @@ export default defineNuxtConfig({
   },
   piniaPersistedstate: {
     storage: "localStorage",
+  },
+  vite: {
+    optimizeDeps: {
+      include: ["@vueuse/core"],
+    },
   },
 });

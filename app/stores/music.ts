@@ -1,52 +1,32 @@
-import { defineStore } from "pinia";
-import { ref } from "vue";
-import { useMusic } from "~/composables/useMusic";
-import type { GetTrendingTracksTimeEnum } from "@audius/sdk";
+import { defineStore } from 'pinia'
 
-export const useMyMusicStore = defineStore(
-  "music",
-  () => {
-    const hotSongs = ref<any[]>([]);
-    const hotSongsUpdateTime = ref(0);
+export const useMusicStore = defineStore('music', () => {
+  const currentTrack = ref<any>(null)
+  const isPlaying = ref(false)
+  const hotSongs = ref<any[]>([])
+  const lastSearchKeyword = ref('')
 
-    async function fetchHotSongs() {
-      const now = Date.now();
-      const twoHours = 2 * 60 * 60 * 1000;
+  function setHotSongs(songs: any[], keyword: string) {
+    hotSongs.value = songs
+    lastSearchKeyword.value = keyword
+  }
 
-      // 如果数据存在且没有过期，不执行请求
-      if (
-        hotSongs.value.length > 0 &&
-        now - hotSongsUpdateTime.value < twoHours
-      ) {
-        return;
-      }
+  function playTrack(track: any) {
+    currentTrack.value = track
+    isPlaying.value = true
+  }
 
-      const { getHotSongs } = useMusic();
-      try {
-        // limit=20, offset=0, time=week
-        const data = await getHotSongs(
-          0,
-          10,
-          "week" as GetTrendingTracksTimeEnum,
-        );
-        if (data) {
-          hotSongs.value = data;
-          hotSongsUpdateTime.value = now;
-        }
-      } catch (err) {
-        console.error("获取热门歌曲失败:", err);
-      }
-    }
+  function togglePlay() {
+    isPlaying.value = !isPlaying.value
+  }
 
-    return {
-      hotSongs,
-      hotSongsUpdateTime,
-      fetchHotSongs,
-    };
-  },
-  {
-    persist: {
-      key: "fanMusic:music_cache",
-    },
-  },
-);
+  return {
+    currentTrack,
+    isPlaying,
+    hotSongs,
+    lastSearchKeyword,
+    setHotSongs,
+    playTrack,
+    togglePlay
+  }
+})

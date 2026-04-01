@@ -1,0 +1,3671 @@
+{
+  "success": true,
+  "data": [
+    {
+      "PublishTime": "",
+      "Audioid": 348311,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "汪苏泷、徐良",
+      "SQ": {
+        "FileSize": 22717594,
+        "Hash": "584B131F9921BD6597EDF28ED6F70409",
+        "Privilege": 10
+      },
+      "ShowingFlag": 0,
+      "Source": "",
+      "HQ": {
+        "FileSize": 8473281,
+        "Hash": "16BADEB7BB2739066A6A839F9F34449F",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20200620/20200620074915201495.jpg",
+      "HeatLevel": 6,
+      "M4aSize": 0,
+      "RelatedInfo": {
+        "Flag": 1,
+        "Total": 419
+      },
+      "trans_param": {
+        "ogg_128_hash": "B92DD21AF8123F6F25461CBFDB17B6AE",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20200620/20200620074915201495.jpg",
+        "ogg_320_filesize": 8170124,
+        "qualitymap": {
+          "bits": "db411ffffbf3fe475",
+          "attr0": 1061151861,
+          "attr1": 1747189759
+        },
+        "ogg_320_hash": "E672FC3F077CCF08F4B6B0ACA04DBAAE",
+        "ogg_128_filesize": 2403739,
+        "cid": 19409205,
+        "cpy_grade": 5,
+        "appid_block": "3124",
+        "ipmap": {
+          "attr0": 2200130555904
+        },
+        "hash_offset": {
+          "clip_hash": "F3DD934E69FD72E74081B14965D67F7B",
+          "start_byte": 0,
+          "end_ms": 117500,
+          "end_byte": 1880473,
+          "file_type": 0,
+          "start_ms": 57500,
+          "offset_hash": "1C673B53C9E0CFFFE274B03DFD4D4FF3"
+        },
+        "hash_multitrack": "B464CA03FC93187BF888CE80997EBC5A",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3389435,
+      "IsOriginal": 1,
+      "FileHash": "23E848E785DBCB9A2B1416E4DB068D8E",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "511536",
+      "AlbumName": "不良少年",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "3E5221959BAF9CE4B244C1278C46ACF7",
+          "id": "71649"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 23319787,
+        "Privilege": 10,
+        "Hash": "F69AF2B5B53F990CC3C9E5750F653F0C",
+        "BitRate": 880,
+        "TimeLength": 211
+      },
+      "SourceID": 0,
+      "MixSongID": "39929863",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 348311,
+      "Singers": [
+        {
+          "name": "汪苏泷",
+          "ip_id": 0,
+          "id": 1485
+        },
+        {
+          "name": "徐良",
+          "ip_id": 0,
+          "id": 3206
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 8888,
+      "PublishDate": "2011-12-26",
+      "TagDetails": [
+        {
+          "content": "TOP500 第19名",
+          "rankid": 8888,
+          "version": 1,
+          "type": 4
+        }
+      ],
+      "TagContent": "TOP500 第19名",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1061204,
+      "Uploader": "",
+      "Duration": 211,
+      "OriSongName": "后会无期",
+      "FileName": "汪苏泷、徐良 - 后会无期",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 547043423,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "卢赞",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 27199895,
+        "Hash": "B6314AD440CE229D228BA8A05D02E966",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20260224/20260224144403975891.jpg",
+      "HQ": {
+        "FileSize": 9434219,
+        "Hash": "110FBBF854A4C8AAA83D1E099C1D1B92",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "C58B34C715F9DCD8D563CA18A4054CB5",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 41943040,
+        "musicpack_advance": 0,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20260224/20260224144403975891.jpg",
+        "ogg_320_filesize": 7630581,
+        "qualitymap": {
+          "bits": "db4107efeb710c034",
+          "attr0": 923844660,
+          "attr1": 1746992637
+        },
+        "ogg_320_hash": "910EC86941703680D99D87D804D96BC2",
+        "ogg_128_filesize": 2578895,
+        "cid": 581910886,
+        "cpy_grade": 5,
+        "appid_block": "3124",
+        "ipmap": {
+          "attr0": 281629629091840
+        },
+        "hash_offset": {
+          "clip_hash": "06670E2BE971BD315ADB7900A96D185C",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960125,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "11E1B474384F5F69A8E085EB912004BE"
+        },
+        "hash_multitrack": "07A4D40A2A5E01080AAD4C332D89F354",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3773955,
+      "IsOriginal": 0,
+      "FileHash": "2723B86FE04274CFE5E9FD10E45922A3",
+      "FoldType": 0,
+      "Grp": [],
+      "Type": "audio",
+      "Bitrate": 128,
+      "isPrepublish": 0,
+      "ExtName": "mp3",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "68453A0C38C1A7A633DE63A9E3894A21",
+          "id": "14850430"
+        }
+      ],
+      "TopID": 0,
+      "AlbumPrivilege": 8,
+      "AlbumID": "177353544",
+      "AlbumName": "你来过吗",
+      "OtherName": "",
+      "SourceID": 0,
+      "MixSongID": "854255881",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 547043423,
+      "Singers": [
+        {
+          "name": "卢赞",
+          "ip_id": 0,
+          "id": 17751869
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 8888,
+      "PublishDate": "2026-03-13",
+      "TagDetails": [
+        {
+          "content": "TOP500 第16名",
+          "rankid": 8888,
+          "version": 1,
+          "type": 4
+        }
+      ],
+      "TagContent": "TOP500 第16名",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1044088,
+      "Uploader": "",
+      "Duration": 235,
+      "OriSongName": "爱在时光里回响",
+      "FileName": "卢赞 - 爱在时光里回响",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 547083330,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "张紫宁、李鑫一",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 17314084,
+        "Hash": "B14372142E621AF0E83ACDA4A7C75C4C",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20260323/20260323202231321418.jpg",
+      "HQ": {
+        "FileSize": 7602875,
+        "Hash": "252BA99BD05702245CA984FA28219E90",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "4D2F85C3E87920B1EF4B9B5B05969A81",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "free_limited": 1,
+        "cpy_attr0": 58720256,
+        "musicpack_advance": 0,
+        "ogg_128_filesize": 2023850,
+        "display_rate": 0,
+        "provider": 2,
+        "qualitymap": {
+          "bits": "1b410807ebf10c074",
+          "attr0": 1058062452,
+          "attr1": 1746993405
+        },
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20260323/20260323202231321418.jpg",
+        "ogg_320_filesize": 6717160,
+        "cid": 578582655,
+        "ogg_320_hash": "530D116D56BAF4A84AE8DEBA177E8F69",
+        "cpy_grade": 6,
+        "ipmap": {
+          "attr0": 138546253824
+        },
+        "display": 0,
+        "pay_block_tpl": 1,
+        "hash_multitrack": "9621C4E397C37ED0191F8C414C2E84E1",
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3041269,
+      "IsOriginal": 1,
+      "FileHash": "89AB9AD614D3D123F87715B693CC50B9",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 8,
+      "AlbumID": "180668003",
+      "AlbumName": "逐玉 影视原声带",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "DD0F9F40D52CC564AD73CB9D63DA78BC",
+          "id": "14702906"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 35954245,
+        "Privilege": 10,
+        "Hash": "A8A75F970503E4A8A3B2398FDA5D8E64",
+        "BitRate": 1513,
+        "TimeLength": 190
+      },
+      "SourceID": 0,
+      "MixSongID": "854118488",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 547083330,
+      "Singers": [
+        {
+          "name": "张紫宁",
+          "ip_id": 0,
+          "id": 788118
+        },
+        {
+          "name": "李鑫一",
+          "ip_id": 0,
+          "id": 843810
+        }
+      ],
+      "Auxiliary": "《逐玉》电视剧插曲",
+      "RankId": 0,
+      "PublishDate": "2026-03-14",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1031519,
+      "Uploader": "",
+      "Duration": 190,
+      "OriSongName": "一念",
+      "FileName": "张紫宁、李鑫一 - 一念",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 636561,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "比莉",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 37441061,
+        "Hash": "E02A6136940F98F07C0FF33C098656D6",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20200909/20200909122500947935.jpg",
+      "HQ": {
+        "FileSize": 12456363,
+        "Hash": "E1DF15D0458FF14C7C4AFF117E392F64",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "725CF087A37C6A91BFF918D99B50CF67",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20200909/20200909122500947935.jpg",
+        "ogg_320_filesize": 11945496,
+        "qualitymap": {
+          "bits": "db411ffffff3fc074",
+          "attr0": 2134884468,
+          "attr1": 1747189759
+        },
+        "ogg_320_hash": "47B5FB5048B1B715E8FB2B5820166F63",
+        "ogg_128_filesize": 3503891,
+        "cid": 7344622,
+        "cpy_grade": 5,
+        "appid_block": "2906,3124",
+        "ipmap": {
+          "attr0": 2200130564096
+        },
+        "hash_offset": {
+          "clip_hash": "142B40ED8636FA798D8E8FCA028D37C3",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960131,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "26F6030EB5D8BF6419A67F0C92E76CED"
+        },
+        "hash_multitrack": "FA93DE53E23FCD40E4B93017B985BA57",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4982699,
+      "IsOriginal": 1,
+      "FileHash": "71951213A1C3C313DEEB017D3C9E77CC",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "2528933",
+      "AlbumName": "傻瓜就是我",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "2E565D9775BD29E2BE29D069865D442C",
+          "id": "1135860"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 38694746,
+        "Privilege": 10,
+        "Hash": "93775CD0D7BD884A732B949B230AB2EF",
+        "BitRate": 994,
+        "TimeLength": 311
+      },
+      "SourceID": 0,
+      "MixSongID": "63593884",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 636561,
+      "Singers": [
+        {
+          "name": "比莉",
+          "ip_id": 0,
+          "id": 4211
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "1999-06-25",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1072267,
+      "Uploader": "",
+      "Duration": 311,
+      "OriSongName": "Dear John",
+      "FileName": "比莉 - Dear John",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 977116,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "薛之谦",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 27550792,
+        "Hash": "05D0A1A3A39A500BF11DFDD1A0EFE7E0",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20200407/20200407151818862082.jpg",
+      "HQ": {
+        "FileSize": 12440753,
+        "Hash": "2DA54A9177C705B50075DDFE12C26929",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "51FB15BF98D52B630BF451B70CD92F3B",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20200407/20200407151818862082.jpg",
+        "ogg_320_filesize": 11302577,
+        "qualitymap": {
+          "bits": "db4118f8fff3fc075",
+          "attr0": 2134884469,
+          "attr1": 1747132191
+        },
+        "ogg_320_hash": "475649CB39876337A06827CEB753C38D",
+        "ogg_128_filesize": 3286723,
+        "cid": 22470294,
+        "cpy_grade": 5,
+        "appid_block": "3124",
+        "ipmap": {
+          "attr0": 2200130555904
+        },
+        "hash_offset": {
+          "clip_hash": "B90B4A70113C6A372DB5A03F5AE45F4A",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960121,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "C36D0554AB4C1B4E9785EB90EEB02BE9"
+        },
+        "hash_multitrack": "D4735EBE9B8F2D9DB4118350A71D61B8",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4976420,
+      "IsOriginal": 1,
+      "FileHash": "8C6AAC48FB5C3759042E4C8699544C6F",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "960327",
+      "AlbumName": "意外",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "9233F4D6AEEB1E6F2BA28FE50566F6C2",
+          "id": "113853"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 28691801,
+        "Privilege": 10,
+        "Hash": "6430DEC0A20445FCAB683E40640E2D74",
+        "BitRate": 737,
+        "TimeLength": 310
+      },
+      "SourceID": 0,
+      "MixSongID": "32042275",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 977116,
+      "Singers": [
+        {
+          "name": "薛之谦",
+          "ip_id": 0,
+          "id": 3060
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2013-11-11",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1063133,
+      "Uploader": "",
+      "Duration": 310,
+      "OriSongName": "你还要我怎样",
+      "FileName": "薛之谦 - 你还要我怎样",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 2663149,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "王杰",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 29386125,
+        "Hash": "830DEAC84DE44F3469C3C0749776F6B0",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20251125/20251125015523679288.jpg",
+      "HQ": {
+        "FileSize": 11105383,
+        "Hash": "D56B55379ABA3B10608B87A6B2179604",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "C88177D4638800D5BF665CF1FA516BDD",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "ogg_128_filesize": 3177409,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20251125/20251125015523679288.jpg",
+        "qualitymap": {
+          "bits": "db4100000373fc034",
+          "attr0": 926924852,
+          "attr1": 1746927616
+        },
+        "ogg_320_filesize": 10686668,
+        "ogg_320_hash": "103B5BAD9329725E577E1BB46A61C24A",
+        "cid": 4946293,
+        "cpy_grade": 6,
+        "display": 0,
+        "ipmap": {
+          "attr0": 2200130555904
+        },
+        "hash_offset": {
+          "clip_hash": "B1A2C41E88B0EE98B474692EAB6DD2E3",
+          "start_byte": 0,
+          "end_ms": 144300,
+          "end_byte": 2308885,
+          "file_type": 0,
+          "start_ms": 84300,
+          "offset_hash": "50C50A88C7366C4E2FF8C6D688ABC295"
+        },
+        "hash_multitrack": "035FAFFD805255E4BDB1661530350869",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4442278,
+      "IsOriginal": 1,
+      "FileHash": "95CBD367E98724883CA99874AD626446",
+      "FoldType": 0,
+      "Grp": [],
+      "Type": "audio",
+      "Bitrate": 128,
+      "isPrepublish": 0,
+      "ExtName": "mp3",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "30E46FA6A76CA0A8EABFE429A275D6E4",
+          "id": "614745"
+        }
+      ],
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "962390",
+      "AlbumName": "忘了你‧忘了我",
+      "OtherName": "",
+      "SourceID": 0,
+      "MixSongID": "32060878",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 2663149,
+      "Singers": [
+        {
+          "name": "王杰",
+          "ip_id": 0,
+          "id": 2725
+        }
+      ],
+      "Auxiliary": "《旺角卡门》电影片尾曲",
+      "RankId": 8888,
+      "PublishDate": "1988-07-11",
+      "TagDetails": [
+        {
+          "content": "TOP500 第328名",
+          "rankid": 8888,
+          "version": 1,
+          "type": 4
+        }
+      ],
+      "TagContent": "TOP500 第328名",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1030102,
+      "Uploader": "",
+      "Duration": 277,
+      "OriSongName": "忘了你忘了我",
+      "FileName": "王杰 - 忘了你忘了我",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 169078,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "王杰",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 32090259,
+        "Hash": "FB3591514A7BEC3EE8EDF9477BCF1DD7",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20250623/20250623075041557748.jpg",
+      "HQ": {
+        "FileSize": 12081318,
+        "Hash": "52CAB7058891E70241E439D5C1D7B361",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "302EA7D12DFC0B1D45EE47AF7831B47E",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "粤语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "ogg_128_filesize": 3364991,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20250623/20250623075041557748.jpg",
+        "qualitymap": {
+          "bits": "db4100000773fc034",
+          "attr0": 2000666676,
+          "attr1": 1746927616
+        },
+        "ogg_320_filesize": 12462529,
+        "ogg_320_hash": "9A437D7C3FFBB962FFF3F8438F7A3487",
+        "cid": 2456962,
+        "cpy_grade": 6,
+        "display": 0,
+        "ipmap": {
+          "attr0": 2200097263616
+        },
+        "hash_offset": {
+          "clip_hash": "BBC0B3C6D77AC2B85906A6206DAA3D6B",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960131,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "05E90A806AD52F33A6C4F2D5DA9FE738"
+        },
+        "hash_multitrack": "278524E62108831324E179F020D0A5DA",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4832652,
+      "IsOriginal": 1,
+      "FileHash": "1E54C9C01C9DFC5C68F743368F353711",
+      "FoldType": 0,
+      "Grp": [],
+      "Type": "audio",
+      "Bitrate": 128,
+      "isPrepublish": 0,
+      "ExtName": "mp3",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "0E679D11E22C8816BBF3676C507EBA4F",
+          "id": "8004680"
+        }
+      ],
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "983991",
+      "AlbumName": "谁明浪子心",
+      "OtherName": "",
+      "SourceID": 0,
+      "MixSongID": "32255261",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 169078,
+      "Singers": [
+        {
+          "name": "王杰",
+          "ip_id": 0,
+          "id": 2725
+        }
+      ],
+      "Auxiliary": "《还我本色》电视剧主题曲",
+      "RankId": 0,
+      "PublishDate": "1989-08-31",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1013353,
+      "Uploader": "",
+      "Duration": 301,
+      "OriSongName": "谁明浪子心",
+      "FileName": "王杰 - 谁明浪子心",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 110716040,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "陈子晴",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 20568660,
+        "Hash": "9C033687899B126AAEBD77DABABCDF6D",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20210922/20210922180602761445.jpg",
+      "HQ": {
+        "FileSize": 7828577,
+        "Hash": "84C14FCF18793BBE729FB7FF060097C6",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "98AD1F8F1F1788B42B6E355AA75AC66C",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58720256,
+        "musicpack_advance": 0,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20210922/20210922180602761445.jpg",
+        "ogg_320_filesize": 7521517,
+        "qualitymap": {
+          "bits": "db411ffffff3fe475",
+          "attr0": 2134893685,
+          "attr1": 1747189759
+        },
+        "ogg_320_hash": "6D26B6CABAAE55F3BC675458869BD093",
+        "ogg_128_filesize": 2166956,
+        "cid": 154513368,
+        "cpy_grade": 5,
+        "appid_block": "3124",
+        "ipmap": {
+          "attr0": 17213427712
+        },
+        "hash_offset": {
+          "clip_hash": "D9C3F66018FCCCDBA0CC26A0A0040F72",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960125,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "025FCA02243155BECF52D459BC25E1A2"
+        },
+        "hash_multitrack": "F6E508B1C6360709C4B18ED203FFA517",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3131552,
+      "IsOriginal": 1,
+      "FileHash": "3E612A790F56EF4599A2C708E8229684",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 8,
+      "AlbumID": "45505501",
+      "AlbumName": "陪你看星星",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "139ED20E165689058B82EFEA9DBEC16D",
+          "id": "4713919"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 39206872,
+        "Privilege": 10,
+        "Hash": "2F91E2C510E561183563B48BE9A5EAF8",
+        "BitRate": 1602,
+        "TimeLength": 195
+      },
+      "SourceID": 0,
+      "MixSongID": "319057966",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 110716040,
+      "Singers": [
+        {
+          "name": "陈子晴",
+          "ip_id": 0,
+          "id": 5753156
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2021-06-12",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1040235,
+      "Uploader": "",
+      "Duration": 195,
+      "OriSongName": "陪你看星星",
+      "FileName": "陈子晴 - 陪你看星星",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 338293,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "郑智化",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 33882519,
+        "Hash": "A1B9B1E06012F09BDA46788162C4D369",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20211008/20211008210404712442.jpg",
+      "HQ": {
+        "FileSize": 11717677,
+        "Hash": "1A96AB15B0904743B1703216EE793FA4",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "F1E5E1A83FAADBC75ECAA3E4825D393C",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58727552,
+        "musicpack_advance": 1,
+        "ogg_128_filesize": 3488699,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20211008/20211008210404712442.jpg",
+        "qualitymap": {
+          "bits": "db4007ffff73fc034",
+          "attr0": 2000666676,
+          "attr1": 1744895999
+        },
+        "ogg_320_filesize": 12353559,
+        "ogg_320_hash": "6A6E1C2E50E665926F214A171A0B6976",
+        "cid": 5928711,
+        "cpy_grade": 5,
+        "display": 0,
+        "ipmap": {
+          "attr0": 2200130555904
+        },
+        "hash_offset": {
+          "clip_hash": "A0426A283FB4101C1769187B8990A295",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960115,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "906FE2C4BFA08EA7A011C2F79EB5F45C"
+        },
+        "hash_multitrack": "18FEC8490189FB7D389A1C180556CC38",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4687186,
+      "IsOriginal": 1,
+      "FileHash": "6DCF10DEA98A7C9F755BE385E822BE05",
+      "FoldType": 0,
+      "Grp": [],
+      "Type": "audio",
+      "Bitrate": 128,
+      "isPrepublish": 0,
+      "ExtName": "mp3",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "C012F8996ED67CDCD025B1939EC6623D",
+          "id": "8247171"
+        }
+      ],
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "967718",
+      "AlbumName": "私房歌",
+      "OtherName": "",
+      "SourceID": 0,
+      "MixSongID": "32108635",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 338293,
+      "Singers": [
+        {
+          "name": "郑智化",
+          "ip_id": 0,
+          "id": 3536
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "1992-04-20",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1083394,
+      "Uploader": "",
+      "Duration": 292,
+      "OriSongName": "水手",
+      "FileName": "郑智化 - 水手",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 131870696,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "王力宏",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 24781637,
+        "Hash": "CB50D81A2C85717118BE527861497BBA",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20211126/20211126151507932163.jpg",
+      "HQ": {
+        "FileSize": 7870429,
+        "Hash": "FBA882473A036B1B18D7342F733B7201",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "AA45DBB2CC3A86EB49EB78F3AF85F7D6",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58752128,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20211126/20211126151507932163.jpg",
+        "ogg_320_filesize": 7941322,
+        "qualitymap": {
+          "bits": "db411ffffff3ffe75",
+          "attr0": 2134900341,
+          "attr1": 1747189759
+        },
+        "ogg_320_hash": "8D724E017D668E1A3EC9C1E930EF3706",
+        "ogg_128_filesize": 2304229,
+        "cid": 182960934,
+        "cpy_grade": 5,
+        "appid_block": "3124",
+        "ipmap": {
+          "attr0": 1174409216
+        },
+        "hash_offset": {
+          "clip_hash": "F7624133A5BABB2D344F088BC252007A",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960599,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "5BCCEDB842D47C95B4A0772C610E94E9"
+        },
+        "hash_multitrack": "681BC0CD079325E67975F255B13F7E19",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3148326,
+      "IsOriginal": 1,
+      "FileHash": "DD83DC4A30C3A05D60FFCE6944FB441C",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "50749156",
+      "AlbumName": "天地龙鳞",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "6967750DD1F9250F8CD8CFF4085D9203",
+          "id": "5292242"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 43404093,
+        "Privilege": 10,
+        "Hash": "3D6197E24031F68069DBCCA52FE4B009",
+        "BitRate": 1765,
+        "TimeLength": 196
+      },
+      "SourceID": 0,
+      "MixSongID": "353833243",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 131870696,
+      "Singers": [
+        {
+          "name": "王力宏",
+          "ip_id": 0,
+          "id": 2724
+        }
+      ],
+      "Auxiliary": "《紫禁城》纪录片主题曲",
+      "RankId": 0,
+      "PublishDate": "2021-11-27",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1034707,
+      "Uploader": "",
+      "Duration": 196,
+      "OriSongName": "天地龙鳞",
+      "FileName": "王力宏 - 天地龙鳞",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 23487407,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "王冕",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 28121722,
+        "Hash": "7F77B1534C137DED578C16D6F46E54FF",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20250217/20250217144214342042.jpg",
+      "HQ": {
+        "FileSize": 10054555,
+        "Hash": "9CFD7A8464C730DBFDAD569E918191D6",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "AA1C6D06523CCF1E0600553D990C9BCF",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20250217/20250217144214342042.jpg",
+        "ogg_320_filesize": 10291592,
+        "qualitymap": {
+          "bits": "db401ffffff3fe475",
+          "attr0": 2134893685,
+          "attr1": 1745092607
+        },
+        "ogg_320_hash": "9506D23278419021911515546273A6CA",
+        "ogg_128_filesize": 2908945,
+        "cid": 6086922,
+        "cpy_grade": 5,
+        "appid_block": "3124",
+        "ipmap": {
+          "attr0": 17213427712
+        },
+        "hash_offset": {
+          "clip_hash": "7F5FD5C611062DD1537AA155C382C97F",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960119,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "D740D5D9C07F449B2F023CAB78AA679A"
+        },
+        "hash_multitrack": "E50A8B8978C8AD494E806F06F565B7D7",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3995885,
+      "IsOriginal": 1,
+      "FileHash": "9747DF535CC3FDB028D1C78E815B5A8E",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "1942036",
+      "AlbumName": "勉为其难",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "E4CA232BFB940FA4CA33FFDFE9D10A3D",
+          "id": "591873"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 29044755,
+        "Privilege": 10,
+        "Hash": "F037B480A8527F2B3D160891C302C481",
+        "BitRate": 930,
+        "TimeLength": 249
+      },
+      "SourceID": 0,
+      "MixSongID": "52812307",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 23487407,
+      "Singers": [
+        {
+          "name": "王冕",
+          "ip_id": 0,
+          "id": 176315
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2017-03-28",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1025817,
+      "Uploader": "",
+      "Duration": 249,
+      "OriSongName": "勉为其难",
+      "FileName": "王冕 - 勉为其难",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "2021-02-07 00:00:00",
+      "Audioid": 28276265,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "队长",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 24705306,
+        "Hash": "773358620605FF36D6ABC81DEB052DB6",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20250217/20250217145202278806.jpg",
+      "HQ": {
+        "FileSize": 8910045,
+        "Hash": "C0182C5F2E8DD31258B862CF7FD0FED3",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "71FC131A8B7B367EB93C7189C113912F",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58728448,
+        "musicpack_advance": 0,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20250217/20250217145202278806.jpg",
+        "ogg_320_filesize": 9452161,
+        "qualitymap": {
+          "bits": "db401ffffff3fc075",
+          "attr0": 2134884469,
+          "attr1": 1745092607
+        },
+        "ogg_320_hash": "6122F44929354F32544015D30ADA6EFF",
+        "ogg_128_filesize": 2577806,
+        "cid": 133599905,
+        "cpy_grade": 5,
+        "appid_block": "3124",
+        "ipmap": {
+          "attr0": 18287169536
+        },
+        "hash_offset": {
+          "clip_hash": "609E30D12933113389290B309A3EFAE5",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960123,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "E0E40F274A4B09DAE1EADB16D1747A39"
+        },
+        "hash_multitrack": "C9B9B431B0011EA94F422317450AC99E",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "发布者：队长",
+      "FileSize": 3564138,
+      "IsOriginal": 1,
+      "FileHash": "D8F9AA298899DB7F33CF47C20F2F80CB",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 8,
+      "AlbumID": "15645884",
+      "AlbumName": "哪里都是你",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "5",
+          "hash": "F7844CD77D215D79D83A4AB8226E5563",
+          "id": "6085287"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 44635936,
+        "Privilege": 10,
+        "Hash": "BAD886381F19D1412A17FF5A6FDBB214",
+        "BitRate": 1603,
+        "TimeLength": 222
+      },
+      "SourceID": 0,
+      "MixSongID": "106813273",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 28276265,
+      "Singers": [
+        {
+          "name": "队长",
+          "ip_id": 0,
+          "id": 724764
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2017-07-03",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1058992,
+      "Uploader": "队长",
+      "Duration": 222,
+      "OriSongName": "哪里都是你",
+      "FileName": "队长 - 哪里都是你",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 258558942,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "就是南方凯",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 29296188,
+        "Hash": "60D0FAD774D6CF6FE8D3D430EFA9B69C",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20231211/20231211173901756569.jpg",
+      "HQ": {
+        "FileSize": 9230834,
+        "Hash": "255C643ED48A4DB018FFAD3EDACCC094",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "91E966ED63E4B1351A6D621A316387C8",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "ogg_128_filesize": 2767828,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20231211/20231211173901756569.jpg",
+        "qualitymap": {
+          "bits": "db401ffffff3fc075",
+          "attr0": 2134884469,
+          "attr1": 1745092607
+        },
+        "ogg_320_filesize": 9887818,
+        "ogg_320_hash": "42BBBD745386C407E8F7CDE3CF6EB116",
+        "cid": 293459464,
+        "cpy_grade": 5,
+        "display": 0,
+        "ipmap": {
+          "attr0": 17213427712
+        },
+        "hash_offset": {
+          "clip_hash": "DB0B7EFD6BA03F024B25F2259BEEE4B2",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960129,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "7FC8D2A3DDDD0C4AE99FBA055E622D8A"
+        },
+        "hash_multitrack": "AC9FDDE4ED63A393916244535064F53F",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3692457,
+      "IsOriginal": 1,
+      "FileHash": "A39EB4BD016C682EF34B2D59C49DA8B0",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "75677386",
+      "AlbumName": "离别开出花",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "AB6654F8E0C5C5A3A105FF6DC29AA135",
+          "id": "11268489"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 49538427,
+        "Privilege": 10,
+        "Hash": "7F69CDCD0EE48A02DA625B050D0B096A",
+        "BitRate": 1717,
+        "TimeLength": 230
+      },
+      "SourceID": 0,
+      "MixSongID": "529533339",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 258558942,
+      "Singers": [
+        {
+          "name": "就是南方凯",
+          "ip_id": 0,
+          "id": 985181
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2023-07-10",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1020603,
+      "Uploader": "",
+      "Duration": 230,
+      "OriSongName": "离别开出花",
+      "FileName": "就是南方凯 - 离别开出花",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 267256021,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "h3R3",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 22577846,
+        "Hash": "C2FB756BD19EC8811E5FD817B0F0F48F",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20250318/20250318151044306429.jpg",
+      "HQ": {
+        "FileSize": 8214147,
+        "Hash": "8C3A6C5925E112C377FC43973DF18F40",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "670B2E12709A8C050DCB0558872BBDC8",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58728448,
+        "musicpack_advance": 0,
+        "ogg_128_filesize": 2306119,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20250318/20250318151044306429.jpg",
+        "qualitymap": {
+          "bits": "db401fefeff3fc075",
+          "attr0": 2134884469,
+          "attr1": 1745092093
+        },
+        "ogg_320_filesize": 7801971,
+        "ogg_320_hash": "1B06F0FB4C0A0BF9D27D3491FCF6B621",
+        "cid": 297991561,
+        "cpy_grade": 6,
+        "display": 0,
+        "ipmap": {
+          "attr0": 18287169536
+        },
+        "hash_offset": {
+          "clip_hash": "C720AEC3F13418A9C185E1572EDD6373",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960127,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "4DE5BDFF1888B3B3DE627583E1ADF238"
+        },
+        "hash_multitrack": "0DA31643DDADDE5CA9DB004256FC4EE9",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3285781,
+      "IsOriginal": 1,
+      "FileHash": "E3ED52965CEE83A40D73C5FB1DA7FF62",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 8,
+      "AlbumID": "76488384",
+      "AlbumName": "来不及爱你",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "43D1927CDE1436702C20979FE44DAA98",
+          "id": "13459732"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 40643427,
+        "Privilege": 10,
+        "Hash": "E335C972D27DF8D5DD54366C7148DE31",
+        "BitRate": 1583,
+        "TimeLength": 205
+      },
+      "SourceID": 0,
+      "MixSongID": "539201419",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 267256021,
+      "Singers": [
+        {
+          "name": "h3R3",
+          "ip_id": 0,
+          "id": 763692
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2023-07-30",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1076102,
+      "Uploader": "",
+      "Duration": 205,
+      "OriSongName": "来不及爱你",
+      "FileName": "h3R3 - 来不及爱你",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 78323781,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "张杰",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 28912458,
+        "Hash": "CD146A90B1AE77BDE3F25198EE988555",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20221205/20221205230912991735.jpg",
+      "HQ": {
+        "FileSize": 8863020,
+        "Hash": "A8F22297F5D7C4579718A2A8365B4FE7",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "60FD0274990AC67939936B3B71D7554D",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "ogg_128_filesize": 2521697,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20221205/20221205230912991735.jpg",
+        "qualitymap": {
+          "bits": "db401ffffff3fc075",
+          "attr0": 2134884469,
+          "attr1": 1745092607
+        },
+        "ogg_320_filesize": 8659463,
+        "ogg_320_hash": "CAD61E7BE62C30D2D8E6158EDFA87DAC",
+        "cid": 108423664,
+        "cpy_grade": 5,
+        "display": 0,
+        "ipmap": {
+          "attr0": 1174409216
+        },
+        "hash_offset": {
+          "clip_hash": "4922C62E5C78D30DBDFA3CF5F80BFA7B",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960119,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "713149645D6F3A84E911B9E38FE66575"
+        },
+        "hash_multitrack": "ECD60C01A4B28819373B477731F2BF59",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3545325,
+      "IsOriginal": 0,
+      "FileHash": "17B11C65674378CA43995537331E1D9C",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "38606351",
+      "AlbumName": "听!我们的歌",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "AC2FB481F41DBDCA5CF4890B26246226",
+          "id": "3120084"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 50071946,
+        "Privilege": 10,
+        "Hash": "EECA127CB0FAB142E0026AE5BE30220C",
+        "BitRate": 1808,
+        "TimeLength": 221
+      },
+      "SourceID": 0,
+      "MixSongID": "268299573",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 78323781,
+      "Singers": [
+        {
+          "name": "张杰",
+          "ip_id": 0,
+          "id": 3539
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2020-07-23",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1056595,
+      "Uploader": "",
+      "Duration": 221,
+      "OriSongName": "天下",
+      "FileName": "张杰 - 天下",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 339907609,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "白水寒、DJ Wave",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 41447309,
+        "Hash": "90D1FEBD38FA7DDEDCFAA9D5E24A4803",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20250421/20250421112005661665.jpg",
+      "HQ": {
+        "FileSize": 12874249,
+        "Hash": "DCC4B1B24F95FA81F7A0EC5897482867",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "cpy_grade": 5,
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20250421/20250421112005661665.jpg",
+        "ogg_320_filesize": 14306708,
+        "ogg_320_hash": "07A4D08516DD5BE3C9356526E8272EB7",
+        "qualitymap": {
+          "bits": "c04107ffff710e434",
+          "attr0": 1997595700,
+          "attr1": 136380415
+        },
+        "ogg_128_filesize": 4527882,
+        "ogg_128_hash": "2127F9C68B7759BA9BFF7A9F1778376F",
+        "cid": 431534338,
+        "ipmap": {
+          "attr0": 33587200
+        },
+        "appid_block": "3124",
+        "songname_suffix": "(DJ版)",
+        "hash_offset": {
+          "clip_hash": "2D25B2D0EDE5A8B6CAD14B84F90A9528",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960137,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "47A8EB8FF1C1365455A1AC8C3259B5BE"
+        },
+        "hash_multitrack": "AB7A5ADA949CFD09468E0B7261D82A35",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 5149889,
+      "IsOriginal": 0,
+      "FileHash": "7503497161C9C4D036DCB218979D03FC",
+      "FoldType": 0,
+      "Grp": [],
+      "Type": "audio",
+      "Bitrate": 128,
+      "isPrepublish": 0,
+      "ExtName": "mp3",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "956B86FF7BAB93DFEE5247CBF537D2DB",
+          "id": "13938502"
+        }
+      ],
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "144241849",
+      "AlbumName": "天真的橡皮 (DJ版)",
+      "OtherName": "",
+      "SourceID": 0,
+      "MixSongID": "616413036",
+      "FailProcess": 4,
+      "Suffix": "(DJ版)",
+      "MatchFlag": 0,
+      "Scid": 339907609,
+      "Singers": [
+        {
+          "name": "白水寒",
+          "ip_id": 0,
+          "id": 11317037
+        },
+        {
+          "name": "DJ Wave",
+          "ip_id": 0,
+          "id": 8837527
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2024-03-25",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1022418,
+      "Uploader": "",
+      "Duration": 321,
+      "OriSongName": "天真的橡皮",
+      "FileName": "白水寒、DJ Wave - 天真的橡皮 (DJ版)",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 108356,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "卓文萱",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 32930444,
+        "Hash": "CC5B91E1BCC3F499D3323A097CFE3497",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20150718/20150718093337508404.jpg",
+      "HQ": {
+        "FileSize": 10414400,
+        "Hash": "4F82E2980184902C6AB8DEB6145350B4",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "DCCCFDA831285ACC35487FA3EA77F992",
+        "classmap": {
+          "attr0": 235012104
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "display": 8,
+        "display_rate": 2,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20150718/20150718093337508404.jpg",
+        "ogg_320_filesize": 10865502,
+        "qualitymap": {
+          "bits": "db411fefeff38c074",
+          "attr0": 2134425716,
+          "attr1": 1747189245
+        },
+        "ogg_320_hash": "E619FAFA2881D40E9F88E4A0756E4F9C",
+        "ogg_128_filesize": 3031355,
+        "cid": 22114970,
+        "cpy_grade": 5,
+        "appid_block": "2910",
+        "ipmap": {
+          "attr0": 2200130555904
+        },
+        "hash_offset": {
+          "clip_hash": "BBCCDC241E44C357F353066F468091E6",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960119,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "C2957FF3A7FE3A14BAC17AA940503727"
+        },
+        "hash_multitrack": "0897FB4EDC685F66CD429587EB67C63F",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4165995,
+      "IsOriginal": 1,
+      "FileHash": "3F98A771F8F33556966A9990F66D95C4",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "965920",
+      "AlbumName": "幸福氧气",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "624F66C2438D32FCDCB5DC6E722043AB",
+          "id": "34875"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 33952131,
+        "Privilege": 10,
+        "Hash": "7406EFD2D61EA9CE249609D908D61CA1",
+        "BitRate": 1043,
+        "TimeLength": 260
+      },
+      "SourceID": 0,
+      "MixSongID": "32092492",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 108356,
+      "Singers": [
+        {
+          "name": "卓文萱",
+          "ip_id": 0,
+          "id": 6818
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2007-11-20",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1031864,
+      "Uploader": "",
+      "Duration": 260,
+      "OriSongName": "读心术",
+      "FileName": "卓文萱 - 读心术",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 582590,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "林俊杰",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 33110495,
+        "Hash": "C00A8B4B8B47CFBA728C55593E44D83C",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20211008/20211008210301736398.jpg",
+      "HQ": {
+        "FileSize": 11482593,
+        "Hash": "20BC22B93372799F8AB95F36E55A0E77",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "5D6330DFA92E18610FC7F5CF94C9A072",
+        "classmap": {
+          "attr0": 234885128
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "ogg_128_filesize": 3289250,
+        "display_rate": 1,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20211008/20211008210301736398.jpg",
+        "qualitymap": {
+          "bits": "dfc11ffffff3fc075",
+          "attr0": 2134884469,
+          "attr1": 2015625215
+        },
+        "ogg_320_filesize": 11457819,
+        "ogg_320_hash": "D295165F43630E5532CC4C7322C9464E",
+        "cid": 2456780,
+        "cpy_grade": 5,
+        "display": 32,
+        "ipmap": {
+          "attr0": 2200130555904
+        },
+        "hash_offset": {
+          "clip_hash": "08F9979225A79395D8252A9C81CF5F20",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960123,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "F59DD52206ED0349F4E7861B22C6397E"
+        },
+        "hash_multitrack": "3C0A3B3303D016DE6C2C9A76A17774AD",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4593153,
+      "IsOriginal": 1,
+      "FileHash": "8748C12719DCA9F588B1118AC05F6BF8",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "972188",
+      "AlbumName": "因你 而在",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "9DD9677D2366BECE94CDF7B0124526CD",
+          "id": "88465"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 126786849,
+        "Privilege": 10,
+        "Hash": "4E142B95FC2A3829ABB68CA2B471E6C8",
+        "BitRate": 3533,
+        "TimeLength": 287
+      },
+      "SourceID": 0,
+      "MixSongID": "32148029",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 582590,
+      "Singers": [
+        {
+          "name": "林俊杰",
+          "ip_id": 0,
+          "id": 1574
+        }
+      ],
+      "Auxiliary": "《时之繁花》微电影主题曲",
+      "RankId": 0,
+      "PublishDate": "2013-03-13",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1049694,
+      "Uploader": "",
+      "Duration": 287,
+      "OriSongName": "修炼爱情",
+      "FileName": "林俊杰 - 修炼爱情",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 327856,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "周杰伦",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 32314200,
+        "Hash": "EC210B88CA2EE330F111469BD84D5A0C",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20250221/20250221180749429614.jpg",
+      "HQ": {
+        "FileSize": 10841808,
+        "Hash": "A9AA9C8B024C3C96D1F8DB1683E520DF",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "D4D3FAA23B06F5B6DA614ACBDC426296",
+        "classmap": {
+          "attr0": 234885128
+        },
+        "language": "国语",
+        "cpy_attr0": 58727552,
+        "musicpack_advance": 1,
+        "display": 32,
+        "display_rate": 1,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20250221/20250221180749429614.jpg",
+        "ogg_320_filesize": 10948708,
+        "qualitymap": {
+          "bits": "db41180003f3fc074",
+          "attr0": 1061142644,
+          "attr1": 1747124224
+        },
+        "ogg_320_hash": "7D5D13EB8C14228CAF866122EC5649DD",
+        "ogg_128_filesize": 3247627,
+        "cid": 32127349,
+        "cpy_grade": 5,
+        "appid_block": "3124",
+        "ipmap": {
+          "attr0": 2200130555906
+        },
+        "hash_offset": {
+          "clip_hash": "DD63364EE46F52863CC27C287458380F",
+          "start_byte": 0,
+          "end_ms": 125800,
+          "end_byte": 2012956,
+          "file_type": 0,
+          "start_ms": 65800,
+          "offset_hash": "7EE114A435CDDFBB204C4F5A1FD05667"
+        },
+        "hash_multitrack": "7869B5B84C5AD279CAF47424A21AAB77",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4336938,
+      "IsOriginal": 1,
+      "FileHash": "6E44CE19BE5872384FA184B995CCE23B",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "958706",
+      "AlbumName": "范特西",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "6E4BACAFF015B98488368FC44F5337AF",
+          "id": "596381"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 33486920,
+        "Privilege": 10,
+        "Hash": "8CFC93AEFE22B6213C39EAD85034D809",
+        "BitRate": 988,
+        "TimeLength": 270
+      },
+      "SourceID": 0,
+      "MixSongID": "32027747",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 327856,
+      "Singers": [
+        {
+          "name": "周杰伦",
+          "ip_id": 0,
+          "id": 3520
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2001-09-14",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1031809,
+      "Uploader": "",
+      "Duration": 270,
+      "OriSongName": "简单爱",
+      "FileName": "周杰伦 - 简单爱",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 90282171,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "阿YueYue、戾格、小田音乐社",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 26109938,
+        "Hash": "0E23AF2AC9ECC45F6B1F6B7605471E38",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20201228/20201228145605292008.jpg",
+      "HQ": {
+        "FileSize": 8938885,
+        "Hash": "DFEB7305FA316B48603CF61F5F7FB6A6",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "7294826CAC03FFACCFB3478332463BEF",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 59014272,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20201228/20201228145605292008.jpg",
+        "ogg_320_filesize": 8258172,
+        "qualitymap": {
+          "bits": "db401ffffff3fc075",
+          "attr0": 2134884469,
+          "attr1": 1745092607
+        },
+        "ogg_320_hash": "E824D04DD4CA44FE9A229B9E91C181CC",
+        "ogg_128_filesize": 2445203,
+        "cid": 127295011,
+        "cpy_grade": 5,
+        "appid_block": "2906,3124",
+        "ipmap": {
+          "attr0": 18354278912
+        },
+        "hash_offset": {
+          "clip_hash": "7B6F13652A4181A4CB2676224D1572ED",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960125,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "781067449F7380C2F824CB50454BD0F1"
+        },
+        "hash_multitrack": "E3EB16BDD30CBD71959CA5E1F7C212E8",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3575842,
+      "IsOriginal": 1,
+      "FileHash": "9B46F3774EEC55D47508E93A468FF5FC",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "40796517",
+      "AlbumName": "沈园外",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "6364B598ABA477626149604C1B3CE621",
+          "id": "7944948"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 47550737,
+        "Privilege": 10,
+        "Hash": "7566E39B641F880A3701A4527C871E85",
+        "BitRate": 1702,
+        "TimeLength": 223
+      },
+      "SourceID": 0,
+      "MixSongID": "287414768",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 90282171,
+      "Singers": [
+        {
+          "name": "阿YueYue",
+          "ip_id": 0,
+          "id": 636942
+        },
+        {
+          "name": "戾格",
+          "ip_id": 0,
+          "id": 836744
+        },
+        {
+          "name": "小田音乐社",
+          "ip_id": 77985,
+          "id": 1009762
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2020-12-31",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1032626,
+      "Uploader": "",
+      "Duration": 223,
+      "OriSongName": "沈园外",
+      "FileName": "阿YueYue、戾格、小田音乐社 - 沈园外",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 507908998,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "王一佳",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 19371959,
+        "Hash": "DF5D4851AE54D8479E73C67A0C47C073",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20251117/20251117193640584049.jpg",
+      "HQ": {
+        "FileSize": 5843281,
+        "Hash": "247CA9D61A17A718E62B5B068DBEACF2",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "A7C570D461FA13B458F1E28BCEA4BE92",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58727552,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "provider": 5,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20251117/20251117193640584049.jpg",
+        "ogg_320_filesize": 6066364,
+        "qualitymap": {
+          "bits": "db4107efeb710e434",
+          "attr0": 923853876,
+          "attr1": 1746992637
+        },
+        "ogg_320_hash": "157892026289A7BEE470602A0A61C681",
+        "ogg_128_filesize": 1725608,
+        "cid": 546155056,
+        "ipmap": {
+          "attr0": 137472540672
+        },
+        "hash_multitrack": "1CFDD74ABDF09F923F6343950438800E",
+        "songname_suffix": "(节奏版)",
+        "hash_offset": {
+          "clip_hash": "8D51B8BCAB0D3C82BE43F2D412F5FD36",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960553,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "E51EBC1A4D322CF76CA924C69987F52D"
+        },
+        "pay_block_tpl": 1,
+        "cpy_grade": 5,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 2337439,
+      "IsOriginal": 0,
+      "FileHash": "911ABC6A42BFF62683800EF3BD99823E",
+      "FoldType": 0,
+      "Grp": [],
+      "Type": "audio",
+      "Bitrate": 128,
+      "isPrepublish": 0,
+      "ExtName": "mp3",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "319E68C79D326373BEB9ABE016E5DF31",
+          "id": "14062970"
+        }
+      ],
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "167244251",
+      "AlbumName": "无人的岛（节奏版）",
+      "OtherName": "",
+      "SourceID": 0,
+      "MixSongID": "810066826",
+      "FailProcess": 4,
+      "Suffix": "(节奏版)",
+      "MatchFlag": 0,
+      "Scid": 507908998,
+      "Singers": [
+        {
+          "name": "王一佳",
+          "ip_id": 0,
+          "id": 91241
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2025-11-10",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1022295,
+      "Uploader": "",
+      "Duration": 146,
+      "OriSongName": "无人的岛",
+      "FileName": "王一佳 - 无人的岛 (节奏版)",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 338966,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "王力宏",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 28901225,
+        "Hash": "4A7DC8908BD3A590BBFF9783C40C1641",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20231227/20231227141903921664.jpg",
+      "HQ": {
+        "FileSize": 9913145,
+        "Hash": "3F1D78C820BC59FBB57F37A3AEC62F83",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "D0B347CABC9BA626E7A41EB03CFD0016",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "ogg_128_filesize": 2961156,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20231227/20231227141903921664.jpg",
+        "qualitymap": {
+          "bits": "db411ffffff3fc075",
+          "attr0": 2134884469,
+          "attr1": 1747189759
+        },
+        "ogg_320_filesize": 10718765,
+        "ogg_320_hash": "8C12A191E04DA7A279A27C96D0FA324D",
+        "cid": 5842223,
+        "cpy_grade": 5,
+        "display": 0,
+        "ipmap": {
+          "attr0": 2200130555906
+        },
+        "hash_offset": {
+          "clip_hash": "77D5FE5386B22D6269B11A45BA08BBD2",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960121,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "8D30D4E1BC445C9536B1E7A3AA4C494C"
+        },
+        "hash_multitrack": "89B386AAF4523D5DAB1968C87332F6F9",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3965376,
+      "IsOriginal": 1,
+      "FileHash": "4E294957A0D9B72A78B61F3C2A63B6CC",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "503223",
+      "AlbumName": "改变自己",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "91E503DC89DEBD2F5939E631CD816345",
+          "id": "755850"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 29926573,
+        "Privilege": 10,
+        "Hash": "C4F4EC13CA77112C0ECF170E0BB5A202",
+        "BitRate": 966,
+        "TimeLength": 247
+      },
+      "SourceID": 0,
+      "MixSongID": "40289878",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 338966,
+      "Singers": [
+        {
+          "name": "王力宏",
+          "ip_id": 0,
+          "id": 2724
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2007-07-13",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1005320,
+      "Uploader": "",
+      "Duration": 247,
+      "OriSongName": "我们的歌",
+      "FileName": "王力宏 - 我们的歌",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 76253811,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "任然",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 33885420,
+        "Hash": "C1F32DD7633EC2F754C383B5D95EE382",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20200702/20200702161906192613.jpg",
+      "HQ": {
+        "FileSize": 11843069,
+        "Hash": "C089A8DE6E2BCBE129A5B71DDCDEC91D",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "cpy_grade": 5,
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "voice_ad": {
+          "filesize": 4737050,
+          "hash": "47954519B4015244BBCE8871D932521E",
+          "start_ms": 59000
+        },
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20200702/20200702161906192613.jpg",
+        "ogg_320_filesize": 11692282,
+        "qualitymap": {
+          "bits": "db401ffffbf3fc075",
+          "attr0": 1061142645,
+          "attr1": 1745092607
+        },
+        "ogg_320_hash": "302A4A97F859C3709B32D8CF9973045B",
+        "ogg_128_filesize": 3378219,
+        "cid": 106491388,
+        "ogg_128_hash": "EDC592DCF437B8E253A896C02BCC8FF5",
+        "pay_block_tpl": 1,
+        "ipmap": {
+          "attr0": 18287169536
+        },
+        "hash_offset": {
+          "clip_hash": "DA0138A4F84AFE5DD7A7B509BF9D1E23",
+          "start_byte": 0,
+          "end_ms": 142200,
+          "end_byte": 2275436,
+          "file_type": 0,
+          "start_ms": 82200,
+          "offset_hash": "CF309738483A2419E2ACF9459B6343EB"
+        },
+        "appid_block": "3124",
+        "hash_multitrack": "1B707E1482B1117580846DFA5B27A632",
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4737345,
+      "IsOriginal": 1,
+      "FileHash": "EB5F5AF3993F6537F2C70B959F2DCD6B",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "38339036",
+      "AlbumName": "飞鸟和蝉",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "D0D35B6BC0B729A11A25C0C30878D47D",
+          "id": "3713642"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 62537082,
+        "Privilege": 10,
+        "Hash": "81FE4E8B0A12EA4203764818937D7632",
+        "BitRate": 1689,
+        "TimeLength": 296
+      },
+      "SourceID": 0,
+      "MixSongID": "265347807",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 76253811,
+      "Singers": [
+        {
+          "name": "任然",
+          "ip_id": 0,
+          "id": 5817
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2020-07-03",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1029473,
+      "Uploader": "",
+      "Duration": 296,
+      "OriSongName": "飞鸟和蝉",
+      "FileName": "任然 - 飞鸟和蝉",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 288965,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "王蓝茵",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 26808806,
+        "Hash": "D2733B2B075E4CB6E4AEA1E155E8D6CA",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20240318/20240318181757600760.jpg",
+      "HQ": {
+        "FileSize": 9073535,
+        "Hash": "8B467B97A6579BE622FC95C7F9921454",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "C8A3F0F5F62A6B7F8E7B777A903A61E9",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "ogg_128_filesize": 2693265,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20240318/20240318181757600760.jpg",
+        "qualitymap": {
+          "bits": "db401ffffff3fc074",
+          "attr0": 2134884468,
+          "attr1": 1745092607
+        },
+        "ogg_320_filesize": 9532320,
+        "ogg_320_hash": "B32F5C1DB5B49F3166B5970FCB2958C2",
+        "cid": 23047241,
+        "cpy_grade": 6,
+        "display": 0,
+        "ipmap": {
+          "attr0": 2200130555904
+        },
+        "hash_offset": {
+          "clip_hash": "FF042EA632CA19A991A6133C96CA92BB",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960135,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "0026FD30B2B3A3FC1DB30050EFF68CC3"
+        },
+        "hash_multitrack": "A74FC2ABA020D668E818CA55D304555C",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3629769,
+      "IsOriginal": 1,
+      "FileHash": "05B893FC78627C3F5635491BBB35167E",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "720564",
+      "AlbumName": "恶作剧之吻 电视剧原声带",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "D140952F71D16DAD90822BCAC9988477",
+          "id": "1027136"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 27569287,
+        "Privilege": 10,
+        "Hash": "E6F2757D23925EF3BA020E887E6DE2ED",
+        "BitRate": 972,
+        "TimeLength": 226
+      },
+      "SourceID": 0,
+      "MixSongID": "29860450",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 288965,
+      "Singers": [
+        {
+          "name": "王蓝茵",
+          "ip_id": 0,
+          "id": 6248
+        }
+      ],
+      "Auxiliary": "《恶作剧之吻 2005台湾版》电视剧片尾曲",
+      "RankId": 0,
+      "PublishDate": "2005-10-21",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1018742,
+      "Uploader": "",
+      "Duration": 226,
+      "OriSongName": "恶作剧",
+      "FileName": "王蓝茵 - 恶作剧",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 86863601,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "井迪儿",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 30453095,
+        "Hash": "68FCAE1C172ED1F54773F317F6090287",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20210106/20210106110202982955.jpg",
+      "HQ": {
+        "FileSize": 10202547,
+        "Hash": "AB60142AC04907B7CBE9FC3DD8143752",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "B64F882EFA34F6EF6EF4EA78C97A4E25",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "free_for_ad": 32,
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "qualitymap": {
+          "bits": "db401ffffff3fc075",
+          "attr0": 2134884469,
+          "attr1": 1745092607
+        },
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20210106/20210106110202982955.jpg",
+        "cid": 121829934,
+        "ogg_128_filesize": 3004569,
+        "cpy_grade": 20,
+        "ipmap": {
+          "attr0": 17213427712
+        },
+        "hash_offset": {
+          "clip_hash": "9A1B0C68F4C871B03B66C236C37244F6",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 961051,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "53D8A699506D7C130F641058557C7E79"
+        },
+        "hash_multitrack": "91B2C3660EEBF397609608902C91B20D",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4081117,
+      "IsOriginal": 1,
+      "FileHash": "44FE8C442EB1F254D15717F1DC03C9BF",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "40221609",
+      "AlbumName": "失控",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "942F3FE1E42A517258345BE9754ED52A",
+          "id": "11623035"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 31352277,
+        "Privilege": 10,
+        "Hash": "8891F81D0FBE6D8C919E3C8589C4953F",
+        "BitRate": 983,
+        "TimeLength": 255
+      },
+      "SourceID": 0,
+      "MixSongID": "281889822",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 86863601,
+      "Singers": [
+        {
+          "name": "井迪儿",
+          "ip_id": 0,
+          "id": 939201
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2020-11-20",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 996207,
+      "Uploader": "",
+      "Duration": 255,
+      "OriSongName": "失控",
+      "FileName": "井迪儿 - 失控",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 718742,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "EXO",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 27944611,
+        "Hash": "45658149774A2B94B715B899D79F779B",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20250207/20250207161341599292.jpg",
+      "HQ": {
+        "FileSize": 9439864,
+        "Hash": "BEA4C4C79AD4056F564A4A595E8A0E4F",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "567497746983C555B2AC4118B75E2EA6",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20250207/20250207161341599292.jpg",
+        "ogg_320_filesize": 9887881,
+        "qualitymap": {
+          "bits": "db411ffffff3fc075",
+          "attr0": 2134884469,
+          "attr1": 1747189759
+        },
+        "ogg_320_hash": "17931D8E917E5E12416F42ED730C65DA",
+        "ogg_128_filesize": 2717332,
+        "cid": 22134800,
+        "ipmap": {
+          "attr0": 2203351781376
+        },
+        "hash_multitrack": "70B4B42C6A05DB0150F2E83D544A4A26",
+        "songname_suffix": "(人鱼的眼泪)(Chinese Ver.)",
+        "hash_offset": {
+          "clip_hash": "C97C67E25B4191039ACA5280508AD5A3",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960209,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "71270E0AEAA4F08AEE90B9DC15FF6680"
+        },
+        "pay_block_tpl": 1,
+        "cpy_grade": 5,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3776129,
+      "IsOriginal": 1,
+      "FileHash": "B692ED61ED4DDE69C50EB8B975D4E04D",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "22436133",
+      "AlbumName": "The 1st Album XOXO (KISS&HUG)",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "3D0DEE397B4B2A4270918FABB8D2C1B3",
+          "id": "11133694"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 28650287,
+        "Privilege": 10,
+        "Hash": "48DB77848E4737A290F36175710C8438",
+        "BitRate": 971,
+        "TimeLength": 235
+      },
+      "SourceID": 0,
+      "MixSongID": "161154888",
+      "FailProcess": 4,
+      "Suffix": "(人鱼的眼泪)(Chinese Ver.)",
+      "MatchFlag": 0,
+      "Scid": 718742,
+      "Singers": [
+        {
+          "name": "EXO",
+          "ip_id": 0,
+          "id": 84195
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2013-06-03",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1059037,
+      "Uploader": "",
+      "Duration": 235,
+      "OriSongName": "Baby, Don't Cry",
+      "FileName": "EXO - Baby, Don't Cry (人鱼的眼泪)(Chinese Ver.)",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 23909971,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "杨乃文",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 27731182,
+        "Hash": "9F606E483380BBC1BA526905734BDBEB",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20241118/20241118160629511631.jpg",
+      "HQ": {
+        "FileSize": 11283008,
+        "Hash": "767F35947B719CFB6F6B2E160CA09F76",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "286848F9A61424859E306FDF20337EAF",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20241118/20241118160629511631.jpg",
+        "ogg_320_filesize": 10773883,
+        "qualitymap": {
+          "bits": "db401ffffbf3fc075",
+          "attr0": 1061142645,
+          "attr1": 1745092607
+        },
+        "ogg_320_hash": "6C3EC74B14AA668E8A1E66E670F323F7",
+        "ogg_128_filesize": 3286256,
+        "cid": 22518103,
+        "cpy_grade": 5,
+        "appid_block": "3124",
+        "ipmap": {
+          "attr0": 1107300352
+        },
+        "hash_offset": {
+          "clip_hash": "A0E3199AC99A305E767620E79A89A440",
+          "start_byte": 0,
+          "end_ms": 145900,
+          "end_byte": 2334791,
+          "file_type": 0,
+          "start_ms": 85900,
+          "offset_hash": "E206B6834A98A36B30644858BAC17737"
+        },
+        "hash_multitrack": "84756D11E6C5D6E5B641FBE863432549",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4513323,
+      "IsOriginal": 1,
+      "FileHash": "6B5A905C8904FD4A23D255DA1B5592C9",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "1803972",
+      "AlbumName": "离心力",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "C3EEBA6F9FE038F9CE12011221841F18",
+          "id": "590937"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 54364133,
+        "Privilege": 10,
+        "Hash": "976DE268CD86E5F417821FA7D9C33D6E",
+        "BitRate": 1541,
+        "TimeLength": 282
+      },
+      "SourceID": 0,
+      "MixSongID": "40248333",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 23909971,
+      "Singers": [
+        {
+          "name": "杨乃文",
+          "ip_id": 0,
+          "id": 6534
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2016-11-16",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 998481,
+      "Uploader": "",
+      "Duration": 282,
+      "OriSongName": "推开世界的门",
+      "FileName": "杨乃文 - 推开世界的门",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 522468760,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "Top Barry、INDEcompany",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 22825143,
+        "Hash": "4A5C37CA9BF7BAA2749EA4EB23E755FE",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20251229/20251229162741716134.jpg",
+      "HQ": {
+        "FileSize": 9414764,
+        "Hash": "FA6CF8432784BC1C64EA7964E089AAF8",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "2650326DFDB34ACB4BFB47051E912A61",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58728448,
+        "musicpack_advance": 0,
+        "ogg_128_filesize": 2641818,
+        "display_rate": 0,
+        "qualitymap": {
+          "bits": "db410807ebf14c074",
+          "attr0": 1058324596,
+          "attr1": 1746993405
+        },
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20251229/20251229162741716134.jpg",
+        "ogg_320_filesize": 10717466,
+        "cid": 559253613,
+        "ipmap": {
+          "attr0": 154652381216
+        },
+        "display": 0,
+        "ogg_320_hash": "9DAF943B7351E4BF594B692DAEFF8C25",
+        "pay_block_tpl": 1,
+        "hash_multitrack": "A2278B38D53CC3CDE95B247D4B9D51B5",
+        "cpy_grade": 5,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3766046,
+      "IsOriginal": 1,
+      "FileHash": "56834BD8A7D2E78BB28A7DBBE99244B6",
+      "FoldType": 0,
+      "Grp": [],
+      "isPrepublish": 0,
+      "Type": "audio",
+      "Bitrate": 128,
+      "ExtName": "mp3",
+      "TopID": 0,
+      "AlbumPrivilege": 8,
+      "AlbumID": "172110932",
+      "AlbumName": "一半一半",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "6673C49F9C49A73710C55271F07FB95D",
+          "id": "14616213"
+        }
+      ],
+      "OtherName": "",
+      "Res": {
+        "FileSize": 46486530,
+        "Privilege": 10,
+        "Hash": "B0D5B5DAB87F566FD151E3EEB06A7455",
+        "BitRate": 1580,
+        "TimeLength": 235
+      },
+      "SourceID": 0,
+      "MixSongID": "829052887",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 522468760,
+      "Singers": [
+        {
+          "name": "Top Barry",
+          "ip_id": 0,
+          "id": 10436785
+        },
+        {
+          "name": "INDEcompany",
+          "ip_id": 0,
+          "id": 7587445
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2026-01-04",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 996616,
+      "Uploader": "",
+      "Duration": 235,
+      "OriSongName": "一半一半",
+      "FileName": "Top Barry、INDEcompany - 一半一半",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 389334091,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "卢润泽",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 19791686,
+        "Hash": "B877353D437EE1209798CC6C6C9F7B69",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20250214/20250214115022147168.jpg",
+      "HQ": {
+        "FileSize": 7841471,
+        "Hash": "6881B374804C76B2A0782CFAC57C9C02",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "DC1D654F674F1593E4AAFF0A079B39AB",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "display": 0,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20250214/20250214115022147168.jpg",
+        "ogg_320_filesize": 8268873,
+        "qualitymap": {
+          "bits": "db40000007714c034",
+          "attr0": 1997848628,
+          "attr1": 1744830464
+        },
+        "ogg_320_hash": "9A1EB2FAD0DF2D41701D8A840558F67D",
+        "ogg_128_filesize": 2297685,
+        "cid": 427668967,
+        "cpy_grade": 5,
+        "appid_block": "3124",
+        "ipmap": {
+          "attr0": 17213427712
+        },
+        "hash_offset": {
+          "clip_hash": "4E3C32E1AB666C1ACE9DDDC11736295D",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960137,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "C9E6D28860C47DDFBBF4247E66F27DDF"
+        },
+        "hash_multitrack": "09B7A5F47C98ECA14432AED4216AE688",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 3136997,
+      "IsOriginal": 1,
+      "FileHash": "5E40742110D3DB109A22BDB1012C6EBB",
+      "FoldType": 0,
+      "Grp": [],
+      "Type": "audio",
+      "Bitrate": 128,
+      "isPrepublish": 0,
+      "ExtName": "mp3",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "70284257B0842DB29422BBBDB28387CF",
+          "id": "12918983"
+        }
+      ],
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "104913971",
+      "AlbumName": "土坡上的狗尾巴草",
+      "OtherName": "",
+      "SourceID": 0,
+      "MixSongID": "676967465",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 389334091,
+      "Singers": [
+        {
+          "name": "卢润泽",
+          "ip_id": 0,
+          "id": 583954
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2024-09-27",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 995723,
+      "Uploader": "",
+      "Duration": 195,
+      "OriSongName": "土坡上的狗尾草",
+      "FileName": "卢润泽 - 土坡上的狗尾草",
+      "recommend_type": 0
+    },
+    {
+      "PublishTime": "",
+      "Audioid": 112600225,
+      "OldCpy": 0,
+      "PublishAge": 255,
+      "PayType": 3,
+      "Accompany": 1,
+      "SingerName": "锤娜丽莎",
+      "ShowingFlag": 0,
+      "Source": "",
+      "SQ": {
+        "FileSize": 28796358,
+        "Hash": "491E36D8403A1E21BA50085E2FC28945",
+        "Privilege": 10
+      },
+      "AlbumAux": "",
+      "Image": "http://imge.kugou.com/stdmusic/{size}/20251205/20251205104221737546.jpg",
+      "HQ": {
+        "FileSize": 10586880,
+        "Hash": "82C3EBBFD45E6AF6DDDFC36AFE10A08F",
+        "Privilege": 10
+      },
+      "M4aSize": 0,
+      "HeatLevel": 6,
+      "trans_param": {
+        "ogg_128_hash": "66FD97009814967F9BE8A5DA97A20398",
+        "classmap": {
+          "attr0": 234881032
+        },
+        "language": "国语",
+        "cpy_attr0": 58735744,
+        "musicpack_advance": 1,
+        "ogg_128_filesize": 3048305,
+        "display_rate": 0,
+        "union_cover": "http://imge.kugou.com/stdmusic/{size}/20251205/20251205104221737546.jpg",
+        "qualitymap": {
+          "bits": "db4107ffff73fc035",
+          "attr0": 2000666677,
+          "attr1": 1746993151
+        },
+        "ogg_320_filesize": 10453611,
+        "ogg_320_hash": "5D5F8D438C8ED0771A2D93C912855983",
+        "cid": 159962469,
+        "cpy_grade": 5,
+        "display": 0,
+        "ipmap": {
+          "attr0": 1107300352
+        },
+        "hash_offset": {
+          "clip_hash": "7EFDAA22FA0DFD3294E04A32B587E467",
+          "start_byte": 0,
+          "end_ms": 60000,
+          "end_byte": 960119,
+          "file_type": 0,
+          "start_ms": 0,
+          "offset_hash": "F8754C9C9268DA97DA967BBEF71248D9"
+        },
+        "hash_multitrack": "0B885C81DC271F5CCF2976187AA5AB8F",
+        "pay_block_tpl": 1,
+        "cpy_level": 1
+      },
+      "UploaderContent": "",
+      "FileSize": 4234958,
+      "IsOriginal": 1,
+      "FileHash": "A5D4F40382C0DF1A95A48A617793F03E",
+      "FoldType": 0,
+      "Grp": [],
+      "Type": "audio",
+      "Bitrate": 128,
+      "isPrepublish": 0,
+      "ExtName": "mp3",
+      "mvdata": [
+        {
+          "typ": 0,
+          "trk": "3",
+          "hash": "BD1A48A7BD5A9BA94DCF09854D6655C5",
+          "id": "5912004"
+        }
+      ],
+      "TopID": 0,
+      "AlbumPrivilege": 10,
+      "AlbumID": "46432417",
+      "AlbumName": "我太笨",
+      "OtherName": "",
+      "SourceID": 0,
+      "MixSongID": "325452257",
+      "FailProcess": 4,
+      "Suffix": "",
+      "MatchFlag": 0,
+      "Scid": 112600225,
+      "Singers": [
+        {
+          "name": "锤娜丽莎",
+          "ip_id": 0,
+          "id": 865063
+        }
+      ],
+      "Auxiliary": "",
+      "RankId": 0,
+      "PublishDate": "2021-07-05",
+      "TagDetails": [],
+      "TagContent": "",
+      "PrepublishInfo": {
+        "ReserveCount": 0,
+        "DisplayTime": "",
+        "Id": 0,
+        "PublishTime": ""
+      },
+      "OwnerCount": 1067876,
+      "Uploader": "",
+      "Duration": 264,
+      "OriSongName": "我太笨",
+      "FileName": "锤娜丽莎 - 我太笨",
+      "recommend_type": 0
+    }
+  ]
+}
