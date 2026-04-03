@@ -17,7 +17,7 @@
 
     <!-- 数据 -->
     <div v-else-if="displayList.length > 0" class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-      <AppleMusicGridCard v-for="item in displayList" :key="item.id" :cover="item.pic" :title="item.title"
+      <AppleMusicGridCard v-for="item in displayList" :key="item.id" :cover="item.cover" :title="item.title"
         :subtitle="item.intro" :title-tooltip="item.title" :subtitle-tooltip="item.intro"
         @click="navigateTo(`/recommendation/${item.id}`)" />
     </div>

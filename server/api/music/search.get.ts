@@ -1,5 +1,5 @@
 // server/api/music/search.get.ts
-import { getUserCookie, getValidDfid } from "../../utils/getValidDfid";
+import { resFormatMethod } from "../../utils/formatResponse";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
@@ -8,12 +8,9 @@ export default defineEventHandler(async (event) => {
 
   // 1. 参数校验：不允许空搜索
   if (!keyword) {
-    return { success: true, data: [], msg: "请输入关键词" };
+    return resFormatMethod(400, [], "请输入关键词");
   }
 
-  // 2. 这里的 getValidDfid 内部最好有缓存逻辑，避免每次搜索都去注册设备
-  const dfid = await getValidDfid();
-  const userCookie = getUserCookie(event);
   try {
     // 3. 使用 defineCachedResponse (如果想做缓存) 或者简单的 $fetch
     // 注意：酷狗概念版搜索接口某些版本用 keywords，某些用 keyword，请根据你测试成功的为准
@@ -24,9 +21,7 @@ export default defineEventHandler(async (event) => {
         page: query.page || 1,
         pagesize: 10, // 增加单页数量
       },
-      headers: {
-        Cookie: `dfid=${dfid}; ${userCookie}`,
-      },
+      headers: getKugouHeaders(event),
       timeout: 10000, // 10秒超时控制
     });
 
@@ -60,10 +55,10 @@ export default defineEventHandler(async (event) => {
         };
       });
 
-      return { success: true, data: optimizedList };
+      return resFormatMethod(0, optimizedList, "搜索成功");
     }
 
-    return { success: false, msg: response?.error_msg || "搜索暂无结果" };
+    return resFormatMethod(-1, null, response?.error_msg || "搜索暂无结果");
   } catch (error: any) {
     // 5. 区分错误类型：如果是 API 挂了，给一个友好的提示
     console.error("搜索链路异常:", error.message);

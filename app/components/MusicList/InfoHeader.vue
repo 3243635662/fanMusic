@@ -1,12 +1,12 @@
 <template>
-  <div class="flex flex-col md:flex-row items-end gap-6 mb-10">
+  <div class="flex flex-col md:flex-row items-end gap-6 mb-10 text-left">
     <!-- Album Cover -->
     <div
-      class="w-48 h-48 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 shrink-0 bg-neutral-900 group relative"
+      class="w-48 h-48 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10 shrink-0 bg-neutral-900 group relative"
     >
       <img
-        v-if="info?.pic"
-        :src="processedPic"
+        v-if="info?.cover"
+        :src="processedCover"
         class="w-full h-full object-cover"
       />
       <div
@@ -26,7 +26,7 @@
         Playlist
       </div>
       <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight">
-        {{ info?.name || "加载中..." }}
+        {{ info?.title || "加载中..." }}
       </h1>
       <div class="flex items-center gap-3 text-white/50 text-sm font-medium">
         <span class="text-white/80">{{
@@ -44,8 +44,8 @@ const props = defineProps<{
   info?: any;
 }>();
 
-const processedPic = computed(() => {
-  if (!props.info?.pic) return "";
-  return props.info.pic.replace("{size}", "400");
+const processedCover = computed(() => {
+  if (!props.info?.cover) return "";
+  return props.info.cover.replace("{size}", "400");
 });
 </script>

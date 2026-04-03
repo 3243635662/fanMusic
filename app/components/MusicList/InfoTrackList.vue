@@ -31,8 +31,8 @@
             </div>
           </template>
           <span v-else :class="musicStore.currentTrack?.hash === song.hash
-              ? 'text-primary'
-              : 'text-white/20'
+            ? 'text-primary'
+            : 'text-white/20'
             ">
             {{ String(index + 1).padStart(2, '0') }}
           </span>
@@ -54,8 +54,8 @@
         <!-- Song Info -->
         <div class="flex-1 min-w-0 pr-4">
           <h3 class="text-[14px] font-bold truncate transition-colors" :class="musicStore.currentTrack?.hash === song.hash
-              ? 'text-primary'
-              : 'text-white group-hover:text-primary'
+            ? 'text-primary'
+            : 'text-white group-hover:text-primary'
             ">
             {{ song.name }}
           </h3>
@@ -74,15 +74,19 @@
 </template>
 
 <script lang="ts" setup>
-import type { TrackType } from "../../../shared/types/music";
+import type { MyTrackType, RecommendationTrackType } from "../../../shared/types/music";
 
-const props = defineProps<{
-  listid: string | number;
-}>();
+const props = withDefaults(defineProps<{
+  id: string | number;
+  type?: "my" | "recommendation";
+}>(), {
+  type: "my" // 默认是my模块
+});
 
 const toast = useToast();
 const musicStore = useMusicStore();
-const trackList = ref<TrackType[]>([]);
+const trackList = ref<(MyTrackType | RecommendationTrackType)[]>([]);
+const fullTrackList = ref<(MyTrackType | RecommendationTrackType)[]>([]); // 内部存储完整列表 (用于伪分页)
 const loading = ref(false);
 const page = ref(1);
 const pagesize = 20;
@@ -93,24 +97,66 @@ const fetchTracks = async () => {
 
   loading.value = true;
   try {
-    const res: any = await $fetch("/api/music/playlistTrack", {
-      query: { listid: props.listid, page: page.value, pagesize },
-    });
+    const isRecommendation = props.type === "recommendation";
+
+    // 如果是推荐模式且已有完整列表，直接进行伪分页展示
+    if (isRecommendation && fullTrackList.value.length > 0) {
+      const start = (page.value - 1) * pagesize;
+      const end = start + pagesize;
+      const nextBatch = fullTrackList.value.slice(start, end);
+
+      if (nextBatch.length > 0) {
+        trackList.value = [...trackList.value, ...nextBatch];
+        page.value++;
+      }
+
+      if (trackList.value.length >= fullTrackList.value.length) {
+        hasMore.value = false;
+      }
+      return;
+    }
+
+    const endpoint = isRecommendation ? "/api/music/recommendationTrack" : "/api/music/playlistTrack";
+
+    // 构造请求参数
+    const query: any = { page: page.value, pagesize };
+    if (isRecommendation) {
+      query.theme_id = props.id;
+    } else {
+      query.listid = props.id;
+    }
+
+    const res: any = await $fetch(endpoint, { query });
 
     if (res.code === 0) {
       const newTracks = res.result || [];
-      trackList.value = [...trackList.value, ...newTracks];
 
-      if (newTracks.length < pagesize) {
-        hasMore.value = false;
+      if (isRecommendation) {
+        // 推荐模式：存储完整列表并展示第一页
+        fullTrackList.value = newTracks;
+        const firstBatch = fullTrackList.value.slice(0, pagesize);
+        trackList.value = firstBatch;
+
+        if (fullTrackList.value.length <= pagesize) {
+          hasMore.value = false;
+        } else {
+          page.value = 2; // 下一次从第2页开始
+        }
       } else {
-        page.value++;
+        // 普通模式：真实分页追加
+        trackList.value = [...trackList.value, ...newTracks];
+
+        if (newTracks.length < pagesize) {
+          hasMore.value = false;
+        } else {
+          page.value++;
+        }
       }
     }
   } catch (err: any) {
     toast.add({
       icon: "i-solar:close-circle-bold",
-      title: "获取歌单歌曲失败",
+      title: "获取歌曲列表失败",
       description: err.data?.message || "未知错误",
       color: "error",
     });
@@ -119,13 +165,13 @@ const fetchTracks = async () => {
   }
 };
 
-const playSong = (song: TrackType) => {
-  musicStore.playTrack(song);
+const playSong = (song: MyTrackType | RecommendationTrackType) => {
+  musicStore.playTrack(song as any);
 };
 
 const playAll = () => {
   if (trackList.value.length > 0) {
-    musicStore.playTrack(trackList.value[0]);
+    musicStore.playTrack(trackList.value[0] as any);
   }
 };
 

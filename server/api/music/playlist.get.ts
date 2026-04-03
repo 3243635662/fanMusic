@@ -1,10 +1,8 @@
-import type { PlayListType } from "#shared/types/music";
+import type { MyPlayListType } from "#shared/types/music";
 import { resFormatMethod } from "../../utils/formatResponse";
 export default defineEventHandler(async (event) => {
   const { page, pagesize } = getQuery(event);
   const config = useRuntimeConfig();
-  const userCookie = getUserCookie(event);
-  console.log("userCookie", userCookie);
 
   try {
     const res: any = await $fetch(
@@ -18,10 +16,10 @@ export default defineEventHandler(async (event) => {
       } as any,
     );
 
-    const formatData: PlayListType[] = res.data.info.map((item: any) => {
+    const formatData: MyPlayListType[] = res.data.info.map((item: any) => {
       return {
         listid: item.listid,
-        name: item.name,
+        title: item.name,
         count: item.count,
         cover: item.pic,
         list_create_username: item.list_create_username,

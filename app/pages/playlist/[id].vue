@@ -7,7 +7,7 @@
     <MusicListInfoActions @play-all="trackListRef?.playAll()" />
 
     <!-- Track List -->
-    <MusicListInfoTrackList ref="trackListRef" :listid="route.params.id as string" />
+    <MusicListInfoTrackList ref="trackListRef" :id="route.params.id as string" />
   </div>
 </template>
 
@@ -23,7 +23,7 @@ const trackListRef = ref();
 // 从 Store 中寻找歌单基础信息 (通过 listid 匹配)  用来进行图片或者是一些基础信息的回显
 const playlistInfo = computed(() => {
   return musicStore.playList.find(
-    (p) => String(p.listid) === String(route.params.id),
+    (p: { listid: any; }) => String(p.listid) === String(route.params.id),
   );
 });
 
@@ -32,8 +32,8 @@ const fetchInfoIfNeeded = async () => {
   if (musicStore.playList.length === 0) {
     try {
       const res: any = await $fetch("/api/music/playlist");
-      if (res.status === 1 && res.data?.info) {
-        musicStore.setPlayList(res.data.info);
+      if (res.code === 0 && res.result) {
+        musicStore.setPlayList(res.result);
       }
     } catch (err) {
       toast.add({

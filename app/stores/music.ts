@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import type { MyPlayListType, RecommendationPlayListType } from "#shared/types/music";
 
 export const useMusicStore = defineStore("music", () => {
   // 当前播放歌曲
@@ -14,7 +15,7 @@ export const useMusicStore = defineStore("music", () => {
   const lastSearchKeyword = ref("");
 
   // 我的歌单
-  const MyplayList = ref<PlayListType[]>([]);
+  const MyplayList = ref<MyPlayListType[]>([]);
 
   // 推荐歌单
   const recommendationPlayList = ref<RecommendationPlayListType[]>([]);
@@ -24,7 +25,7 @@ export const useMusicStore = defineStore("music", () => {
     lastSearchKeyword.value = keyword;
   }
 
-  function setPlayList(list: PlayListType[]) {
+  function setPlayList(list: MyPlayListType[]) {
     MyplayList.value = list;
   }
 

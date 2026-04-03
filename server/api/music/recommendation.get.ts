@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
       (item: any) => {
         return {
           id: item.id,
-          pic: item.pic,
+          cover: item.pic,
           title: item.title,
           intro: item.intro,
         };

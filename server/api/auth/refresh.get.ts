@@ -25,13 +25,7 @@ export default defineEventHandler(async (event) => {
         userid,
         timestamp: Date.now(),
       },
-      headers: {
-        // 伪装三件套
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-        Referer: "https://www.kugou.com/",
-        Cookie: `dfid=${dfid}`,
-      },
+      headers: getKugouHeaders(event),
     });
 
     // 4. 处理返回结果

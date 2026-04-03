@@ -23,14 +23,13 @@ export default defineEventHandler(async (event) => {
       } as any,
     );
 
-    console.log(res);
     const formatData: RecommendationTrackType[] = res.data.song_list.map(
       (item: any) => {
         return {
           hash: item.hash,
           name: item.songname,
           artist: item.author_name,
-          image: item.sizable_cover, // sizable_cover: http://imge.kugou.com/stdmusic/{size}/20210817/20210817080716564241.jpg
+          cover: item.sizable_cover, // sizable_cover: http://imge.kugou.com/stdmusic/{size}/20210817/20210817080716564241.jpg
           duration: item.time_length,
         };
       },

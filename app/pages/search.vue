@@ -127,16 +127,16 @@ const doSearch = async (isAppend = false) => {
     // 防止竞态：如果请求返回时，搜索关键词已经改变，则忽略此次结果
     if (searchKeyword.value.trim() !== keyword) return;
 
-    if (res && res.success && res.data) {
+    if (res && res.code === 0 && res.result) {
       if (!isAppend) {
-        songs.value = res.data;
+        songs.value = res.result;
       } else {
-        songs.value.push(...res.data);
+        songs.value.push(...res.result);
       }
       musicStore.setSearchSongs(songs.value, keyword);
 
       // kugou API pagesize 设为 10，由于可能返回少于 10 则没有下一页
-      if (res.data.length < 10) {
+      if (res.result.length < 10) {
         hasMore.value = false;
       }
     } else {

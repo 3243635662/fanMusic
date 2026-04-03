@@ -12,7 +12,7 @@
     <AppleMusicSkeletonForGrid v-if="loading && musicStore.playList.length === 0" :count="8" />
 
     <div v-else-if="musicStore.playList.length" class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-      <AppleMusicGridCard v-for="item in musicStore.playList" :key="item.listid" :cover="item.cover" :title="item.name"
+      <AppleMusicGridCard v-for="item in musicStore.playList" :key="item.listid" :cover="item.cover" :title="item.title"
         :subtitle="`${item.count || 0} 首歌曲`" @click="navigateTo(`/playlist/${item.listid}`)" />
     </div>
 

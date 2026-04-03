@@ -1,5 +1,5 @@
 // server/api/music/playlistTrack.get.ts
-import { TrackType } from "../../../shared/types/music";
+import { MyTrackType } from "../../../shared/types/music";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
       });
     }
 
-    const formatData: TrackType[] = tracks.map((item: any) => {
+    const formatData: MyTrackType[] = tracks.map((item: any) => {
       return {
         id: item.id,
         hash: item.hash,
