@@ -8,8 +8,6 @@ export const useMenu = () => {
   const libraryLinks: MenuItem[] = [
     { label: "推荐", icon: useIcon("recommend"), to: "/recommendation" },
     { label: "搜索", icon: useIcon("search"), to: "/search" },
-    { label: "歌手", icon: useIcon("mic"), to: "/artists" },
-    { label: "历史", icon: useIcon("history"), to: "/history" },
     { label: "我的", icon: useIcon("user"), to: "/mine" },
   ];
 

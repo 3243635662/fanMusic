@@ -12,7 +12,6 @@
         class="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 pl-12 pr-4 text-[14px] outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white/10 placeholder:text-white/20 transition-all font-medium text-white" />
     </div>
 
-    <!-- Song List -->
     <MusicListSkeletonForList v-if="loading" :show-index="false" />
 
 
@@ -65,7 +64,7 @@
         <!-- Tag -->
         <div v-if="song.tag" class="mr-4 hidden sm:block">
           <span class="text-[9px] px-1.5 py-0.5 rounded-sm bg-white/5 border border-white/5 text-white/30">{{ song.tag
-          }}</span>
+            }}</span>
         </div>
 
         <div class="text-[12px] text-white/20 font-mono pl-4">

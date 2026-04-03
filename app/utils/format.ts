@@ -1,0 +1,10 @@
+/**
+ * 处理封面图 URL，替换尺寸占位符
+ * @param url 封面图 URL
+ * @param size 尺寸，默认为 400
+ * @returns 处理后的 URL
+ */
+export const processCover = (url: string | undefined | null, size: string = "400") => {
+  if (!url) return "";
+  return url.replace("{size}", size);
+};

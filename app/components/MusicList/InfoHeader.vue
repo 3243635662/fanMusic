@@ -44,8 +44,5 @@ const props = defineProps<{
   info?: any;
 }>();
 
-const processedCover = computed(() => {
-  if (!props.info?.cover) return "";
-  return props.info.cover.replace("{size}", "400");
-});
+const processedCover = computed(() => processCover(props.info?.cover));
 </script>

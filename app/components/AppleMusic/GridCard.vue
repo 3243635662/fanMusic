@@ -46,8 +46,5 @@ const props = defineProps<{
 
 defineEmits(['click'])
 
-const processedPic = computed(() => {
-  if (!props.cover) return ""
-  return props.cover.replace("{size}", "400")
-})
+const processedPic = computed(() => processCover(props.cover))
 </script>

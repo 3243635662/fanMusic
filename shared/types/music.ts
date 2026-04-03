@@ -32,3 +32,13 @@ export interface RecommendationTrackType {
   cover: string; // 歌曲封面
   duration: number; // 歌曲时长
 }
+
+// 播放队列歌曲类型
+export interface PlayQueueTrackType {
+  hash: string; //歌曲hash
+  name: string; // 歌名
+  artist: string;
+  cover: string; // 歌曲封面
+  duration: number; // 歌曲时长
+  url: string | null;
+}

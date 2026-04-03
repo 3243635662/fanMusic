@@ -5,21 +5,21 @@
 
 
     <div v-else-if="trackList.length" class="space-y-1">
-      <!-- Table Header -->
+      <!-- 表头 -->
       <div
         class="flex items-center px-3 py-2 text-[11px] font-black text-white/20 uppercase tracking-widest border-b border-white/5 mb-2">
         <div class="w-8 flex justify-center">#</div>
         <div class="flex-1 pl-4">歌曲</div>
         <div class="w-20 text-right">时长</div>
       </div>
-
+      <!-- 歌曲列表 -->
       <div v-for="(song, index) in trackList" :key="song.hash"
         class="flex items-center p-3 rounded-2xl group transition-all cursor-pointer relative" :class="[
           musicStore.currentTrack?.hash === song.hash
             ? 'bg-primary/10 border border-primary/20'
             : 'hover:bg-white/5 border border-transparent',
         ]" @click="playSong(song)">
-        <!-- Index -->
+        <!-- 序号 -->
         <div class="w-8 text-[12px] font-bold flex items-center justify-center shrink-0">
           <template v-if="
             musicStore.currentTrack?.hash === song.hash && musicStore.isPlaying
@@ -175,10 +175,7 @@ const playAll = () => {
   }
 };
 
-const processCover = (url: string) => {
-  if (!url) return "";
-  return url.replace("{size}", "400");
-};
+
 
 onMounted(() => {
   fetchTracks();
