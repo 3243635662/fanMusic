@@ -6,7 +6,7 @@ export async function getValidDfid() {
 
   // 1. 尝试从缓存中获取 dfid
   let dfid = await storage.getItem("dfid");
-
+  await storage.setItem("dfid", dfid, { ttl: 60 * 60 * 12 });
   // 2. 如果缓存中没有，再去请求酷狗接口
   if (!dfid) {
     const config = useRuntimeConfig();
@@ -48,3 +48,15 @@ export function getUserCookie(event: H3Event) {
   }
   return cookieStr;
 }
+
+// *统一配置好headers:
+export const getKugouHeaders = (event: H3Event) => {
+  const userCookie = getUserCookie(event);
+  return {
+    Cookie: userCookie,
+    "User-Agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+    Referer: "https://www.kugou.com/",
+    Origin: "https://www.kugou.com/",
+  };
+};

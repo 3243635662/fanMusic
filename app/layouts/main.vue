@@ -13,7 +13,7 @@
 
         <!-- 面板 -->
         <div
-          class="w-[850px] h-[535px] rounded-4xl bg-black/10 backdrop-blur-3xl border border-white/20 shadow-2xl flex relative overflow-visible">
+          class="w-[1000px] h-[600px] rounded-4xl bg-black/10 backdrop-blur-3xl border border-white/20 shadow-2xl flex relative overflow-visible">
 
           <AppleMusicSidebar />
 
@@ -24,16 +24,18 @@
             <slot />
           </div>
 
-          <!-- <AppleMusicPlayerBar />  -- 改用新的 ThePlayer 全局组件 -->
 
         </div>
       </div>
-      <ThePlayer />
+      <LayoutsThePlayer />
     </div>
+
+    <LayoutsSettingModal />
   </div>
 </template>
 
 <script lang="ts" setup>
+// settings modal logic has been extracted into SettingModal component
 </script>
 
 <style>

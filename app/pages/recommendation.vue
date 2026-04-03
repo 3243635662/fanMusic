@@ -1,39 +1,84 @@
 <template>
-  <div class="flex flex-col h-full overflow-y-auto pb-24 scrollbar-hide">
-    <!-- Header -->
-    <div class="flex items-start justify-between mb-5">
-      <div>
-        <h1 class="text-3xl font-bold tracking-tight mb-0.5">为你推荐</h1>
-        <p class="text-[13px] text-white/50">发现你的专属旋律</p>
-      </div>
+  <InfiniteScrollContainer :has-more="displayCount < totalCount" :loading="loading"
+    :show-end-message="displayList.length > 0" @load-more="onLoadMore">
+    <AppleMusicPageHeader title="为你推荐" description="发现你的专属旋律" margin-bottom="mb-5">
+
+      <template #extra>
+        <UButton :icon="useIcon('refresh')" color="primary" variant="soft" class="rounded-xl"
+          @click="fetchRecommendation"></UButton>
+      </template>
+
+
+    </AppleMusicPageHeader>
+
+
+    <!-- 骨架屏) -->
+    <AppleMusicSkeletonForGrid v-if="loading && displayList.length === 0" :count="8" />
+
+    <!-- 数据 -->
+    <div v-else-if="displayList.length > 0" class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <AppleMusicGridCard v-for="item in displayList" :key="item.id" :cover="item.pic" :title="item.title"
+        :subtitle="item.intro" :title-tooltip="item.title" :subtitle-tooltip="item.intro"
+        @click="navigateTo(`/recommendation/${item.id}`)" />
     </div>
 
-
-
-    <!-- Skeleton Grid (保留样式骨架) -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-      <div v-for="i in 8" :key="i" class="space-y-3 animate-pulse">
-        <div class="aspect-square bg-white/5 rounded-2xl ring-1 ring-white/10"></div>
-        <div class="h-4 bg-white/10 rounded w-3/4"></div>
-        <div class="h-3 bg-white/5 rounded w-1/2"></div>
-      </div>
-    </div>
-  </div>
+    <AppleMusicEmptyState v-else :icon="useIcon('music')" title="暂无推荐" description="暂时没有为你找到推荐内容，过会儿再来看看吧" />
+  </InfiniteScrollContainer>
 </template>
 
 <script lang="ts" setup>
+import InfiniteScrollContainer from '~/components/AppleMusic/InfiniteScrollContainer.vue'
+const toast = useToast()
 definePageMeta({
   layout: 'main'
 })
+
+const musicStore = useMusicStore()
+const loading = ref(false)
+
+// 每次加载的数量
+const PAGE_SIZE = 10
+const displayCount = ref(PAGE_SIZE)
+
+// 获取推荐数据
+const fetchRecommendation = async () => {
+  // 如果已有数据则不重新加载，避免骨架屏闪烁（缓存策略一致性）
+  if (musicStore.recommendationPlayList.length > 0) return
+
+  loading.value = true
+  try {
+    const res = await $fetch<any>('/api/music/recommendation')
+    if (res.code === 0 && res.result) {
+      musicStore.setRecommendationPlayList(res.result)
+    }
+  } catch (error: any) {
+    toast.add({
+      icon: useIcon('error'),
+      title: "获取推荐歌单失败",
+      description: error.data.message || "未知错误",
+      color: "error",
+    })
+  } finally {
+    loading.value = false
+  }
+}
+
+// 总数量
+const totalCount = computed(() => musicStore.recommendationPlayList.length)
+
+// 当前显示的数据列表
+const displayList = computed(() => {
+  return musicStore.recommendationPlayList.slice(0, displayCount.value)
+})
+
+const onLoadMore = () => {
+  if (displayCount.value < totalCount.value) {
+    displayCount.value += PAGE_SIZE
+  }
+}
+
+
+onMounted(() => {
+  fetchRecommendation()
+})
 </script>
-
-<style scoped>
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-</style>

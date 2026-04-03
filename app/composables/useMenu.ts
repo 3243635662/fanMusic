@@ -6,11 +6,11 @@ export interface MenuItem {
 
 export const useMenu = () => {
   const libraryLinks: MenuItem[] = [
-    { label: "推荐", icon: "i-lucide-sparkles", to: "/recommendation" },
-    { label: "热门", icon: "i-lucide-sparkles", to: "/hot" },
-    { label: "歌手", icon: "i-lucide-mic", to: "/artists" },
-    { label: "历史", icon: "i-lucide-history", to: "/history" },
-    { label: "我的", icon: "i-lucide-user", to: "/mine" },
+    { label: "推荐", icon: useIcon("recommend"), to: "/recommendation" },
+    { label: "搜索", icon: useIcon("search"), to: "/search" },
+    { label: "歌手", icon: useIcon("mic"), to: "/artists" },
+    { label: "历史", icon: useIcon("history"), to: "/history" },
+    { label: "我的", icon: useIcon("user"), to: "/mine" },
   ];
 
   const pageMap = computed(() => {

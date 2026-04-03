@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
   modules: ["@nuxt/ui", "@pinia/nuxt", "@pinia-plugin-persistedstate/nuxt"],
+  future: {
+    compatibilityVersion: 4, // 开启 Nuxt 4 模式
+  },
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   devServer: {
@@ -16,6 +19,9 @@ export default defineNuxtConfig({
   },
   piniaPersistedstate: {
     storage: "localStorage",
+  },
+  app: {
+    pageTransition: { name: "switch", mode: "out-in" },
   },
   vite: {
     optimizeDeps: {

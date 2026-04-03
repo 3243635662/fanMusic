@@ -13,7 +13,7 @@ let timer: any = null;
 const sendOtp = async () => {
   if (!mobile.value || !/^1[3-9]\d{9}$/.test(mobile.value)) {
     toast.add({
-      icon: 'i-solar:close-circle-bold',
+      icon: useIcon('error'),
       title: '错误',
       description: '请输入正确的手机号',
       color: 'error',
@@ -30,7 +30,7 @@ const sendOtp = async () => {
 
     if (res.status === 1) {
       toast.add({
-        icon: 'i-solar:check-circle-bold',
+        icon: useIcon('success'),
         title: '成功',
         description: '验证码已发送，请查收',
         color: 'success',
@@ -38,7 +38,7 @@ const sendOtp = async () => {
       startCountdown();
     } else {
       toast.add({
-        icon: 'i-solar:close-circle-bold',
+        icon: useIcon('error'),
         title: '错误',
         description: res.msg || "获取验证码失败",
         color: 'error',
@@ -46,7 +46,7 @@ const sendOtp = async () => {
     }
   } catch (error: any) {
     toast.add({
-      icon: 'i-solar:close-circle-bold',
+      icon: useIcon('error'),
       title: '错误',
       description: error.statusMessage || "验证码发送异常",
       color: 'error',
@@ -73,7 +73,7 @@ const startCountdown = () => {
 const handleLogin = async () => {
   if (!mobile.value || !code.value) {
     toast.add({
-      icon: 'i-solar:close-circle-bold',
+      icon: useIcon('error'),
       title: '错误',
       description: '请完善登录信息',
       color: 'error',
@@ -93,7 +93,7 @@ const handleLogin = async () => {
       userStore.loginSuccess(res);
 
       toast.add({
-        icon: 'i-solar:check-circle-bold',
+        icon: useIcon('success'),
         title: '成功',
         description: '登录成功，正在跳转...',
         color: 'success',
@@ -101,7 +101,7 @@ const handleLogin = async () => {
       setTimeout(() => navigateTo("/"), 1000);
     } else {
       toast.add({
-        icon: 'i-solar:close-circle-bold',
+        icon: useIcon('error'),
         title: '错误',
         description: res.msg || "登录失败，请核对验证码",
         color: 'error',
@@ -109,7 +109,7 @@ const handleLogin = async () => {
     }
   } catch (error: any) {
     toast.add({
-      icon: 'i-solar:close-circle-bold',
+      icon: useIcon('error'),
       title: '错误',
       description: error.statusMessage || "登录操作异常",
       color: 'error',
@@ -218,11 +218,11 @@ onUnmounted(() => {
               class="w-full h-full rounded-full object-cover border-4 border-black/20" />
             <div v-else
               class="w-full h-full rounded-full bg-neutral-800 flex items-center justify-center border-4 border-black/20">
-              <UIcon name="material-symbols:person-rounded" class="w-12 h-12 text-white/20" />
+              <UIcon :name="useIcon('user')" class="w-12 h-12 text-white/20" />
             </div>
           </div>
           <div class="absolute -bottom-1 -right-1 bg-primary p-1.5 rounded-full border-2 border-neutral-900 shadow-lg">
-            <UIcon name="material-symbols:check-circle-rounded" class="w-4 h-4 text-white" />
+            <UIcon :name="useIcon('success')" class="w-4 h-4 text-white" />
           </div>
         </div>
 

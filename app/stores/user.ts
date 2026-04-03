@@ -1,6 +1,6 @@
 // store/user.ts
 import { defineStore } from "pinia";
-
+import { type ApiResponse } from "#shared/types/api";
 export const useUserStore = defineStore(
   "user",
   () => {
@@ -9,7 +9,7 @@ export const useUserStore = defineStore(
     const token = ref<string | null>(null);
 
     const kugouCookie = useCookie("kugou_cookie", {
-      maxAge: 60 * 60 * 24 * 30,
+      maxAge: 60 * 60 * 12,
       path: "/",
       watch: true, // 关键：确保状态改变时立即同步到浏览器
       sameSite: "lax",
@@ -31,10 +31,42 @@ export const useUserStore = defineStore(
       navigateTo("/login");
     };
 
-    return { isLogin, userInfo, token, kugouCookie, loginSuccess, logout };
+    const refreshTokenAction = async () => {
+      if (!token.value || !userInfo.value?.userid) {
+        throw new Error("您还未登录！");
+      }
+      try {
+        const res:any = await $fetch("/api/auth/refresh", {
+          query: {
+            token: token.value,
+            userid: userInfo.value.userid,
+          },
+        });
+        if (res.code === 0) {
+          kugouCookie.value = encodeURIComponent(res.result.superCookie);
+          if (res.result.token) {
+            token.value = res.result.token;
+          }
+          console.log(res.result);
+        } else {
+          console.log("刷新失败:", res);
+        }
+      } catch (err) {
+        console.error("自动续期失败", err);
+      }
+    };
+
+    return {
+      isLogin,
+      userInfo,
+      token,
+      kugouCookie,
+      loginSuccess,
+      logout,
+      refreshTokenAction,
+    };
   },
   {
-    // 修正这里：将 paths 改为 pick
     persist: {
       key: "fan-music:user_state",
       pick: ["isLogin", "userInfo", "token"], // 只持久化这三个状态到 localStorage
