@@ -4,7 +4,7 @@
     <AppleMusicPageHeader title="为你推荐" description="发现你的专属旋律" margin-bottom="mb-5">
 
       <template #extra>
-        <UButton :icon="useIcon('refresh')" color="primary" variant="soft" class="rounded-xl"
+        <UButton :icon="useIcon('refresh')" color="primary" variant="soft" class="rounded-xl hover:cursor-pointer"
           @click="fetchRecommendation"></UButton>
       </template>
 

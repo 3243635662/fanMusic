@@ -84,7 +84,7 @@ const getModeIcon = computed(() => {
     leave-active-class="transform transition duration-300 ease-in" leave-from-class="translate-y-0 opacity-100"
     leave-to-class="translate-y-full opacity-0">
     <div v-if="musicStore.currentTrack"
-      class="fixed bottom-10 left-1/2 -translate-x-1/2 w-[90%] max-w-[900px] h-24 bg-black/40 backdrop-blur-3xl border border-white/10 rounded-3xl shadow-[0_30px_60px_-12px_rgba(0,0,0,0.8)] z-50 px-6 flex items-center gap-8 group">
+      class="fixed bottom-10 left-1/2 -translate-x-1/2 w-[90%] max-w-[900px] h-24 bg-black/40 backdrop-blur-3xl border border-white/10 rounded-3xl shadow-[0_30px_60px_-12px_rgba(0,0,0,0.8)] z-50 px-6 flex items-center gap-8 group hover:cursor-pointer">
 
       <!-- [隐藏] 核心音频播放器 -->
       <audio ref="audioRef" :src="musicStore.currentTrack?.url || ''" @ended="musicStore.playNext"

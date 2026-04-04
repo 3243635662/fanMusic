@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   },
   vite: {
     optimizeDeps: {
-      include: ["@vueuse/core"],
+      include: ["@vueuse/core", "pixi-filters", "pixi.js"],
     },
   },
 });

@@ -1,8 +1,6 @@
 <template>
   <div class="h-screen w-screen relative overflow-hidden bg-black font-sans text-white/90 selection:bg-white/30">
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transition-opacity duration-1000"
-      style="background-image: url('/background.png');"></div>
-
+    <LayoutsVisualizer />
     <!-- 背景蒙版 -->
     <div class="absolute inset-0 bg-black/20 z-0 backdrop-blur-[1px]"></div>
 
