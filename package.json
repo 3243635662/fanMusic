@@ -10,16 +10,17 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/image": "2.0.0",
     "@nuxt/ui": "^4.6.0",
     "@pinia/nuxt": "^0.11.3",
     "@vueuse/core": "^14.2.1",
     "nuxt": "^4.4.2",
     "pinia": "^3.0.4",
+    "pixi-filters": "^6.1.5",
+    "pixi.js": "^8.17.1",
     "tailwindcss": "^4.2.2",
     "vue": "^3.5.30",
-    "vue-router": "^5.0.4",
-    "pixi-filters": "^6.1.5",
-    "pixi.js": "^8.17.1"
+    "vue-router": "^5.0.4"
   },
   "devDependencies": {
     "@iconify-json/line-md": "^1.2.16",

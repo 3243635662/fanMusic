@@ -1,5 +1,10 @@
 export default defineNuxtConfig({
-  modules: ["@nuxt/ui", "@pinia/nuxt", "@pinia-plugin-persistedstate/nuxt"],
+  modules: [
+    "@nuxt/ui",
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+    "@nuxt/image",
+  ],
   future: {
     compatibilityVersion: 4, // 开启 Nuxt 4 模式
   },

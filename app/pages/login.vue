@@ -214,7 +214,7 @@ onUnmounted(() => {
         <div class="relative mb-8">
           <div
             class="w-24 h-24 rounded-full p-1 bg-linear-to-tr from-primary to-purple-500 shadow-2xl shadow-primary/30">
-            <img v-if="userStore.userInfo?.pic" :src="userStore.userInfo.pic" alt="Avatar"
+            <NuxtImg v-if="userStore.userInfo?.pic" :src="userStore.userInfo.pic" alt="Avatar"
               class="w-full h-full rounded-full object-cover border-4 border-black/20" />
             <div v-else
               class="w-full h-full rounded-full bg-neutral-800 flex items-center justify-center border-4 border-black/20">

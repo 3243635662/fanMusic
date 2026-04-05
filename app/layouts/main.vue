@@ -11,21 +11,21 @@
 
         <!-- 面板 -->
         <div
-          class="w-[1000px] h-[600px] rounded-4xl bg-black/10 backdrop-blur-3xl border border-white/20 shadow-2xl flex relative overflow-visible">
+          class="w-[1100px] h-[660px] rounded-4xl bg-black/10 backdrop-blur-3xl border border-white/20 shadow-2xl flex relative overflow-visible">
 
           <AppleMusicSidebar />
 
           <!-- 右侧面板内容区域 -->
           <div
-            class="flex-1 flex flex-col pt-8 px-8 pb-4 relative overflow-hidden bg-linear-to-br from-white/6 to-transparent rounded-r-4xl">
+            class="flex-1 flex flex-col pt-8 px-8 pb-4 relative overflow-hidden bg-linear-to-br from-white/6 to-transparent border-r border-white/10">
             <LayoutsPageHeader />
             <slot />
           </div>
 
-
+          <!-- 右侧纵向控制中心 (Player) -->
+          <LayoutsThePlayer />
         </div>
       </div>
-      <LayoutsThePlayer />
     </div>
 
     <LayoutsSettingModal />

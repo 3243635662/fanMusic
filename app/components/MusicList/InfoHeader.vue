@@ -4,10 +4,11 @@
     <div
       class="w-48 h-48 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10 shrink-0 bg-neutral-900 group relative"
     >
-      <img
+      <NuxtImg
         v-if="info?.cover"
         :src="processedCover"
         class="w-full h-full object-cover"
+        alt="Playlist Cover"
       />
       <div
         v-else

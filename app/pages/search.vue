@@ -38,7 +38,7 @@
 
         <!-- Album Art -->
         <div class="w-12 h-12 rounded-xl bg-white/5 mr-4 overflow-hidden relative shadow-lg">
-          <img v-if="song.image" :src="song.image" class="w-full h-full object-cover" />
+          <NuxtImg v-if="song.image" :src="song.image" class="w-full h-full object-cover" alt="Song Cover" />
           <div v-else class="w-full h-full flex items-center justify-center">
             <UIcon :name="useIcon('music')" class="w-5 h-5 text-white/10" />
           </div>

@@ -18,7 +18,7 @@
         :subtitle="`${item.count || 0} 首歌曲`" @click="navigateTo(`/playlist/${item.listid}`)" />
     </div>
 
-    <AppleMusicEmptyState v-else :icon="useIcon('library')" title="空空的曲库" description="你还没有创建或收藏任何歌单，快去探索发现吧！">
+    <AppleMusicEmptyState v-else :icon="useIcon('library')" title="空空的曲库" description="如果获取失败尝试去设置刷新登录再试试吧">
       <UButton to="/search" color="primary" class="rounded-xl px-6" variant="soft">
         去搜索歌曲
       </UButton>

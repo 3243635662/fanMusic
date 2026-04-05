@@ -4,8 +4,8 @@
       class="relative aspect-square mb-4 transition-all duration-300 group-hover:-translate-y-2 group-hover:scale-[1.02]">
       <div
         class="w-full h-full rounded-2xl overflow-hidden ring-1 ring-white/10 group-hover:ring-white/30 shadow-2xl relative bg-neutral-500">
-        <img v-if="cover" :src="processedPic"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <NuxtImg v-if="cover" :src="processedPic"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Cover" />
         <div v-else
           class="w-full h-full flex items-center justify-center bg-linear-to-br from-primary/10 to-purple-500/10">
           <UIcon :name="useIcon('music')" class="w-10 h-10 text-primary/40" />

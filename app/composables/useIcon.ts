@@ -11,7 +11,7 @@ const iconMap = {
   mic: "lucide:mic",
   history: "lucide:history",
   user: "lucide:user",
-  refresh: "lucide:refresh-cw",
+  refresh: "lucide:rotate-cw",
   PlayerSkipBack: "lucide:skip-back",
   PlayerSkipForward: "lucide:skip-forward",
   PlayerVolume: "lucide:volume-2",

@@ -4,9 +4,10 @@
 
 <template>
   <NuxtLoadingIndicator />
+  <LayoutsSplashScreen />
   <UApp>
     <NuxtLayout>
-      <NuxtPage :keepalive="{ max: 5 }" />
+      <NuxtPage :keepalive="{ max: 8 }" />
     </NuxtLayout>
     <UToaster />
   </UApp>

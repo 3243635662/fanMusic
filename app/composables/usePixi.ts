@@ -1,7 +1,7 @@
 import { Application } from "pixi.js";
-const pixiApp = shallowRef<Application | null>(null);
-
 export const usePixi = () => {
+  const pixiApp = shallowRef<Application | null>(null);
+
   const initApp = async (option: any) => {
     if (pixiApp.value) return pixiApp.value;
     const app = new Application();

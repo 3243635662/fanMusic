@@ -41,7 +41,8 @@
         <!-- Album Art Style List -->
         <div
           class="w-12 h-12 rounded-xl bg-white/5 mx-4 overflow-hidden relative shadow-lg group-hover:scale-105 transition-transform duration-300">
-          <img v-if="song.cover" :src="processCover(song.cover)" class="w-full h-full object-cover" />
+          <NuxtImg v-if="song.cover" :src="processCover(song.cover)" class="w-full h-full object-cover"
+            alt="Track Cover" />
           <div v-else class="w-full h-full flex items-center justify-center">
             <UIcon :name="useIcon('music')" class="w-5 h-5 text-white/10" />
           </div>
@@ -171,7 +172,8 @@ const playSong = (song: MyTrackType | RecommendationTrackType) => {
 
 const playAll = () => {
   if (trackList.value.length > 0) {
-    musicStore.playTrack(trackList.value[0] as any);
+    // 调用 store 将当前所有歌曲存入队列并播放
+    musicStore.replaceQueueAndPlay(trackList.value as any);
   }
 };
 

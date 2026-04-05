@@ -4,6 +4,7 @@ import type {
   RecommendationPlayListType,
   PlayQueueTrackType,
 } from "#shared/types/music";
+import { audioCache } from "@/utils/audioCache";
 
 export const useMusicStore = defineStore("music", () => {
   // --- 状态定义 ---
@@ -13,6 +14,7 @@ export const useMusicStore = defineStore("music", () => {
   // 播放状态
   const isPlaying = ref(false);
   const isLoadingUrl = ref(false); // 是否正在加载歌曲URL
+  const isBuffering = ref(false); // 是否由于网络原因正在缓冲音频
   // 播放模式
   type PlayMode = "loop" | "sequence" | "random" | "single";
   const playMode = ref<PlayMode>("loop");
@@ -28,7 +30,7 @@ export const useMusicStore = defineStore("music", () => {
   const recommendationPlayList = ref<RecommendationPlayListType[]>([]);
 
   // 音量控制 (0-1)
-  const volume = ref(0.7);
+  const volume = ref(0.4);
 
   // 配置项
   const MAX_QUEUE_SIZE = 500;
@@ -37,7 +39,7 @@ export const useMusicStore = defineStore("music", () => {
 
   // 在客户端初始化时恢复数据
   onMounted(() => {
-    if (process.client) {
+    if (import.meta.client) {
       const savedQueue = localStorage.getItem("fan_music_queue");
       const savedTrack = localStorage.getItem("fan_music_current_track");
       const savedMode = localStorage.getItem("fan_music_mode");
@@ -57,7 +59,7 @@ export const useMusicStore = defineStore("music", () => {
   watch(
     [playQueue, currentTrack, playMode, volume],
     ([newQueue, newTrack, newMode, newVolume]) => {
-      if (process.client) {
+      if (import.meta.client) {
         localStorage.setItem("fan_music_queue", JSON.stringify(newQueue));
         localStorage.setItem(
           "fan_music_current_track",
@@ -104,10 +106,42 @@ export const useMusicStore = defineStore("music", () => {
   }
 
   async function playTrack(track: PlayQueueTrackType) {
-    // 1. 立即设置当前轨道数据（用于 UI 即时显示封面、标题等）
+    // 0. 确保将要播放的歌曲加入到队列中 (避免后续走缓存提前 return 导致未被加入队列)
+    addToQueue(track);
+
+    // [极速缓存] 1. 优先尝试从本地强存储 (IndexedDB) 中加载二进制数据
+    if (import.meta.client && audioCache) {
+      try {
+        const cachedBlob = await audioCache.get(track.hash);
+        if (cachedBlob) {
+          console.log(`[Cache-DB] 命中本地强缓存: ${track.name}`);
+          const localUrl = URL.createObjectURL(cachedBlob);
+          currentTrack.value = { ...track, url: localUrl };
+          isPlaying.value = true;
+          preloadNextTrack();
+          return;
+        }
+      } catch (err) {
+        console.warn('缓存读取异常:', err);
+      }
+    }
+
+    // [优化] 2. 尝试从当前运行时的队列中寻找
+    const existingTrack = playQueue.value.find(t => t.hash === track.hash);
+    
+    // 如果队列里已经有这首歌且有播放链接，直接使用
+    if (existingTrack && existingTrack.url) {
+      currentTrack.value = { ...existingTrack };
+      isPlaying.value = true;
+      // 依然触发预加载下一首
+      preloadNextTrack();
+      return;
+    }
+
+    // 立即设置当前轨道数据（用于 UI 即时显示封面、标题等）
     currentTrack.value = { ...track };
 
-    // 2. 如果没有播放链接，则去获取
+    // 如果没有播放链接，则去获取
     if (currentTrack.value && !currentTrack.value.url) {
       isLoadingUrl.value = true;
       try {
@@ -119,13 +153,21 @@ export const useMusicStore = defineStore("music", () => {
           // 更新当前轨道的 URL
           currentTrack.value.url = res.result;
 
-          // 同步更新到队列中，这样以后切回这首歌就不需要重新请求 URL 了
+          // [后台静默下载并缓存二进制]
+          if (import.meta.client && audioCache) {
+            fetch(res.result).then(r => r.blob()).then(blob => {
+               audioCache?.set(track.hash, blob);
+               console.log(`[Cache-DB] 已将歌曲同步到本地磁盘: ${track.name}`);
+            }).catch(e => console.warn('后台下载缓存失败:', e));
+          }
+
+          // 同步更新到队列中
           const queueIndex = playQueue.value.findIndex(
             (t) => t.hash === track.hash,
           );
-          const queueItem = playQueue.value[queueIndex];
-          if (queueItem) {
-            queueItem.url = res.result;
+          if (queueIndex !== -1) {
+            const queueItem = playQueue.value[queueIndex];
+            if (queueItem) queueItem.url = res.result;
           }
         } else {
           throw new Error(res.message || "获取播放地址失败");
@@ -142,15 +184,72 @@ export const useMusicStore = defineStore("music", () => {
     // 3. 开始播放
     isPlaying.value = true;
 
-    // 4. 如果播放的是一首不在队列的歌，自动追加到队列最后
-    addToQueue(track);
+    // 4. [新增] 预加载下一首
+    preloadNextTrack();
+  }
+
+  // [新增] 预加载下一首歌曲的 URL
+  async function preloadNextTrack() {
+    if (playQueue.value.length <= 1) return;
+
+    let currentIndex = playQueue.value.findIndex(
+      (t) => t.hash === (currentTrack.value?.hash || ""),
+    );
+    if (currentIndex === -1) return;
+
+    let nextIndex = currentIndex + 1;
+    // 根据模式简单判断下一首（暂不考虑随机模式的预知，仅处理顺序和循环）
+    if (nextIndex >= playQueue.value.length) {
+      if (playMode.value === "loop") nextIndex = 0;
+      else return;
+    }
+
+    const nextTrack = playQueue.value[nextIndex];
+    if (!nextTrack) return;
+
+    // [优化] 如果本地已经有二进制强缓存，连预加载 URL 的 API 都不用了
+    if (import.meta.client && audioCache) {
+      const hasCache = await audioCache.get(nextTrack.hash);
+      if (hasCache) {
+        console.log(`[Preload] ${nextTrack.name} 已存在本地缓存，跳过 URL 预加载`);
+        return;
+      }
+    }
+
+    // 如果下一首还没有 URL，则静默加载
+    if (!nextTrack.url) {
+      try {
+        const res: any = await $fetch("/api/music/musicUrl", {
+          query: { hash: nextTrack.hash },
+        });
+        if (res.code === 0 && res.result) {
+          nextTrack.url = res.result;
+          console.log(`[Preload] 已预加载下一首: ${nextTrack.name}`);
+        }
+      } catch (e) {
+        // 预加载失败不需要打断用户
+        console.warn("[Preload] 预加载失败", e);
+      }
+    }
+  }
+
+  // [新增] 替换整个队列并播放
+  function replaceQueueAndPlay(tracks: PlayQueueTrackType[]) {
+    if (!tracks.length) return;
+    // 清空并替换新队列
+    playQueue.value = tracks.map(t => ({ ...t })).slice(0, MAX_QUEUE_SIZE);
+    // 播放第一首
+    const firstTrack = playQueue.value[0];
+    if (firstTrack) {
+      playTrack(firstTrack);
+    }
   }
 
   async function playNext() {
     if (playQueue.value.length === 0) return;
-    if (playQueue.value.length === 1 && playQueue.value[0]) {
-      // 只有一首歌直接重播它
-      await playTrack(playQueue.value[0]);
+    if (playQueue.value.length === 1) {
+      const firstTrack = playQueue.value[0];
+      if (firstTrack) await playTrack(firstTrack);
       return;
     }
 
@@ -193,8 +292,9 @@ export const useMusicStore = defineStore("music", () => {
 
   async function playPrev() {
     if (playQueue.value.length === 0) return;
-    if (playQueue.value.length === 1 && playQueue.value[0]) {
-      await playTrack(playQueue.value[0]);
+    if (playQueue.value.length === 1) {
+      const firstTrack = playQueue.value[0];
+      if (firstTrack) await playTrack(firstTrack);
       return;
     }
 
@@ -262,6 +362,8 @@ export const useMusicStore = defineStore("music", () => {
     playPrev,
     togglePlayMode,
     togglePlay,
+    replaceQueueAndPlay,
     volume,
+    isBuffering,
   };
 });
