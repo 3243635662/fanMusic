@@ -35,10 +35,10 @@ const displayLevel = computed(() => Math.round((level.value ?? 0) * 100))
       <UIcon name="i-lucide-settings" class="w-5 h-5" />
     </button>
 
-    <!-- 环境音效 (Rain) -->
-    <button
+    <!-- 呼出播放器 (Open Player) -->
+    <button @click="settingsStore.isHiddenPlayer = false"
       class="p-2.5 text-white/60 hover:text-white transition transform hover:scale-110 active:scale-95 duration-300">
-      <UIcon name="i-carbon-rain" class="w-5 h-5" />
+      <UIcon name="i-lucide-play-circle" class="w-5 h-5" />
     </button>
 
     <div class="w-6 h-px bg-white/10 my-1"></div>

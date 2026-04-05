@@ -86,6 +86,7 @@ const props = withDefaults(defineProps<{
 
 const toast = useToast();
 const musicStore = useMusicStore();
+
 const trackList = ref<(MyTrackType | RecommendationTrackType)[]>([]);
 const fullTrackList = ref<(MyTrackType | RecommendationTrackType)[]>([]); // 内部存储完整列表 (用于伪分页)
 const loading = ref(false);
@@ -176,7 +177,6 @@ const playAll = () => {
     musicStore.replaceQueueAndPlay(trackList.value as any);
   }
 };
-
 
 
 onMounted(() => {

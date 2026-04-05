@@ -4,8 +4,9 @@
     <AppleMusicPageHeader title="为你推荐" description="发现你的专属旋律" margin-bottom="mb-5">
 
       <template #extra>
-        <UButton :icon="useIcon('refresh')" color="primary" variant="soft" class="rounded-xl hover:cursor-pointer"
-          @click="fetchRecommendation"></UButton>
+        <LayoutsTipsButton @click="fetchRecommendation" text="刷新推荐"
+          :icon="useIcon('refresh')" icon-class="w-5 h-5 text-primary"
+          class="w-8 h-8 rounded-xl bg-primary/10 hover:bg-primary/20" />
       </template>
 
 

@@ -4,9 +4,9 @@ import { usePixi } from '@/composables/usePixi'
 import { Graphics } from 'pixi.js'
 
 const musicStore = useMusicStore()
-
-// 控制展开/收起状态
-const isFold = ref(false)
+const settingsStore = useSettingsStore()
+const route = useRoute()
+const { isFoldPlayer, isHiddenPlayer } = storeToRefs(settingsStore)
 
 // PixiJS 背景画布
 const pixiCanvas = ref<HTMLCanvasElement | null>(null)
@@ -35,12 +35,18 @@ const progressPercent = computed(() => {
 
 // 音频元数据加载完成
 const onLoadedMetadata = () => {
-  if (audioRef.value) duration.value = audioRef.value.duration
+  if (audioRef.value) {
+    duration.value = audioRef.value.duration
+    musicStore.totalTime = duration.value
+  }
 }
 
 // 播放时间更新
 const onTimeUpdate = () => {
-  if (audioRef.value) currentTime.value = audioRef.value.currentTime
+  if (audioRef.value) {
+    currentTime.value = audioRef.value.currentTime
+    musicStore.currentTime = currentTime.value
+  }
 }
 
 // 拖动进度条
@@ -87,7 +93,16 @@ const getModeIcon = computed(() => {
   }
 })
 
-// === 喜爱/收藏 特效逻辑 ===
+watch(() => musicStore.currentTrack, (newTrack) => {
+  if (newTrack) {
+    isHiddenPlayer.value = false;
+    // 触发气泡爆发特效
+    triggerBurst();
+  }
+});
+
+let triggerBurst = () => { }; // 预定义占位符函数
+
 const likedTracks = reactive<Set<string>>(new Set())
 const floatingHearts = ref<{ id: number, x: number, y: number, color: string, scale: number, rotation: number }[]>([])
 let heartIdCounter = 0
@@ -110,7 +125,7 @@ const toggleLike = (e: MouseEvent) => {
 }
 
 const triggerFloatingHearts = (e: MouseEvent) => {
-  const count = Math.floor(Math.random() * 4) + 4 // 生成 4 到 7 个心心
+  const count = Math.floor(Math.random() * 4) + 4
   const colors = ['text-red-500', 'text-pink-500', 'text-rose-400', 'text-red-400']
 
   for (let i = 0; i < count; i++) {
@@ -147,6 +162,8 @@ onMounted(async () => {
       });
 
       const particles: any[] = [];
+      let burstFactor = 1.0; // 本地爆发因子
+
       // 清新梦幻的多彩色系
       const colors = [
         0xffffff, // 纯白
@@ -180,8 +197,13 @@ onMounted(async () => {
       }
 
       app.ticker.add(() => {
+        // 爆发衰减：每一帧向 1.0 靠拢
+        if (burstFactor > 1) burstFactor -= 0.6;
+        if (burstFactor < 1) burstFactor = 1;
+
         particles.forEach(p => {
-          p.y -= p.speedY;
+          // 在折叠/展开瞬间享受加速快感
+          p.y -= p.speedY * burstFactor;
           p.x += p.speedX;
           if (p.y < -10) {
             p.y = 800;
@@ -191,6 +213,15 @@ onMounted(async () => {
           p.sprite.y = p.y;
         });
       });
+
+      // 监听折叠动作，触发气泡爆发
+      watch(isFoldPlayer, () => {
+        burstFactor = 20.0;
+      });
+
+      triggerBurst = () => {
+        burstFactor = 25.0;
+      };
     } catch (err) {
       console.warn("PixiJS bubbles initialization failed:", err);
     }
@@ -198,66 +229,82 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
-  destroyApp();
+  if (import.meta.client) {
+    destroyApp(); // 销毁并清理资源
+  }
 })
 </script>
 
 <template>
+  <!-- ?全局套用过渡 -->
   <Transition enter-active-class="transform transition duration-700 ease-out"
     enter-from-class="translate-x-full opacity-0" enter-to-class="translate-x-0 opacity-100"
-    leave-active-class="transform transition duration-500 ease-in" leave-from-class="translate-x-0 opacity-100"
+    leave-active-class="transform transition duration-300 ease-in" leave-from-class="translate-x-0 opacity-100"
     leave-to-class="translate-x-full opacity-0">
-    <div v-show="musicStore.currentTrack"
+
+    <div v-show="musicStore.currentTrack && !isHiddenPlayer"
       class="h-full flex flex-col py-6 bg-white/5 border-l border-white/10 rounded-r-4xl relative overflow-hidden backdrop-blur-2xl transition-all duration-300 ease-in-out shrink-0"
-      :class="isFold ? 'w-[75px] px-2' : 'w-[260px] px-5'">
+      :class="isFoldPlayer ? 'w-[75px] px-2' : 'w-[260px] px-5'">
 
       <!-- Pixi Canvas 背景特效 -->
-      <canvas ref="pixiCanvas" class="absolute inset-0 pointer-events-none opacity-40 z-0"></canvas>
+      <canvas ref="pixiCanvas" class="absolute inset-0 pointer-events-none z-0 transition-all duration-700"
+        :class="isFoldPlayer ? 'opacity-0 scale-90 blur-lg' : 'opacity-60 scale-100 blur-0'"></canvas>
 
       <div class="relative z-10 flex flex-col h-full items-center min-w-0 w-full">
-        <!-- [隐藏] 核心音频播放器 -->
+        <!-- ?[隐藏] 核心音频播放器 -->
         <audio ref="audioRef" :src="musicStore.currentTrack?.url || ''" @ended="musicStore.playNext"
           @timeupdate="onTimeUpdate" @loadedmetadata="onLoadedMetadata" class="hidden"
           @waiting="musicStore.isBuffering = true" @playing="musicStore.isBuffering = false"
           @canplay="musicStore.isBuffering = false" @pause="musicStore.isBuffering = false"></audio>
 
-        <!-- Fold Toggle 按钮 -->
-        <div class="flex items-center mb-6 w-full shrink-0" :class="isFold ? 'justify-center' : 'justify-end'">
-          <button v-if="!isFold" @click="isFold = true"
-            class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition cursor-pointer shadow-sm">
-            <UIcon :name="useIcon('foldUp')" class="w-4 h-4 text-white/80 rotate-90" />
-          </button>
-          <button v-else @click="isFold = false"
-            class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition cursor-pointer shadow-sm">
-            <UIcon :name="useIcon('foldDown')" class="w-4 h-4 text-white/80 -rotate-90" />
-          </button>
+        <!-- ?收起展开按钮 -->
+        <div class="flex items-center mb-6 w-full shrink-0 gap-3"
+          :class="isFoldPlayer ? 'justify-center' : 'justify-end'">
+          <LayoutsTipsButton v-if="!isFoldPlayer" @click="isHiddenPlayer = true" text="彻底隐藏" :icon="useIcon('close')"
+            icon-class="w-3.5 h-3.5 text-white/80"
+            class="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 shadow-sm" />
+
+          <LayoutsTipsButton v-if="!isFoldPlayer && route.path !== '/lyric'" @click="navigateTo('/lyric')" text="歌词" :icon="useIcon('lyric')"
+            icon-class="w-3.5 h-3.5 text-white/80"
+            class="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 shadow-sm" />
+
+          <LayoutsTipsButton v-if="!isFoldPlayer" @click="isFoldPlayer = true" text="收起面板" :icon="useIcon('foldUp')"
+            icon-class="w-4 h-4 text-white/80 rotate-90"
+            class="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 shadow-sm" />
+
+          <LayoutsTipsButton v-else @click="isFoldPlayer = false" text="展开面板" :icon="useIcon('foldDown')"
+            icon-class="w-4 h-4 text-white/80 -rotate-90"
+            class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 shadow-sm" />
         </div>
 
+
+        <!-- ?专辑区域 -->
         <!-- Section 1: Artwork & Info -->
         <div class="flex flex-col items-center text-center transition-all duration-300 w-full shrink-0"
-          :class="isFold ? 'space-y-4' : 'space-y-5'">
+          :class="isFoldPlayer ? 'space-y-4' : 'space-y-5'">
           <!-- CD Vinyl Style Cover -->
           <div
             class="rounded-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-black relative shrink-0 border-4 border-white/5 transition-all duration-500"
             :class="[
               { 'animate-spin-slow': musicStore.isPlaying, 'animation-paused': !musicStore.isPlaying },
-              isFold ? 'w-12 h-12 border-2 mt-4' : 'w-48 h-48'
+              isFoldPlayer ? 'w-12 h-12 border-2 mt-4' : 'w-48 h-48'
             ]">
             <NuxtImg v-if="processCover(musicStore.currentTrack?.cover || '')"
               :src="processCover(musicStore.currentTrack?.cover || '')"
               class="w-full h-full object-cover transition-all duration-700" alt="Track Cover" />
             <div v-else class="w-full h-full flex items-center justify-center">
-              <UIcon :name="useIcon('music')" class="text-white/5" :class="isFold ? 'w-4 h-4' : 'w-10 h-10'" />
+              <UIcon :name="useIcon('music')" class="text-white/5" :class="isFoldPlayer ? 'w-4 h-4' : 'w-10 h-10'" />
             </div>
             <!-- Center Hole -->
             <div class="absolute inset-0 flex items-center justify-center">
               <div class="rounded-full bg-black border border-white/10 shadow-inner"
-                :class="isFold ? 'w-2 h-2 border-0' : 'w-6 h-6'"></div>
+                :class="isFoldPlayer ? 'w-2 h-2 border-0' : 'w-6 h-6'"></div>
             </div>
           </div>
 
+          <!-- ?歌曲信息 -->
           <Transition name="fade">
-            <div v-show="!isFold" class="space-y-1 w-full flex flex-col items-center min-w-0 mt-3">
+            <div v-if="!isFoldPlayer" key="info" class="space-y-1 w-full flex flex-col items-center min-w-0 mt-3">
               <h4 class="text-[18px] font-black text-white truncate max-w-full px-2 leading-tight">
                 {{ musicStore.currentTrack?.name }}
               </h4>
@@ -268,11 +315,12 @@ onBeforeUnmount(() => {
           </Transition>
         </div>
 
-        <!-- Section 2: Progress & Main Controls -->
+        <!-- ?控制中心 -->
         <div class="flex-1 w-full flex flex-col justify-end relative">
-          <!-- Folded View Controls (Just Play/Pause) -->
-          <Transition name="fade">
-            <div v-show="isFold" class="absolute inset-x-0 bottom-0 flex flex-col items-center gap-6 pb-2">
+          <Transition name="fade" mode="out-in">
+            <!-- Folded View Controls (Just Play/Pause) -->
+            <div v-if="isFoldPlayer" key="folded"
+              class="absolute inset-x-0 bottom-0 flex flex-col items-center gap-6 pb-2">
               <button @click="musicStore.playNext"
                 class="text-white/30 hover:text-white transition-all active:scale-90 pb-3 border-b border-white/10">
                 <UIcon :name="useIcon('PlayerSkipForward')" class="w-5 h-5" />
@@ -285,11 +333,9 @@ onBeforeUnmount(() => {
                   class="w-5 h-5" />
               </button>
             </div>
-          </Transition>
 
-          <!-- Expanded View Controls -->
-          <Transition name="fade">
-            <div v-show="!isFold" class="w-full space-y-5 pb-6">
+            <!-- Expanded View Controls -->
+            <div v-else key="expanded" class="w-full space-y-5 pb-6">
               <!-- Progress Bar -->
               <div class="space-y-2">
                 <div class="relative group/progress h-4 flex items-center">
@@ -326,9 +372,8 @@ onBeforeUnmount(() => {
                 </div>
 
                 <div class="flex items-center justify-between px-3 pt-4 gap-4">
-                  <button @click="musicStore.togglePlayMode" class="text-white/40 hover:text-primary transition-all">
-                    <UIcon :name="getModeIcon" class="w-5 h-5" />
-                  </button>
+                  <LayoutsTipsButton @click="musicStore.togglePlayMode" text="切换播放模式"
+                    class="text-white/40 hover:text-primary transition-all" :icon="getModeIcon" icon-class="w-5 h-5" />
 
                   <div class="flex items-center gap-3 group/vol flex-1">
                     <UIcon :name="musicStore.volume > 0 ? 'i-solar:volume-loud-bold' : 'i-solar:volume-cross-bold'"
@@ -337,11 +382,10 @@ onBeforeUnmount(() => {
                       class="custom-slider" :style="{ '--progress': (musicStore.volume * 100) + '%' }" />
                   </div>
 
-                  <button @click="toggleLike" class="transition-all duration-300 relative outline-none"
-                    :class="isLiked ? 'text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]' : 'text-white/40 hover:text-white'">
-                    <UIcon name="i-solar:heart-bold" class="w-5 h-5 transition-transform duration-300"
-                      :class="{ 'animate-heart-pop': isLiked }" />
-                  </button>
+                  <LayoutsTipsButton @click="toggleLike" :text="isLiked ? '取消喜欢' : '添加到喜欢'"
+                    :class="isLiked ? 'text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]' : 'text-white/40 hover:text-white'"
+                    icon="i-solar:heart-bold"
+                    :icon-class="['w-5 h-5 transition-transform duration-300', { 'animate-heart-pop': isLiked }]" />
                 </div>
               </div>
             </div>
@@ -428,14 +472,19 @@ onBeforeUnmount(() => {
   animation-play-state: paused;
 }
 
-.fade-enter-active,
+.fade-enter-active {
+  transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+  transform: translateY(12px) scale(0.3);
+  filter: blur(4px);
 }
 
 /* === 爱心爆动特效 === */

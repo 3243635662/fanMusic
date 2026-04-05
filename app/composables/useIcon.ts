@@ -24,6 +24,7 @@ const iconMap = {
   add: "lucide:plus",
   download: "lucide:download",
   empty: "lucide:inbox",
+  lyric: "lucide:mic-vocal",
 };
 
 export const useIcon = (name: keyof typeof iconMap) => {

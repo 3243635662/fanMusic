@@ -5,6 +5,7 @@ import type {
   PlayQueueTrackType,
 } from "#shared/types/music";
 import { audioCache } from "@/utils/audioCache";
+import { parseKrc } from "@/utils/krcParser";
 
 export const useMusicStore = defineStore("music", () => {
   // --- 状态定义 ---
@@ -15,15 +16,21 @@ export const useMusicStore = defineStore("music", () => {
   const isPlaying = ref(false);
   const isLoadingUrl = ref(false); // 是否正在加载歌曲URL
   const isBuffering = ref(false); // 是否由于网络原因正在缓冲音频
+  // 播放进度 (单位：秒)
+  const currentTime = ref(0);
+  const totalTime = ref(0);
   // 播放模式
   type PlayMode = "loop" | "sequence" | "random" | "single";
   const playMode = ref<PlayMode>("loop");
   // 播放队列
   const playQueue = ref<PlayQueueTrackType[]>([]);
+  // 听歌历史
+  const recentTracks = ref<PlayQueueTrackType[]>([]);
 
   // 搜索相关的状态
   const searchSongs = ref<any[]>([]);
   const lastSearchKeyword = ref("");
+  const searchHistory = ref<string[]>([]);
 
   // 歌单相关的状态
   const MyplayList = ref<MyPlayListType[]>([]);
@@ -35,46 +42,31 @@ export const useMusicStore = defineStore("music", () => {
   // 配置项
   const MAX_QUEUE_SIZE = 500;
 
-  // --- 持久化逻辑 ---
-
-  // 在客户端初始化时恢复数据
+  // --- 生命周期 (客户端) ---
   onMounted(() => {
     if (import.meta.client) {
-      const savedQueue = localStorage.getItem("fan_music_queue");
-      const savedTrack = localStorage.getItem("fan_music_current_track");
-      const savedMode = localStorage.getItem("fan_music_mode");
-      const savedVolume = localStorage.getItem("fan_music_volume");
-
-      if (savedQueue) playQueue.value = JSON.parse(savedQueue);
-      if (savedTrack) {
-        currentTrack.value = JSON.parse(savedTrack);
-        isPlaying.value = false; // 初始进入不自动播放
-      }
-      if (savedMode) playMode.value = savedMode as PlayMode;
-      if (savedVolume) volume.value = parseFloat(savedVolume);
+      // 这里的处理是为了修复 持久化恢复后，失效的 Blob URL 导致播放器/音频组件报错的问题
+      // Blob URL 刷新即毁，必须清空，否则会导致 Hydration 错误或播放器逻辑卡死
+      nextTick(() => {
+        if (currentTrack.value?.url?.startsWith("blob:")) {
+          currentTrack.value.url = null;
+        }
+        playQueue.value.forEach((t) => {
+          if (t.url?.startsWith("blob:")) t.url = null;
+        });
+      });
     }
   });
-
-  // 深度监听变化并写入缓存
-  watch(
-    [playQueue, currentTrack, playMode, volume],
-    ([newQueue, newTrack, newMode, newVolume]) => {
-      if (import.meta.client) {
-        localStorage.setItem("fan_music_queue", JSON.stringify(newQueue));
-        localStorage.setItem(
-          "fan_music_current_track",
-          JSON.stringify(newTrack),
-        );
-        localStorage.setItem("fan_music_mode", newMode as string);
-        localStorage.setItem("fan_music_volume", newVolume.toString());
-      }
-    },
-    { deep: true },
-  );
 
   function setSearchSongs(songs: any[], keyword: string) {
     searchSongs.value = songs;
     lastSearchKeyword.value = keyword;
+    
+    // 添加到搜索历史 (去重并限制数量)
+    if (keyword.trim()) {
+      const history = new Set([keyword, ...searchHistory.value]);
+      searchHistory.value = Array.from(history).slice(0, 10);
+    }
   }
 
   function setPlayList(list: MyPlayListType[]) {
@@ -108,6 +100,10 @@ export const useMusicStore = defineStore("music", () => {
   async function playTrack(track: PlayQueueTrackType) {
     // 0. 确保将要播放的歌曲加入到队列中 (避免后续走缓存提前 return 导致未被加入队列)
     addToQueue(track);
+
+    // [新增] 加入听歌历史 (去重并移到最前)
+    const history = [track, ...recentTracks.value.filter(t => t.hash !== track.hash)];
+    recentTracks.value = history.slice(0, 100); // 最多保留 100 条历史
 
     // [极速缓存] 1. 优先尝试从本地强存储 (IndexedDB) 中加载二进制数据
     if (import.meta.client && audioCache) {
@@ -184,8 +180,51 @@ export const useMusicStore = defineStore("music", () => {
     // 3. 开始播放
     isPlaying.value = true;
 
-    // 4. [新增] 预加载下一首
+    // 4. [优化] 下发歌词预取任务 (静默、非阻塞)
+    preloadTrackLyric(currentTrack.value);
+
+    // 5. [新增] 预加载下一首播放信息
     preloadNextTrack();
+  }
+
+  // [新增] 预加载歌词信息并本地存储到歌曲对象中
+  async function preloadTrackLyric(track: PlayQueueTrackType) {
+    if (!track || !track.hash || (track.lyrics && track.lyrics.length > 0)) return;
+
+    try {
+      console.log(`[Lyric-Preload] 开始获取 ID: ${track.name} (${track.hash})`);
+      // 1. 获取歌词 ID (带 accesskey)
+      const idRes: any = await $fetch("/api/music/getLyricId", {
+        query: { hash: track.hash },
+      });
+
+      console.log(`[Lyric-Preload] ID 结果:`, idRes);
+
+      if (idRes.code === 0 && idRes.result) {
+        track.lyricId = idRes.result.id;
+        track.lyricAccessKey = idRes.result.accesskey;
+
+        console.log(`[Lyric-Preload] 开始获取具体详情: ${track.lyricId}`);
+        // 2. 获取具体内容并存储
+        const infoRes: any = await $fetch("/api/music/getLyricInfo", {
+          query: {
+            id: track.lyricId,
+            accesskey: track.lyricAccessKey,
+          },
+        });
+
+        console.log(`[Lyric-Preload] 详情结果:`, infoRes);
+
+        if (infoRes.code === 0 && infoRes.result?.decodeContent) {
+           track.lyrics = parseKrc(infoRes.result.decodeContent);
+           console.log(`[Lyric-Preload] 已为 ${track.name} 预加载并解析歌词成功`);
+        }
+      } else {
+        console.warn(`[Lyric-Preload] 未能获取到 ID，跳过详情请求: ${idRes.message}`);
+      }
+    } catch (err) {
+      console.error("[Lyric-Preload] 歌词预取链路异常:", err);
+    }
   }
 
   // [新增] 预加载下一首歌曲的 URL
@@ -347,6 +386,9 @@ export const useMusicStore = defineStore("music", () => {
     isLoadingUrl,
     searchSongs,
     lastSearchKeyword,
+    searchHistory,
+    currentTime,
+    totalTime,
     playList: MyplayList,
     recommendationPlayList,
     playQueue,
@@ -365,5 +407,11 @@ export const useMusicStore = defineStore("music", () => {
     replaceQueueAndPlay,
     volume,
     isBuffering,
+    recentTracks,
   };
+}, {
+  persist: {
+    // 只有这些字段需要持久化，像搜索结果、推荐列表等不需要存本地
+    pick: ['playQueue', 'currentTrack', 'playMode', 'volume', 'searchHistory', 'recentTracks']
+  }
 });

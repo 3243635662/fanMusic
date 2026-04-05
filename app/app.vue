@@ -1,5 +1,14 @@
 <script setup lang="ts">
+import { useAppLoading } from '@/composables/useAppLoading'
 
+const loading = useAppLoading()
+
+onMounted(() => {
+  // 安全兜底：如果有些页面没加载 Visualizer (比如没有使用 main 布局)，5 秒后强制关闭加载层
+  setTimeout(() => {
+    loading.value = false
+  }, 5000)
+})
 </script>
 
 <template>
@@ -28,5 +37,18 @@
   opacity: 0;
   transform: translateY(-30px);
   filter: blur(10px);
+}
+
+/* 布局切换过渡 */
+.layout-switch-enter-active,
+.layout-switch-leave-active {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.layout-switch-enter-from,
+.layout-switch-leave-to {
+  opacity: 0;
+  transform: scale(0.98);
+  filter: blur(15px);
 }
 </style>

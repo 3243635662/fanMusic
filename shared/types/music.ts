@@ -41,4 +41,16 @@ export interface PlayQueueTrackType {
   cover: string; // 歌曲封面
   duration: number; // 歌曲时长
   url: string | null;
+  // 歌词相关
+  lyricId?: string;
+  lyricAccessKey?: string;
+  lyrics?: any[]; // 解析后的歌词数组
+}
+
+// 获取歌词id响应 (可能包含多个待选歌词)
+export interface GetLyricIdType {
+  id: string;
+  accesskey: string;
+  nickname: string; // 歌词提供者
+  duration: number; // 歌曲时长
 }

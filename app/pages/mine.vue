@@ -2,9 +2,9 @@
   <div class="h-full overflow-y-auto pb-24 scrollbar-hide">
     <AppleMusicPageHeader title="我的音乐" description="自建歌单与收藏">
       <template #extra>
-        <UButton :icon="useIcon('refresh')" color="primary" variant="soft" class="rounded-xl hover:cursor-pointer"
-          @click="fetchPlaylists">
-        </UButton>
+        <LayoutsTipsButton @click="fetchPlaylists" text="刷新歌单"
+          :icon="useIcon('refresh')" icon-class="w-4 h-4 text-primary"
+          class="w-8 h-8 rounded-xl bg-primary/10 hover:bg-primary/20" />
       </template>
     </AppleMusicPageHeader>
 

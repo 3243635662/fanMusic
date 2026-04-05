@@ -1,2 +1,52 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #000;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 全局布局/页面过渡优化 */
+.switch-enter-active,
+.switch-leave-active,
+.layout-switch-enter-active,
+.layout-switch-leave-active {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 页面切换：稍微带一点模糊和位移 */
+.switch-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(8px);
+}
+.switch-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+  filter: blur(8px);
+}
+
+/* 布局切换：侧重于整体缩放感，让 Full Panel 弹出来 */
+.layout-switch-enter-from {
+  opacity: 0;
+  transform: scale(0.96);
+  filter: blur(12px);
+}
+.layout-switch-leave-to {
+  opacity: 0;
+  transform: scale(1.04);
+  filter: blur(12px);
+}
+
+/* 全局滚动条强制应用（针对不支持 custom-scrollbar 类的普通容器） */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}

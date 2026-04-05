@@ -6,60 +6,32 @@
     }">
       <template #body>
         <div class="space-y-6">
-          <div
-            class="group relative overflow-hidden rounded-2xl bg-white/40 dark:bg-white/5 p-4 border border-white/20 transition-all hover:bg-white/60">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <div class="p-2 bg-primary-500/10 rounded-lg">
-                  <UIcon :name="useIcon('user')" class="w-6 h-6 text-primary-500" />
-                </div>
-                <div>
-                  <p class="text-sm font-medium text-zinc-700 dark:text-zinc-200">登录凭证</p>
-                  <p class="text-xs text-zinc-500">定期刷新可延长登录有效期</p>
-                </div>
-              </div>
 
-              <UButton :loading="isRefreshing" variant="ghost" color="neutral"
-                class="relative overflow-hidden rounded-xl px-4 py-2 hover:bg-primary-500/10 active:scale-95 group-hover:scale-105 transition-transform"
-                :class="{ 'animate-pulse-subtle': !isRefreshing }" @click="handleRefreshClick">
-                <template #leading>
-                  <UIcon :name="useIcon('refresh')"
-                    :class="['w-5 h-5 transition-all duration-700 text-gray-900', isRefreshing ? 'rotate-180 ' : 'group-hover:rotate-45']" />
-                </template>
-                <span class="font-semibold">立即续期</span>
-              </UButton>
-            </div>
-
-            <div
-              class="absolute bottom-0 left-0 h-[2px] w-0 bg-primary-500 transition-all duration-500 group-hover:w-full opacity-50" />
-          </div>
+          <!-- 刷新登录卡片 -->
+          <LayoutsSettingCard title="登录凭证" description="定期刷新可延长登录有效期" :icon="useIcon('user')">
+            <UButton :loading="isRefreshing" variant="ghost" color="neutral"
+              class="relative overflow-hidden rounded-xl px-4 py-2 hover:bg-primary-500/10 active:scale-95 group-hover:scale-105 transition-transform"
+              :class="{ 'animate-pulse-subtle': !isRefreshing }" @click="handleRefreshClick">
+              <template #leading>
+                <UIcon :name="useIcon('refresh')"
+                  :class="['w-5 h-5 transition-all duration-700 text-gray-900', isRefreshing ? 'rotate-180 ' : 'group-hover:rotate-45']" />
+              </template>
+              <span class="font-semibold">立即续期</span>
+            </UButton>
+          </LayoutsSettingCard>
 
           <!-- 离线缓存卡片 -->
-          <div
-            class="group relative overflow-hidden rounded-2xl bg-white/40 dark:bg-white/5 p-4 border border-white/20 transition-all hover:bg-white/60">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <div class="p-2 bg-primary-500/10 rounded-lg">
-                  <UIcon :name="useIcon('download')" class="w-6 h-6 text-primary-500" />
-                </div>
-                <div>
-                  <p class="text-sm font-medium text-zinc-700 dark:text-zinc-200">离线缓存</p>
-                  <p class="text-xs text-zinc-500">{{ stats.count }} 首歌曲 · {{ formatSize(stats.size) }}</p>
-                </div>
-              </div>
-
-              <UButton :loading="isClearing" variant="ghost" color="error"
-                class="relative overflow-hidden rounded-xl px-4 py-2 hover:bg-error/10 active:scale-95 group-hover:scale-105 transition-transform"
-                @click="handleClearClick">
-                <template #leading>
-                  <UIcon :name="useIcon('close')" class="w-5 h-5 text-error" />
-                </template>
-                <span class="font-semibold">清理空间</span>
-              </UButton>
-            </div>
-            <div
-              class="absolute bottom-0 left-0 h-[2px] w-0 bg-error transition-all duration-500 group-hover:w-full opacity-50" />
-          </div>
+          <LayoutsSettingCard title="离线缓存" :description="`${stats.count} 首歌曲 · ${formatSize(stats.size)}`"
+            :icon="useIcon('download')" line-color-class="bg-error">
+            <UButton :loading="isClearing" variant="ghost" color="error"
+              class="relative overflow-hidden rounded-xl px-4 py-2 hover:bg-error/10 active:scale-95 group-hover:scale-105 transition-transform"
+              @click="handleClearClick">
+              <template #leading>
+                <UIcon :name="useIcon('close')" class="w-5 h-5 text-error" />
+              </template>
+              <span class="font-semibold">清理空间</span>
+            </UButton>
+          </LayoutsSettingCard>
         </div>
       </template>
     </UModal>

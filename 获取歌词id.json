@@ -1,0 +1,43 @@
+{
+  "status": 200,
+  "info": "OK",
+  "errcode": 200,
+  "errmsg": "OK",
+  "keyword": "",
+  "proposal": "126496252",
+  "has_complete_right": 0,
+  "companys": "",
+  "ugc": 0,
+  "ugccount": 0,
+  "expire": 7200,
+  "candidates": [
+    {
+      "id": "126496252",
+      "product_from": "官方推荐歌词",
+      "accesskey": "B4B60280CAC2CCBC66BA944005FA636E",
+      "can_score": false,
+      "singer": "tyDi、Melanie Fontana",
+      "song": "Redefined",
+      "duration": 245039,
+      "uid": "486953864",
+      "nickname": "热心用户",
+      "origiuid": "0",
+      "transuid": "0",
+      "sounduid": "0",
+      "originame": "",
+      "transname": "",
+      "soundname": "",
+      "parinfo": [],
+      "parinfoExt": [],
+      "language": "",
+      "krctype": 1,
+      "hitlayer": 1,
+      "hitcasemask": 2,
+      "adjust": 0,
+      "score": 60,
+      "contenttype": 0,
+      "content_format": 2,
+      "download_id": "126496252"
+    }
+  ]
+}
