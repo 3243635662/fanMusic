@@ -1,5 +1,8 @@
 <template>
-  <div ref="containerRef" class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-[#050505]"></div>
+  <div ref="containerRef" class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-[#050505]">
+    <!-- Pixi canvas 降级兜底：如果 PixJS 初始化失败，至少显示渐变背景 -->
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0f1923] via-[#0a0f1a] to-[#050505] opacity-60"></div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -10,7 +13,6 @@ import { useAppLoading } from '@/composables/useAppLoading';
 const containerRef = useTemplateRef('containerRef')
 const { initApp, globalApp, atmosphereLayer, mountCanvas } = usePixi()
 
-// 滤镜实例引用，模块级持久化，不会随组件重建
 let bgContainer: Container | null = null
 let displacementFilter: DisplacementFilter | null = null
 let displacementSprite: Sprite | null = null
@@ -20,7 +22,6 @@ let visualizerTickerFn: ((ticker: any) => void) | null = null
 onMounted(async () => {
   if (!containerRef.value) return
 
-  // 将持久化 canvas 挂载到当前容器
   mountCanvas(containerRef.value)
 
   const app = await initApp({
@@ -30,7 +31,6 @@ onMounted(async () => {
     isGlobal: true,
   })
 
-  // 已初始化过（布局切换后重新挂载），只需恢复特效层级
   if (bgContainer && app.stage.children.includes(bgContainer)) {
     if (atmosphereLayer.value && !app.stage.children.includes(atmosphereLayer.value)) {
       app.stage.addChild(atmosphereLayer.value)
@@ -42,6 +42,7 @@ onMounted(async () => {
   bgContainer!.label = 'BackgroundLayer'
 
   try {
+    // 1. 先加载并渲染背景图（核心）
     const texture = await Assets.load('/background.jpg')
     const sprite = new Sprite(texture)
     sprite.anchor.set(0.5)
@@ -58,9 +59,16 @@ onMounted(async () => {
     bgContainer!.addChild(sprite)
     resizeBackground()
     window.addEventListener('resize', resizeBackground)
+  } catch (err) {
+    console.error('背景图加载失败，使用纯色兜底:', err)
+    if (bgContainer) {
+      app.stage.addChildAt(bgContainer!, 0)
+    }
+  }
 
-    // 水波纹位移滤镜
-    const disTex = await Assets.load('https://pixijs.com/assets/pixi-filters/displacement_map_repeat.jpg')
+  try {
+    // 2. 滤镜独立加载，失败不影响背景显示
+    const disTex = await Assets.load('/displacement_map.jpg')
     displacementSprite = new Sprite(disTex)
     displacementSprite.texture.source.addressMode = 'repeat'
     displacementSprite.width = app.screen.width
@@ -71,7 +79,6 @@ onMounted(async () => {
       scale: { x: 50, y: 50 },
     })
 
-    // 震波滤镜
     shockWaveFilter = new ShockwaveFilter({
       center: {
         x: Math.random() * app.screen.width,
@@ -110,18 +117,16 @@ onMounted(async () => {
     }
 
     app.ticker.add(visualizerTickerFn)
-
-    // 确保特效层也在 stage 中
-    if (atmosphereLayer.value && !app.stage.children.includes(atmosphereLayer.value)) {
-      app.stage.addChild(atmosphereLayer.value)
-    }
-
-    setTimeout(() => {
-      useAppLoading().value = false
-    }, 100)
-
   } catch (err) {
-    console.error('Visualizer error:', err)
+    console.warn('滤镜加载失败，背景将静态显示:', err)
   }
+
+  if (atmosphereLayer.value && !app.stage.children.includes(atmosphereLayer.value)) {
+    app.stage.addChild(atmosphereLayer.value)
+  }
+
+  setTimeout(() => {
+    useAppLoading().value = false
+  }, 100)
 })
 </script>

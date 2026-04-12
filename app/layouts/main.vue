@@ -46,6 +46,7 @@
     </div>
 
     <LayoutsSettingModal />
+    <LayoutsLoginModal />
   </div>
 </template>
 

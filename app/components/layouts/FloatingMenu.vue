@@ -45,10 +45,10 @@ const displayLevel = computed(() => Math.round((level.value ?? 0) * 100))
     <div class="w-6 h-px bg-white/10 my-1"></div>
 
     <!-- 登录 -->
-    <NuxtLink to="/login"
-      class="p-2.5 text-white/60 hover:text-white transition transform hover:scale-110 duration-300">
+    <button @click="settingsStore.showLoginModal = true"
+      class="p-2.5 text-white/60 hover:text-white transition transform hover:scale-110 active:scale-95 duration-300">
       <UIcon name="material-symbols:login" class="w-5 h-5" />
-    </NuxtLink>
+    </button>
 
     <!-- 电量展示 (图标 + 底部百分比) -->
     <div class="flex flex-col items-center gap-0.5 p-2 bg-white/10 rounded-full border border-white/10 shadow-inner">

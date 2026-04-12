@@ -28,7 +28,6 @@ export const useUserStore = defineStore(
       userInfo.value = null;
       token.value = null;
       kugouCookie.value = null;
-      navigateTo("/login");
     };
 
     const refreshTokenAction = async () => {
