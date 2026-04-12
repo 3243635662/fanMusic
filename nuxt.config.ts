@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4, // 开启 Nuxt 4 模式
   },
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
+  devtools: { enabled: import.meta.dev },
   devServer: {
     port: 5173, // 将端口改为你想要的，例如 5173
   },
@@ -27,6 +27,14 @@ export default defineNuxtConfig({
   },
   app: {
     pageTransition: { name: "switch", mode: "out-in" },
+    head: {
+      meta: [
+        { name: 'referrer', content: 'no-referrer' }
+      ]
+    }
+  },
+  image: {
+    domains: ["imge.kugou.com", "c1.kgimg.com", "kgimg.com"],
   },
   vite: {
     optimizeDeps: {

@@ -11,6 +11,12 @@ export default defineEventHandler(async (event) => {
 
   // 1. 获取 dfid
   const dfid = await getValidDfid();
+  if (!dfid) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: "设备注册失败，请稍后再试",
+    });
+  }
 
   // 2. 发送验证码
   try {
@@ -20,7 +26,6 @@ export default defineEventHandler(async (event) => {
     });
     return res;
   } catch (error: any) {
-    console.error("验证码发送失败:", error.data);
     throw createError({
       statusCode: 500,
       statusMessage: error.data?.msg || "验证码发送失败",

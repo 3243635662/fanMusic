@@ -27,10 +27,6 @@ export default defineEventHandler(async (event) => {
     });
     return resFormatMethod(0, formatData, "获取歌单成功");
   } catch (error: any) {
-    // 打印具体的报错信息到终端
-    console.error("DEBUG - 歌单接口错误详情:", error);
-
-    // 抛出更有用的错误信息
     throw createError({
       statusCode: error.response?.status || 500,
       statusMessage: error.message || "Internal Server Error",

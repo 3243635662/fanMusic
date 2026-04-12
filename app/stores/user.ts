@@ -47,9 +47,7 @@ export const useUserStore = defineStore(
           if (res.result.token) {
             token.value = res.result.token;
           }
-          console.log(res.result);
         } else {
-          console.log("刷新失败:", res);
         }
       } catch (err) {
         console.error("自动续期失败", err);

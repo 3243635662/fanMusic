@@ -1,6 +1,6 @@
 <template>
   <div
-    class="shrink-0 bg-white/5 border-r border-white/10 flex flex-col py-6 rounded-l-4xl transition-all duration-300 ease-in-out overflow-hidden"
+    class="shrink-0 bg-white/5 border-r border-white/10 flex flex-col py-6 transition-all duration-300 ease-in-out overflow-hidden"
     :class="isFoldSidebar ? 'w-[72px] px-2.5' : 'w-[220px] px-4'">
     <!-- Sidebar Header -->
     <div class="flex items-center mb-7 px-2" :class="isFoldSidebar ? 'justify-center' : 'justify-between'">
@@ -78,6 +78,7 @@
               <div
                 class="w-8 h-8 rounded-lg overflow-hidden bg-white/5 shrink-0 border border-white/5 group-hover:border-white/10 transition-colors">
                 <img :src="processCover(item.cover)" @error="($event.target as HTMLImageElement).src = processCover('')"
+                  referrerpolicy="no-referrer"
                   class="w-full h-full object-cover" alt="Playlist Cover" />
               </div>
 
@@ -112,40 +113,44 @@
         </div>
 
         <!-- Queue List -->
-        <Transition name="fade-slide">
-          <div v-show="isQueueOpen && !isFoldSidebar"
-            class="flex-1 overflow-y-auto custom-scrollbar px-2 mt-1 space-y-0.5">
-            <div v-for="track in musicStore.playQueue" :key="track.hash"
-              class="group/item flex items-center gap-3 p-2 rounded-xl transition-all cursor-pointer relative" :class="[
-                musicStore.currentTrack?.hash === track.hash ? 'bg-primary/10' : 'hover:bg-white/5'
-              ]" @click="musicStore.playTrack(track)">
+        <ClientOnly>
+          <Transition name="fade-slide">
+            <div v-show="isQueueOpen && !isFoldSidebar"
+              class="flex-1 overflow-y-auto custom-scrollbar px-2 mt-1 space-y-0.5">
+              <div v-for="track in musicStore.playQueue" :key="track.hash"
+                class="group/item flex items-center gap-3 p-2 rounded-xl transition-all cursor-pointer relative" :class="[
+                  musicStore.currentTrack?.hash === track.hash ? 'bg-primary/10' : 'hover:bg-white/5'
+                ]" @click="musicStore.playTrack(track)">
 
-              <div class="w-8 h-8 rounded-lg overflow-hidden bg-white/5 shrink-0 relative border border-white/5">
-                <img :src="processCover(track.cover || '')"
-                  @error="($event.target as HTMLImageElement).src = processCover('')" class="w-full h-full object-cover"
-                  alt="Track Cover" />
-                <div v-if="musicStore.currentTrack?.hash === track.hash"
-                  class="absolute inset-0 bg-primary/20 flex items-center justify-center">
-                  <div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_var(--ui-primary)]">
+                <div class="w-8 h-8 rounded-lg overflow-hidden bg-white/5 shrink-0 relative border border-white/5">
+                  <img :src="processCover(track.cover || '')"
+                    @error="($event.target as HTMLImageElement).src = processCover('')" 
+                    referrerpolicy="no-referrer"
+                    class="w-full h-full object-cover"
+                    alt="Track Cover" />
+                  <div v-if="musicStore.currentTrack?.hash === track.hash"
+                    class="absolute inset-0 bg-primary/20 flex items-center justify-center">
+                    <div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_var(--ui-primary)]">
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="flex-1 min-w-0">
-                <div class="text-[12px] font-bold truncate leading-tight transition-colors"
-                  :class="musicStore.currentTrack?.hash === track.hash ? 'text-primary' : 'text-white/80 group-hover/item:text-white'">
-                  {{ track.name }}
+                <div class="flex-1 min-w-0">
+                  <div class="text-[12px] font-bold truncate leading-tight transition-colors"
+                    :class="musicStore.currentTrack?.hash === track.hash ? 'text-primary' : 'text-white/80 group-hover/item:text-white'">
+                    {{ track.name }}
+                  </div>
+                  <div class="text-[10px] text-zinc-500 font-medium truncate uppercase tracking-tighter">{{ track.artist
+                    }}</div>
                 </div>
-                <div class="text-[10px] text-zinc-500 font-medium truncate uppercase tracking-tighter">{{ track.artist
-                  }}</div>
+              </div>
+
+              <div v-if="musicStore.playQueue.length === 0" class="py-10 text-center">
+                <p class="text-[11px] text-white/10 italic">队列为空</p>
               </div>
             </div>
-
-            <div v-if="musicStore.playQueue.length === 0" class="py-10 text-center">
-              <p class="text-[11px] text-white/10 italic">队列为空</p>
-            </div>
-          </div>
-        </Transition>
+          </Transition>
+        </ClientOnly>
       </div>
     </div>
   </div>

@@ -1,26 +1,38 @@
 <template>
-  <div class="h-screen w-screen relative overflow-hidden bg-black font-sans text-white/90 selection:bg-white/30">
-    <LayoutsVisualizer />
+  <div class="h-screen w-screen relative overflow-hidden font-sans text-white/90 selection:bg-white/30">
     <!-- 背景蒙版 -->
     <div class="absolute inset-0 bg-black/20 z-0 backdrop-blur-[1px]"></div>
 
     <div class="relative z-10 w-full h-full flex flex-col">
-      <div class="flex-1 flex items-center justify-center p-4 md:p-8 relative">
+
+      <!-- 盒子模式：CoverFlow 全屏覆盖 -->
+      <ClientOnly>
+        <Transition enter-active-class="transition duration-500 ease-out" enter-from-class="opacity-0 scale-95"
+          leave-active-class="transition duration-300 ease-in" leave-from-class="opacity-100 scale-100"
+          leave-to-class="opacity-0 scale-95">
+          <div v-if="settingsStore.boxMode" class="absolute inset-0 z-50">
+            <LayoutsCoverFlow />
+          </div>
+        </Transition>
+      </ClientOnly>
+
+      <!-- 普通模式 -->
+      <div v-show="!settingsStore.boxMode" class="flex-1 flex items-center justify-center p-4 md:p-8 relative">
 
         <LayoutsFloatingMenu />
 
         <!-- 面板 -->
         <div
-          class="max-w-[1100px] w-full h-[90vh] md:h-[660px] rounded-4xl bg-black/10 backdrop-blur-3xl border border-white/20 shadow-2xl flex relative overflow-visible transition-all duration-500">
+          class="max-w-[1100px] w-full h-[90vh] md:h-[660px] rounded-4xl bg-black/10 backdrop-blur-3xl border border-white/20 shadow-2xl flex relative overflow-hidden transition-all duration-500">
 
           <ClientOnly>
             <AppleMusicSidebar v-show="isSidebarVisible" />
           </ClientOnly>
 
-          <!-- 右侧面板内容区域 -->
-          <div
-            class="flex-1 flex flex-col pt-8 px-4 md:px-8 pb-4 relative overflow-hidden bg-linear-to-br from-white/6 to-transparent transition-all duration-500"
-            :class="dynamicPanelClasses">
+          <!-- 右侧面板内容区 (Fixed: full bleed for lyric, padding for lists) -->
+          <div id="fan-main-app-box"
+            class="flex-1 flex flex-col relative overflow-hidden bg-linear-to-br from-white/6 to-transparent transition-all duration-500"
+            :class="[dynamicPanelClasses, isLyricPage ? '' : 'pt-8 px-4 md:px-8 pb-4']">
             <LayoutsPageHeader v-show="!isLyricPage" />
             <slot />
           </div>
@@ -37,6 +49,7 @@
   </div>
 </template>
 
+<!-- UI Connect Defect Fixed Flag: V2 -->
 <script lang="ts" setup>
 const musicStore = useMusicStore()
 const settingsStore = useSettingsStore()
@@ -54,10 +67,10 @@ onMounted(() => {
 
 const dynamicPanelClasses = computed(() => {
   if (!isMounted.value) {
-    return 'rounded-4xl opacity-100 blur-0 scale-100'
+    return 'opacity-100 blur-0 scale-100'
   }
   return [
-    (isLyricPage.value || !musicStore.currentTrack || settingsStore.isHiddenPlayer) ? 'rounded-4xl' : 'border-r border-white/10',
+    (!musicStore.currentTrack || settingsStore.isHiddenPlayer) ? '' : 'border-r border-white/10',
     isLayoutResizing.value ? 'opacity-0 blur-2xl scale-[0.98]' : 'opacity-100 blur-0 scale-100'
   ]
 })
@@ -86,7 +99,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: #000;
+  background: transparent;
 }
 
 /* 全局滚动条美化：平时隐藏，鼠标移入才显示 */

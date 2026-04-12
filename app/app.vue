@@ -14,7 +14,15 @@ onMounted(() => {
 <template>
   <NuxtLoadingIndicator />
   <LayoutsSplashScreen />
-  <UApp>
+  <ClientOnly>
+    <LayoutsGlobalAudio />
+  </ClientOnly>
+
+  <!-- 全局背景单例 -->
+  <LayoutsVisualizer />
+  <div class="fixed inset-0 bg-black/15 pointer-events-none z-[-1]"></div>
+
+  <UApp class="bg-transparent!">
     <NuxtLayout>
       <NuxtPage :keepalive="{ max: 8 }" />
     </NuxtLayout>
@@ -22,6 +30,14 @@ onMounted(() => {
   </UApp>
 </template>
 <style>
+/* 全局强制背景透明，确保底层的 Visualizer 能够透出来 */
+body {
+  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 .switch-enter-active,
 .switch-leave-active {
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);

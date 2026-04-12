@@ -18,9 +18,10 @@ const displayLevel = computed(() => Math.round((level.value ?? 0) * 100))
     class="absolute left-10 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 py-6 px-2.5 rounded-full bg-black/40 backdrop-blur-3xl border border-white/10 shadow-2xl z-50">
 
     <!-- 进入盒子模式 -->
-    <button
+    <button @click="settingsStore.boxMode = !settingsStore.boxMode"
       class="p-2.5 text-white/60 hover:text-white transition transform hover:scale-110 active:scale-95 duration-300">
-      <UIcon name="i-lucide-tv" class="w-[22px] h-[22px]" />
+      <UIcon name="i-lucide-tv" class="w-[22px] h-[22px]"
+        :class="settingsStore.boxMode ? 'text-primary' : ''" />
     </button>
 
     <!-- 搜索 -->

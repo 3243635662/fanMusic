@@ -55,25 +55,26 @@
       <!-- 4. 歌词容器 (容器精简，字体缩小) -->
       <div class="flex-1 w-full h-[65vh] flex flex-col justify-start overflow-hidden relative">
         <div ref="lyricContainer"
-          class="pl-6 md:pl-10 space-y-10 md:space-y-12 select-none pr-10 custom-scrollbar overflow-y-auto pb-[45vh] transition-all duration-700 ease-out"
+          class="pl-6 md:pl-10 select-none pr-10 custom-scrollbar overflow-y-auto pb-[45vh] transition-all duration-700 ease-out"
           @scroll="handleScroll">
           <div v-for="(line, index) in lyrics" :key="index" :id="'lyric-line-' + index"
-            class="transition-all duration-700 transform origin-left relative" :class="[
+            class="transition-all duration-500 transform-gpu origin-left relative mb-8 md:mb-12 cursor-pointer" :class="[
               activeIndex === index
-                ? 'text-xl md:text-3xl font-black text-white translate-x-6 md:translate-x-10 scale-[1.03] z-20'
+                ? 'scale-105 z-20 opacity-100'
                 : index < activeIndex
-                  ? 'text-base md:text-lg font-medium text-white/20 blur-[1px] translate-x-0 grayscale opacity-50'
-                  : 'text-base md:text-lg font-medium text-white/20 hover:text-white/40 cursor-pointer transition-colors duration-300'
+                  ? 'scale-100 opacity-30 grayscale'
+                  : 'scale-100 opacity-40 hover:opacity-60'
             ]" @click="seekToLine(line)">
-            <!-- 逐字解析与精细着色 -->
-            <div class="flex flex-wrap gap-x-[0.25em] relative">
+
+            <div class="flex flex-wrap gap-x-[0.2em] relative">
               <span v-for="(word, wIdx) in line.words" :key="wIdx"
-                class="relative inline-block transition-all duration-500"
-                :class="{ 'text-primary drop-shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.6)]': isWordActive(line, word) }">
-                {{ word.text }}
-                <!-- 歌词着色层：仅对当前激活行展示变色动画 -->
+                class="relative inline-block text-2xl md:text-4xl font-black tracking-tight"
+                :class="activeIndex === index ? 'text-white' : 'text-white/80'">
+
+                <span class="opacity-30">{{ word.text }}</span>
+
                 <span v-if="activeIndex === index"
-                  class="absolute inset-0 text-primary pointer-events-none whitespace-nowrap overflow-hidden transition-all duration-75 ease-linear mix-blend-plus-lighter"
+                  class="absolute left-0 top-0 text-primary whitespace-nowrap overflow-hidden mix-blend-screen drop-shadow-[0_0_15px_rgba(29,185,84,0.5)] will-change-[width] transform-gpu"
                   :style="{ width: getWordProgress(line, word) + '%' }">
                   {{ word.text }}
                 </span>
@@ -114,11 +115,41 @@ const isEntering = ref(false);
 
 const { initApp, destroyApp } = usePixi();
 
+// --- 高精度虚拟时间补帧逻辑 ---
+const realtimeMs = ref(0);
+let rafId = 0;
+let lastFrameTime = 0;
+
+const tickTime = (time: number) => {
+  if (!lastFrameTime) lastFrameTime = time;
+  const delta = time - lastFrameTime;
+  lastFrameTime = time;
+
+  if (musicStore.isPlaying) {
+    realtimeMs.value += delta;
+
+    // 高频检查行号切换，确保滚动秒级同步
+    const currentMs = realtimeMs.value;
+    const index = lyrics.value.findIndex((line, i) => {
+      const nextLine = lyrics.value[i + 1];
+      return currentMs >= line.startTime && (!nextLine || currentMs < nextLine.startTime);
+    });
+
+    if (index !== -1 && index !== activeIndex.value) {
+      activeIndex.value = index;
+      scrollToActive();
+      triggerShockwave();
+    }
+  }
+
+  rafId = requestAnimationFrame(tickTime);
+};
+
 // --- 基础进度逻辑 ---
 let lastTime = 0;
 const updateActiveLine = () => {
   const currentMs = musicStore.currentTime * 1000;
-  
+
   // 检测是否发生了跳转 (Seek)，偏差超过 1000ms 判定为跳转
   const isSeeking = Math.abs(currentMs - lastTime * 1000) > 1000;
   lastTime = musicStore.currentTime;
@@ -132,12 +163,12 @@ const updateActiveLine = () => {
     // 如果行号变了，或者刚刚发生了进度条跳转
     if (index !== activeIndex.value || isSeeking) {
       activeIndex.value = index;
-      
+
       // 如果是手动跳转，强制解除“用户滚动”的锁定，让自动滚动生效
       if (isSeeking) isUserScrolling.value = false;
-      
+
       scrollToActive();
-      
+
       // 只有行号真的变了才触发光波特效
       if (index !== activeIndex.value) {
         triggerShockwave();
@@ -151,7 +182,7 @@ const isWordActive = (line: any, word: any) => {
 };
 
 const getWordProgress = (line: any, word: any) => {
-  const currentMs = musicStore.currentTime * 1000;
+  const currentMs = realtimeMs.value;
   const absStart = line.startTime + word.startTime;
   if (currentMs < absStart) return 0;
   if (currentMs >= absStart + word.duration) return 100;
@@ -172,10 +203,16 @@ const handleScroll = () => {
 
 const scrollToActive = () => {
   if (!lyricContainer.value || activeIndex.value === -1 || isUserScrolling.value) return;
+
+  const container = lyricContainer.value;
   const activeEl = document.getElementById(`lyric-line-${activeIndex.value}`);
+
   if (activeEl) {
-    lyricContainer.value.scrollTo({
-      top: activeEl.offsetTop - lyricContainer.value.clientHeight / 2 + activeEl.clientHeight / 2,
+    // 几何中心对齐公式：不受 CSS 缩放干扰
+    const targetScrollTop = activeEl.offsetTop - (container.clientHeight / 2) + (activeEl.clientHeight / 2);
+
+    container.scrollTo({
+      top: targetScrollTop,
       behavior: "smooth",
     });
   }
@@ -194,6 +231,9 @@ onMounted(async () => {
   setTimeout(() => (isEntering.value = true), 100);
   await loadLyrics();
 
+  // 开启高频渲染循环
+  rafId = requestAnimationFrame(tickTime);
+
   if (pixiOverlay.value) {
     const app = await initApp({
       canvas: pixiOverlay.value,
@@ -201,39 +241,52 @@ onMounted(async () => {
       resizeTo: window,
     });
 
-    // 粒子系统基础容器
+    // 1. 全局只创建一个滤镜
+    const globalBlurFilter = new BlurFilter({ strength: 2 });
+
+    // 2. 预先绘制一个粒子材质（Texture），而不是每帧新建 Graphics
+    const particleGraphics = new Graphics();
+    particleGraphics.circle(0, 0, 4); // 画稍微大一点，靠 scale 缩放
+    particleGraphics.fill({ color: 0x1db954, alpha: 1 });
+    const particleTexture = app.renderer.generateTexture(particleGraphics);
+
+    // 3. 使用一个专门的容器存放粒子，统一应用滤镜
+    const particleContainer = new Container();
+    particleContainer.filters = [globalBlurFilter];
+    app.stage.addChild(particleContainer);
+
     const particles: any[] = [];
+
     app.ticker.add((ticker) => {
-      // 找到当前激活行在屏幕上的垂直位置
       const activeEl = document.getElementById(`lyric-line-${activeIndex.value}`);
       if (activeEl) {
         const rect = activeEl.getBoundingClientRect();
         lastActiveY = rect.top + rect.height / 2;
       }
 
-      // 1. 发射粒子 (随随机流动)
+      // 发射粒子：复用 Texture
       if (musicStore.isPlaying && Math.random() > 0.6) {
-        const p = new Graphics();
-        p.circle(0, 0, 1 + Math.random() * 3);
-        p.fill({ color: 0x1db954, alpha: 0.8 });
-        p.filters = [new BlurFilter({ strength: 2 })];
+        const p = new Sprite(particleTexture); // 使用 Sprite 性能极高
+        const scale = 0.2 + Math.random() * 0.8;
+        p.scale.set(scale);
         p.x = 100 + Math.random() * 100;
         p.y = lastActiveY + (Math.random() - 0.5) * 50;
         p.alpha = 0.6;
         (p as any).vx = 2 + Math.random() * 5;
         (p as any).vy = (Math.random() - 0.5) * 1;
-        app.stage.addChild(p);
+
+        particleContainer.addChild(p);
         particles.push(p);
       }
 
-      // 2. 更新粒子位置
+      // 更新粒子位置
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.alpha -= 0.005;
+        p.x += p.vx * ticker.deltaTime; // 引入 deltaTime 保证帧率独立
+        p.y += p.vy * ticker.deltaTime;
+        p.alpha -= 0.005 * ticker.deltaTime;
         if (p.alpha <= 0 || p.x > app.screen.width) {
-          app.stage.removeChild(p);
+          particleContainer.removeChild(p);
           particles.splice(i, 1);
         }
       }
@@ -268,35 +321,95 @@ const loadLyrics = async () => {
   if (!current?.hash) return;
   if (current.lyrics?.length) {
     lyrics.value = current.lyrics;
+    nextTick(() => {
+      updateActivePosition();
+    });
     return;
   }
 
   isLoading.value = true;
   try {
-    const idRes: any = await $fetch("/api/music/getLyricId", { query: { hash: current.hash } });
-    if (idRes.code === 0 && idRes.result) {
-      current.lyricId = idRes.result.id;
-      current.lyricAccessKey = idRes.result.accesskey;
-      const infoRes: any = await $fetch("/api/music/getLyricInfo", {
-        query: { id: current.lyricId, accesskey: current.lyricAccessKey }
+    await musicStore.updateLyricForTrack(current);
+    if (current.lyrics?.length) {
+      lyrics.value = current.lyrics;
+      nextTick(() => {
+        updateActivePosition();
       });
-      if (infoRes.code === 0 && infoRes.result?.decodeContent) {
-        current.lyrics = parseKrc(infoRes.result.decodeContent);
-        lyrics.value = current.lyrics;
-      }
     }
-  } catch (err) { console.error(err); } finally { isLoading.value = false; }
+  } catch (err) {
+    console.error(err);
+  } finally {
+    isLoading.value = false;
+  }
 };
 
-onUnmounted(() => destroyApp());
-watch(() => musicStore.currentTime, updateActiveLine);
+// 辅助：加载后的初始定位
+const updateActivePosition = () => {
+  const currentMs = musicStore.currentTime * 1000;
+  realtimeMs.value = currentMs;
+  const index = lyrics.value.findIndex((line, i) => {
+    const nextLine = lyrics.value[i + 1];
+    return currentMs >= line.startTime && (!nextLine || currentMs < nextLine.startTime);
+  });
+  if (index !== -1) {
+    activeIndex.value = index;
+    scrollToActive();
+  }
+};
+
+onUnmounted(() => {
+  destroyApp();
+  cancelAnimationFrame(rafId);
+});
+
+watch(() => musicStore.currentTime, (newVal) => {
+  // 1. 同步行信息
+  updateActiveLine();
+
+  // 2. 高精度虚拟时间纠偏
+  const targetMs = newVal * 1000;
+  const diff = Math.abs(realtimeMs.value - targetMs);
+
+  if (diff > 500) {
+    // 偏差过大 (跳转/切歌)
+    realtimeMs.value = targetMs;
+  } else if (diff > 30) {
+    // 平滑同步
+    realtimeMs.value = (realtimeMs.value + targetMs) / 2;
+  }
+});
 watch(() => musicStore.currentTrack?.hash, loadLyrics);
 watch(() => musicStore.currentTrack?.lyrics, (n) => { if (n?.length) { lyrics.value = n; isLoading.value = false; } });
 </script>
 
 <style scoped>
+.custom-scrollbar {
+  scroll-behavior: smooth;
+  /* 开启原生丝滑滚动 */
+  scroll-padding-top: 50vh;
+  /* 配合居中对齐 */
+  padding-bottom: 50vh !important;
+  /* 确保最后一行也能居中 */
+  /* 优化蒙版：扩大中间清晰区 */
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      black 20%,
+      black 80%,
+      transparent 100%);
+  mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      black 20%,
+      black 80%,
+      transparent 100%);
+}
+
 .custom-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+  /* 强制开启 GPU 渲染层 */
 }
 
 /* 字体呼吸动效 */

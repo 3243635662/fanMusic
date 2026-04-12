@@ -1,10 +1,10 @@
-interface KrcWord {
+export interface KrcWord {
   text: string;
   startTime: number; // 相对行开始的偏移 (ms)
   duration: number; // 单词持续时间 (ms)
 }
 
-interface KrcLine {
+export interface KrcLine {
   startTime: number; // 行开始绝对时间 (ms)
   duration: number; // 行总持续时间 (ms)
   words: KrcWord[];

@@ -13,63 +13,65 @@
         <div class="w-20 text-right">时长</div>
       </div>
       <!-- 歌曲列表 -->
-      <div v-for="(song, index) in trackList" :key="song.hash"
-        class="flex items-center p-3 rounded-2xl group transition-all cursor-pointer relative" :class="[
-          musicStore.currentTrack?.hash === song.hash
-            ? 'bg-primary/10 border border-primary/20'
-            : 'hover:bg-white/5 border border-transparent',
-        ]" @click="playSong(song)">
-        <!-- 序号 -->
-        <div class="w-8 text-[12px] font-bold flex items-center justify-center shrink-0">
-          <template v-if="
-            musicStore.currentTrack?.hash === song.hash && musicStore.isPlaying
-          ">
-            <div class="flex items-end gap-0.5 h-3">
-              <div class="w-0.5 bg-primary animate-music-bar-1"></div>
-              <div class="w-0.5 bg-primary animate-music-bar-2"></div>
-              <div class="w-0.5 bg-primary animate-music-bar-3"></div>
-            </div>
-          </template>
-          <span v-else :class="musicStore.currentTrack?.hash === song.hash
-            ? 'text-primary'
-            : 'text-white/20'
+      <ClientOnly>
+        <div v-for="(song, index) in trackList" :key="song.hash"
+          class="flex items-center p-3 rounded-2xl group transition-all cursor-pointer relative" :class="[
+            musicStore.currentTrack?.hash === song.hash
+              ? 'bg-primary/10 border border-primary/20'
+              : 'hover:bg-white/5 border border-transparent',
+          ]" @click="playSong(song)">
+          <!-- 序号 -->
+          <div class="w-8 text-[12px] font-bold flex items-center justify-center shrink-0">
+            <template v-if="
+              musicStore.currentTrack?.hash === song.hash && musicStore.isPlaying
             ">
-            {{ String(index + 1).padStart(2, '0') }}
-          </span>
-        </div>
-
-        <!-- Album Art Style List -->
-        <div
-          class="w-12 h-12 rounded-xl bg-white/5 mx-4 overflow-hidden relative shadow-lg group-hover:scale-105 transition-transform duration-300">
-          <NuxtImg v-if="song.cover" :src="processCover(song.cover)" class="w-full h-full object-cover"
-            alt="Track Cover" />
-          <div v-else class="w-full h-full flex items-center justify-center">
-            <UIcon :name="useIcon('music')" class="w-5 h-5 text-white/10" />
+              <div class="flex items-end gap-0.5 h-3">
+                <div class="w-0.5 bg-primary animate-music-bar-1"></div>
+                <div class="w-0.5 bg-primary animate-music-bar-2"></div>
+                <div class="w-0.5 bg-primary animate-music-bar-3"></div>
+              </div>
+            </template>
+            <span v-else :class="musicStore.currentTrack?.hash === song.hash
+              ? 'text-primary'
+              : 'text-white/20'
+              ">
+              {{ String(index + 1).padStart(2, '0') }}
+            </span>
           </div>
+
+          <!-- Album Art Style List -->
           <div
-            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <UIcon :name="useIcon('PlayerPlay')" class="w-5 h-5 text-white fill-current" />
+            class="w-12 h-12 rounded-xl bg-white/5 mx-4 overflow-hidden relative shadow-lg group-hover:scale-105 transition-transform duration-300">
+            <NuxtImg v-if="song.cover" :src="processCover(song.cover)" class="w-full h-full object-cover"
+              alt="Track Cover" />
+            <div v-else class="w-full h-full flex items-center justify-center">
+              <UIcon :name="useIcon('music')" class="w-5 h-5 text-white/10" />
+            </div>
+            <div
+              class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <UIcon :name="useIcon('PlayerPlay')" class="w-5 h-5 text-white fill-current" />
+            </div>
+          </div>
+
+          <!-- Song Info -->
+          <div class="flex-1 min-w-0 pr-4">
+            <h3 class="text-[14px] font-bold truncate transition-colors" :class="musicStore.currentTrack?.hash === song.hash
+              ? 'text-primary'
+              : 'text-white group-hover:text-primary'
+              ">
+              {{ song.name }}
+            </h3>
+            <p class="text-[12px] text-white/40 truncate">
+              {{ song.artist }}
+            </p>
+          </div>
+
+          <!-- Duration -->
+          <div class="w-20 text-[12px] text-white/20 font-mono text-right">
+            {{ song.duration }}
           </div>
         </div>
-
-        <!-- Song Info -->
-        <div class="flex-1 min-w-0 pr-4">
-          <h3 class="text-[14px] font-bold truncate transition-colors" :class="musicStore.currentTrack?.hash === song.hash
-            ? 'text-primary'
-            : 'text-white group-hover:text-primary'
-            ">
-            {{ song.name }}
-          </h3>
-          <p class="text-[12px] text-white/40 truncate">
-            {{ song.artist }}
-          </p>
-        </div>
-
-        <!-- Duration -->
-        <div class="w-20 text-[12px] text-white/20 font-mono text-right">
-          {{ song.duration }}
-        </div>
-      </div>
+      </ClientOnly>
     </div>
   </AppleMusicInfiniteScrollContainer>
 </template>

@@ -5,6 +5,6 @@
  * @returns 处理后的 URL
  */
 export const processCover = (url: string | undefined | null, size: string = "400") => {
-  const target = url || "http://imge.kugou.com/stdmusic/{size}/20210817/20210817080716564241.jpg";
-  return target.replace("{size}", size);
+  const target = url || "https://imge.kugou.com/stdmusic/{size}/20210817/20210817080716564241.jpg";
+  return target.replace("{size}", size).replace("http://", "https://");
 };
