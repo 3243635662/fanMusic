@@ -17,6 +17,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     api: {
       kugouApiSource: "",
+      audioProxyUrl: "",
     },
   },
   pinia: {

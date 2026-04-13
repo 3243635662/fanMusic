@@ -8,6 +8,22 @@ import { parseKrc } from "@/utils/krcParser";
 import { lyricCache } from "@/utils/lyricCache";
 import { audioUrlCache } from "@/utils/audioUrlCache";
 
+/**
+ * 清理不兼容的旧缓存 URL，强制重新从服务端获取
+ * - 旧 CDN 直链 (http://fs.xxx) 在 HTTPS 下无法播放
+ * - 旧本地代理 (/api/music/proxy) 在 Cloudflare Worker 方案下已废弃
+ * 返回 null 让 playTrack 重新请求 musicUrl API 获取新的代理 URL
+ */
+function toProxiedUrl(url: string): string | null {
+  if (url.startsWith("http://") || url.startsWith("https://fs.")) {
+    return null;
+  }
+  if (url.startsWith("/api/music/proxy")) {
+    return null;
+  }
+  return url;
+}
+
 export const useMusicStore = defineStore(
   "music",
   () => {
@@ -55,7 +71,7 @@ export const useMusicStore = defineStore(
             if (!t || !t.hash) return;
             const cachedUrl = await audioUrlCache!.get(t.hash);
             if (cachedUrl) {
-              t.url = cachedUrl;
+              t.url = toProxiedUrl(cachedUrl);
             } else {
               t.url = null;
             }
@@ -144,11 +160,17 @@ export const useMusicStore = defineStore(
 
       // 2. 如果队列里已经有这首歌且有播放链接，直接使用
       if (existingTrack && existingTrack.url) {
-        currentTrack.value = { ...existingTrack };
-        isPlaying.value = true;
-        // 依然触发预加载下一首
-        preloadNextTrack();
-        return;
+        const proxied = toProxiedUrl(existingTrack.url);
+        if (proxied) {
+          existingTrack.url = proxied;
+          currentTrack.value = { ...existingTrack };
+          isPlaying.value = true;
+          // 依然触发预加载下一首
+          preloadNextTrack();
+          return;
+        }
+        // 旧缓存 URL 已失效，置空让后续逻辑重新获取
+        existingTrack.url = null;
       }
 
       // 立即设置当前轨道数据（用于 UI 即时显示封面、标题等）
@@ -160,14 +182,18 @@ export const useMusicStore = defineStore(
         if (import.meta.client && audioUrlCache) {
           const cachedUrl = await audioUrlCache.get(track.hash);
           if (cachedUrl) {
-            currentTrack.value.url = cachedUrl;
-            // 同步更新到队列
-            const qi = playQueue.value.findIndex((t) => t.hash === track.hash);
-            if (qi !== -1 && playQueue.value[qi]) playQueue.value[qi].url = cachedUrl;
-            isPlaying.value = true;
-            updateLyricForTrack(currentTrack.value);
-            preloadNextTrack();
-            return;
+            const proxiedUrl = toProxiedUrl(cachedUrl);
+            if (proxiedUrl) {
+              currentTrack.value.url = proxiedUrl;
+              // 同步更新到队列
+              const qi = playQueue.value.findIndex((t) => t.hash === track.hash);
+              if (qi !== -1 && playQueue.value[qi]) playQueue.value[qi].url = proxiedUrl;
+              isPlaying.value = true;
+              updateLyricForTrack(currentTrack.value);
+              preloadNextTrack();
+              return;
+            }
+            // 旧缓存 URL 已失效，清掉继续走网络请求
           }
         }
 

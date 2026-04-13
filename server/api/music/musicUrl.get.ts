@@ -19,8 +19,15 @@ export default defineEventHandler(async (event) => {
     } as any);
 
     // 酷狗接口返回的 url 是一个数组，我们取第一个
-    const playUrl = Array.isArray(res.url) ? res.url[0] : (res.url || null);
-    
+    const rawUrl: string | null = Array.isArray(res.url) ? res.url[0] : (res.url || null);
+
+    // 修复 Mixed Content：通过 Cloudflare Worker 代理转发 HTTP 音频
+    // Cloudflare Worker 支持 HTTPS + 流式传输 + Range 请求，完美解决 Vercel 上的播放问题
+    let playUrl: string | null = null;
+    if (rawUrl) {
+      playUrl = `${config.api.audioProxyUrl}?url=${encodeURIComponent(rawUrl)}`;
+    }
+
     return resFormatMethod(0, playUrl, "获取歌曲URL成功");
   } catch (error: any) {
     if (error.statusCode) throw error;
