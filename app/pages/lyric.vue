@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full p-8 md:p-16 flex relative overflow-hidden group/page">
+  <div class="w-full h-full p-4 md:p-16 flex relative overflow-hidden group/page">
     <!-- 1. 极致背景：多重动态光晕 -->
     <div class="absolute inset-0 z-0 opacity-40">
       <div
@@ -15,50 +15,50 @@
       <canvas ref="pixiOverlay" class="absolute inset-0 pointer-events-none z-1 mix-blend-screen opacity-50"></canvas>
     </ClientOnly>
 
-    <!-- 返回按钮 (移至右上角) -->
+    <!-- 返回按钮 -->
     <LayoutsTipsButton @click="router.back()" text="收起歌词" :icon="useIcon('foldUp')"
-      class="absolute top-10 right-10 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 text-white/30 hover:text-white backdrop-blur-md transition-all z-50 border border-white/5 hover:scale-110 active:scale-95" />
+      class="absolute top-4 right-4 md:top-10 md:right-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 hover:bg-white/10 text-white/30 hover:text-white backdrop-blur-md transition-all z-50 border border-white/5 hover:scale-110 active:scale-95" />
 
     <!-- 3. 核心歌词内容区 -->
     <div class="flex-1 flex flex-col justify-center max-w-[1000px] mx-auto z-10 w-full transition-all duration-1000"
       :class="isEntering ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
-      <!-- 歌曲 Meta 信息 (增加 ClientOnly 防止水合报错) -->
+      <!-- 歌曲 Meta 信息 -->
       <ClientOnly>
         <div v-if="musicStore.currentTrack"
-          class="mb-14 space-y-5 transition-all duration-500 overflow-visible relative">
-          <div class="flex items-end gap-10">
-            <div class="space-y-2 flex-1 min-w-0">
+          class="mb-6 md:mb-14 space-y-3 md:space-y-5 transition-all duration-500 overflow-visible relative">
+          <div class="flex items-end gap-4 md:gap-10">
+            <div class="space-y-1.5 md:space-y-2 flex-1 min-w-0">
               <div class="flex items-center gap-3 mb-1">
                 <span
-                  class="px-2 py-0.5 text-[10px] bg-primary/20 text-primary border border-primary/30 rounded-sm font-bold tracking-tighter uppercase">High
+                  class="px-2 py-0.5 text-[9px] md:text-[10px] bg-primary/20 text-primary border border-primary/30 rounded-sm font-bold tracking-tighter uppercase">High
                   Resolution</span>
                 <div class="h-px bg-white/10 flex-1"></div>
               </div>
               <h1
-                class="text-3xl md:text-5xl font-black tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] truncate">
+                class="text-2xl md:text-5xl font-black tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] truncate">
                 {{ musicStore.currentTrack?.name }}
               </h1>
-              <p class="text-[14px] md:text-[16px] font-medium text-white/30 uppercase tracking-[0.5em] truncate">
+              <p class="text-[12px] md:text-[16px] font-medium text-white/30 uppercase tracking-[0.3em] md:tracking-[0.5em] truncate">
                 {{ musicStore.currentTrack?.artist || "Unknown Artist" }}
               </p>
             </div>
 
             <!-- 极简波形器 -->
-            <div v-if="musicStore.isPlaying" class="flex gap-1.5 h-8 items-end pb-2 px-6">
-              <div v-for="i in 5" :key="i" class="w-1.5 bg-primary/40 rounded-full animate-music-bar"
+            <div v-if="musicStore.isPlaying" class="flex gap-1 md:gap-1.5 h-6 md:h-8 items-end pb-2 px-3 md:px-6">
+              <div v-for="i in 5" :key="i" class="w-1 md:w-1.5 bg-primary/40 rounded-full animate-music-bar"
                 :style="{ animationDelay: `${i * 0.1}s`, height: `${20 + Math.random() * 80}%` }"></div>
             </div>
           </div>
         </div>
       </ClientOnly>
 
-      <!-- 4. 歌词容器 (容器精简，字体缩小) -->
-      <div class="flex-1 w-full h-[65vh] flex flex-col justify-start overflow-hidden relative">
+      <!-- 4. 歌词容器 -->
+      <div class="flex-1 w-full h-[60vh] md:h-[65vh] flex flex-col justify-start overflow-hidden relative">
         <div ref="lyricContainer"
-          class="pl-6 md:pl-10 select-none pr-10 custom-scrollbar overflow-y-auto pb-[45vh] transition-all duration-700 ease-out"
+          class="pl-3 md:pl-10 select-none pr-4 md:pr-10 custom-scrollbar overflow-y-auto pb-[45vh] transition-all duration-700 ease-out"
           @scroll="handleScroll">
           <div v-for="(line, index) in lyrics" :key="index" :id="'lyric-line-' + index"
-            class="transition-all duration-500 transform-gpu origin-left relative mb-8 md:mb-12 cursor-pointer" :class="[
+            class="transition-all duration-500 transform-gpu origin-left relative mb-5 md:mb-12 cursor-pointer" :class="[
               activeIndex === index
                 ? 'scale-105 z-20 opacity-100'
                 : index < activeIndex
@@ -68,7 +68,7 @@
 
             <div class="flex flex-wrap gap-x-[0.2em] relative">
               <span v-for="(word, wIdx) in line.words" :key="wIdx"
-                class="relative inline-block text-2xl md:text-4xl font-black tracking-tight"
+                class="relative inline-block text-lg md:text-4xl font-black tracking-tight"
                 :class="activeIndex === index ? 'text-white' : 'text-white/80'">
 
                 <span class="opacity-30">{{ word.text }}</span>
@@ -85,7 +85,7 @@
           <!-- 加载/空状态 -->
           <div v-if="lyrics.length === 0" class="h-full flex flex-col items-center justify-center space-y-6">
             <div class="w-16 h-16 border-t-2 border-primary rounded-full animate-spin"></div>
-            <p class="text-white/20 tracking-[1em] font-light">{{ isLoading ? 'ASYNC LOADING' : 'LYRICS NOT FOUND' }}
+            <p class="text-white/20 tracking-[1em] font-light text-sm md:text-base">{{ isLoading ? 'ASYNC LOADING' : 'LYRICS NOT FOUND' }}
             </p>
           </div>
         </div>

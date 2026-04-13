@@ -17,32 +17,49 @@
       </ClientOnly>
 
       <!-- 普通模式 -->
-      <div v-show="!settingsStore.boxMode" class="flex-1 flex items-center justify-center p-4 md:p-8 relative">
+      <div v-show="!settingsStore.boxMode" class="flex-1 flex items-center justify-center p-2 md:p-8 relative">
 
-        <LayoutsFloatingMenu />
+        <!-- 桌面端浮动菜单 / 移动端隐藏（由底部导航替代） -->
+        <LayoutsFloatingMenu class="hidden md:flex" />
 
-        <!-- 面板 -->
+        <!-- 面板：移动端全屏无边框，桌面端卡片式 -->
         <div
-          class="max-w-[1100px] w-full h-[90vh] md:h-[660px] rounded-4xl bg-black/10 backdrop-blur-3xl border border-white/20 shadow-2xl flex relative overflow-hidden transition-all duration-500">
+          class="max-w-[1100px] w-full h-full md:h-[660px] rounded-none md:rounded-4xl bg-black/10 backdrop-blur-3xl border-0 md:border border-white/0 md:border-white/20 shadow-none md:shadow-2xl flex flex-col md:flex-row relative overflow-hidden transition-all duration-500">
 
           <ClientOnly>
-            <AppleMusicSidebar v-show="isSidebarVisible" />
+            <!-- 桌面端：内嵌侧边栏 / 移动端：隐藏（由抽屉替代） -->
+            <AppleMusicSidebar v-show="isSidebarVisible" class="hidden md:flex" />
           </ClientOnly>
 
-          <!-- 右侧面板内容区 (Fixed: full bleed for lyric, padding for lists) -->
+          <!-- 右侧面板内容区 -->
           <div id="fan-main-app-box"
             class="flex-1 flex flex-col relative overflow-hidden bg-linear-to-br from-white/6 to-transparent transition-all duration-500"
-            :class="[dynamicPanelClasses, isLyricPage ? '' : 'pt-8 px-4 md:px-8 pb-4']">
+            :class="[dynamicPanelClasses, isLyricPage ? '' : 'pt-2 px-3 md:pt-8 md:px-8 pb-20 md:pb-4']">
             <LayoutsPageHeader v-show="!isLyricPage" />
             <slot />
           </div>
 
-          <!-- 右侧纵向控制中心 (Player) -->
+          <!-- 桌面端：右侧纵向控制中心 / 移动端：隐藏（由底部迷你播放条替代） -->
           <ClientOnly>
-            <LayoutsThePlayer />
+            <LayoutsThePlayer class="hidden md:flex" />
           </ClientOnly>
         </div>
       </div>
+
+      <!-- 移动端底部导航栏（JS媒体查询 + v-if 双重保障） -->
+      <ClientOnly>
+        <LayoutsMobileNavBar v-if="isMobile && !settingsStore.boxMode" />
+      </ClientOnly>
+
+      <!-- 移动端底部迷你播放条 -->
+      <ClientOnly>
+        <LayoutsMiniPlayer v-if="isMobile && !settingsStore.boxMode" />
+      </ClientOnly>
+
+      <!-- 移动端抽屉式侧边栏 -->
+      <ClientOnly>
+        <LayoutsMobileSidebar v-if="isMobile" />
+      </ClientOnly>
     </div>
 
     <LayoutsSettingModal />
@@ -57,14 +74,25 @@ const settingsStore = useSettingsStore()
 const route = useRoute()
 const isLyricPage = computed(() => route.path === '/lyric')
 
-// 精确控制侧边栏的显隐时机，用于弥补布局拉伸时的视觉突兀
-const isSidebarVisible = ref(true)
-const isLayoutResizing = ref(false)
-
+// 移动端检测 + 挂载标记
+const isMobile = ref(false)
 const isMounted = ref(false)
+let mql: MediaQueryList | null = null
+
 onMounted(() => {
   isMounted.value = true
+  mql = window.matchMedia('(max-width: 767px)')
+  isMobile.value = mql.matches
+  mql.addEventListener('change', (e) => { isMobile.value = e.matches })
 })
+
+onBeforeUnmount(() => {
+  if (mql) mql.removeEventListener('change', () => {})
+})
+
+// 精确控制侧边栏的显隐时机
+const isSidebarVisible = ref(true)
+const isLayoutResizing = ref(false)
 
 const dynamicPanelClasses = computed(() => {
   if (!isMounted.value) {

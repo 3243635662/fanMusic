@@ -13,12 +13,12 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
   <div class="flex items-start justify-between" :class="props.marginBottom">
     <div>
-      <h1 class="text-3xl font-bold tracking-tight mb-0.5 text-white">
+      <h1 class="text-xl md:text-3xl font-bold tracking-tight mb-0.5 text-white">
         <slot name="title">
           {{ title }}
         </slot>
       </h1>
-      <p v-if="description || $slots.description" class="text-[13px] text-white/50">
+      <p v-if="description || $slots.description" class="text-[11px] md:text-[13px] text-white/50">
         <slot name="description">
           {{ description }}
         </slot>

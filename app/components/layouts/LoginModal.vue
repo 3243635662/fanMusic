@@ -7,7 +7,7 @@
       :ui="{
         overlay: 'bg-gray-900/50 backdrop-blur-sm',
         content:
-          'bg-zinc-100/80 dark:bg-zinc-900/80 backdrop-blur-xl border border-white/20 shadow-2xl',
+          'bg-zinc-100/80 dark:bg-zinc-900/80 backdrop-blur-xl border border-white/20 shadow-2xl md:max-w-md md:mx-auto',
       }"
     >
       <template #body>

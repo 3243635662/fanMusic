@@ -43,10 +43,27 @@ const config = reactive({
   maxVisible: 4, cardWidth: 280, cardHeight: 340,
 })
 
+// 移动端自适应配置
+const isMobile = ref(false)
+const mobileConfig = reactive({
+  perspective: 800, xOffset: 100, zOffset: 100, rotateY: 40,
+  maxVisible: 2, cardWidth: 200, cardHeight: 250,
+})
+
+const activeConfig = computed(() => isMobile.value ? mobileConfig : config)
+
+const checkMobile = () => { isMobile.value = window.innerWidth < 768 }
+
+onMounted(() => {
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
+})
+
 function getCardStyle(index: number) {
+  const c = activeConfig.value
   const rawOffset = index - activeIndex.value
   const absOffset = Math.abs(rawOffset)
-  if (absOffset > config.maxVisible) {
+  if (absOffset > c.maxVisible) {
     return { transform: `translateX(${rawOffset > 0 ? 800 : -800}px) translateZ(-600px) rotateY(0deg)`, opacity: 0, zIndex: 0, pointerEvents: 'none' as const, transition: 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)' }
   }
   const drag = isDragging.value ? dragDelta.value * 0.3 : 0
@@ -55,9 +72,9 @@ function getCardStyle(index: number) {
     return { transform: `translateX(${drag}px) translateZ(60px) rotateY(0deg) scale(1)`, zIndex: 100, opacity: 1, filter: 'brightness(1.05)', transition: ease }
   }
   const sign = Math.sign(rawOffset)
-  const x = sign * (config.xOffset + (absOffset - 1) * 90) + drag
-  const z = -absOffset * config.zOffset
-  const ry = -sign * config.rotateY
+  const x = sign * (c.xOffset + (absOffset - 1) * 90) + drag
+  const z = -absOffset * c.zOffset
+  const ry = -sign * c.rotateY
   return { transform: `translateX(${x}px) translateZ(${z}px) rotateY(${ry}deg) scale(${Math.max(0.6, 1 - absOffset * 0.08)})`, zIndex: 100 - absOffset * 10, opacity: Math.max(0, 1 - absOffset * 0.2), filter: `brightness(${Math.max(0.5, 1 - absOffset * 0.15)})`, transition: ease }
 }
 
@@ -123,6 +140,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   isComponentMounted.value = false
   window.removeEventListener('keydown', handleKeydown)
+  window.removeEventListener('resize', checkMobile)
   if (wheelLock) clearTimeout(wheelLock)
   if (mountCheckTimer) clearInterval(mountCheckTimer)
 
@@ -193,9 +211,9 @@ const initAtmosphericBubbles = (app: any, layer: any) => {
     @wheel.prevent="handleWheel">
 
     <button
-      class="absolute top-8 left-9 z-200 flex items-center gap-2 px-5 py-2.5 rounded-[14px] bg-white/8 backdrop-blur-xl border border-white/10 text-white/70 text-sm font-semibold cursor-pointer transition-all duration-300 hover:bg-white/15 hover:text-white hover:-translate-x-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
+      class="absolute top-4 left-4 md:top-8 md:left-9 z-200 flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-xl md:rounded-[14px] bg-white/8 backdrop-blur-xl border border-white/10 text-white/70 text-sm font-semibold cursor-pointer transition-all duration-300 hover:bg-white/15 hover:text-white hover:-translate-x-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
       @click="exitCoverFlow">
-      <UIcon name="lucide:arrow-left" class="w-5 h-5" />
+      <UIcon name="lucide:arrow-left" class="w-4 h-4 md:w-5 md:h-5" />
       <span>返回</span>
     </button>
 
@@ -205,15 +223,15 @@ const initAtmosphericBubbles = (app: any, layer: any) => {
     </div>
 
     <div v-else class="relative w-full flex-1 flex items-center justify-center z-10"
-      :style="{ perspective: config.perspective + 'px' }">
+      :style="{ perspective: activeConfig.perspective + 'px' }">
       <div class="relative"
-        :style="{ width: config.cardWidth + 'px', height: (config.cardHeight + 80) + 'px', transformStyle: 'preserve-3d' }">
+        :style="{ width: activeConfig.cardWidth + 'px', height: (activeConfig.cardHeight + 80) + 'px', transformStyle: 'preserve-3d' }">
         <div v-for="(track, index) in tracks" :key="track.hash" class="absolute top-0 left-0 cursor-pointer"
-          :style="{ width: config.cardWidth + 'px', ...getCardStyle(index) }" @click="handleCardClick(index, track)">
+          :style="{ width: activeConfig.cardWidth + 'px', ...getCardStyle(index) }" @click="handleCardClick(index, track)">
           <div class="w-full rounded-2xl overflow-hidden relative bg-[#1a1a1a] transition-shadow duration-500" :class="isActiveTrackPlaying && index === activeIndex
             ? 'shadow-[0_25px_60px_rgba(0,0,0,0.6),0_0_1px_rgba(255,255,255,0.15)_inset,0_0_40px_rgba(74,222,128,0.2)]'
             : 'shadow-[0_25px_60px_rgba(0,0,0,0.6),0_0_1px_rgba(255,255,255,0.1)_inset]'"
-            :style="{ height: config.cardHeight + 'px' }">
+            :style="{ height: activeConfig.cardHeight + 'px' }">
             <img :src="processCover(track.cover, '400')" referrerpolicy="no-referrer"
               class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" :alt="track.name" />
             <div
@@ -237,7 +255,7 @@ const initAtmosphericBubbles = (app: any, layer: any) => {
             </Transition>
           </div>
           <div class="w-full overflow-hidden pointer-events-none mt-0.5 rounded-2xl reflection-mask"
-            :style="{ height: config.cardHeight + 'px', opacity: getReflectionOpacity(index) }">
+            :style="{ height: activeConfig.cardHeight + 'px', opacity: getReflectionOpacity(index) }">
             <img :src="processCover(track.cover, '400')" referrerpolicy="no-referrer"
               class="w-full h-full object-cover scale-y-[-1] blur-[2px] brightness-[0.4]" alt="" />
           </div>
@@ -247,55 +265,55 @@ const initAtmosphericBubbles = (app: any, layer: any) => {
 
     <Transition name="bottom-slide">
       <div v-if="musicStore.currentTrack"
-        class="absolute bottom-9 left-1/2 -translate-x-1/2 z-200 flex items-center py-3.5 px-8 rounded-[24px] bg-[rgba(20,20,20,0.6)] backdrop-blur-[40px] saturate-[1.8] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.6)] min-w-[560px] gap-8"
+        class="absolute bottom-4 md:bottom-9 left-1/2 -translate-x-1/2 z-200 flex items-center py-3 px-4 md:px-8 rounded-2xl md:rounded-[24px] bg-[rgba(20,20,20,0.6)] backdrop-blur-[40px] saturate-[1.8] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.6)] w-[calc(100%-2rem)] md:w-auto md:min-w-[560px] gap-3 md:gap-8"
         @pointerdown.stop>
 
-        <!-- [左] 歌曲信息：显示当前播放的歌曲 -->
-        <div class="w-32 shrink-0 min-w-0" @pointerdown.stop>
-          <h2 class="text-[14px] font-extrabold text-white truncate leading-tight">{{ musicStore.currentTrack.name }}
+        <!-- [左] 歌曲信息 -->
+        <div class="w-24 md:w-32 shrink-0 min-w-0" @pointerdown.stop>
+          <h2 class="text-[12px] md:text-[14px] font-extrabold text-white truncate leading-tight">{{ musicStore.currentTrack.name }}
           </h2>
-          <p class="text-[11px] font-semibold text-white/45 truncate mt-0.5">{{ musicStore.currentTrack.artist }}</p>
+          <p class="text-[10px] md:text-[11px] font-semibold text-white/45 truncate mt-0.5">{{ musicStore.currentTrack.artist }}</p>
         </div>
 
-        <!-- [中] 进度条：与正在播放的歌曲同步 -->
-        <div class="flex-1 flex items-center gap-3 min-w-0" @pointerdown.stop>
-          <span class="w-[34px] text-right text-[10px] font-bold text-white/25 tabular-nums shrink-0">
+        <!-- [中] 进度条 -->
+        <div class="flex-1 flex items-center gap-1 md:gap-3 min-w-0" @pointerdown.stop>
+          <span class="w-[28px] md:w-[34px] text-right text-[9px] md:text-[10px] font-bold text-white/25 tabular-nums shrink-0">
             {{ formatTime(musicStore.currentTime) }}
           </span>
           <div class="flex-1 relative h-6 flex items-center">
             <input type="range" min="0" max="100" step="0.1" :value="progressPercent" class="coverflow-slider w-full"
               :style="{ '--progress': progressPercent + '%' }" @input="handleSeek" @pointerdown.stop />
           </div>
-          <span class="text-[10px] w-[34px] text-left font-bold text-white/25 tabular-nums shrink-0">
+          <span class="text-[9px] md:text-[10px] w-[28px] md:w-[34px] text-left font-bold text-white/25 tabular-nums shrink-0">
             {{ formatTime(musicStore.totalTime) }}
           </span>
         </div>
 
         <!-- [右] 控制按钮 -->
-        <div class="flex items-center gap-4 shrink-0">
-          <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 md:gap-4 shrink-0">
+          <div class="flex items-center gap-1.5 md:gap-2">
             <button
-              class="w-8 h-8 rounded-full flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all active:scale-90"
+              class="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all active:scale-90"
               @click.stop="musicStore.playPrev">
-              <UIcon name="lucide:skip-back" class="w-4 h-4" />
+              <UIcon name="lucide:skip-back" class="w-3.5 h-3.5 md:w-4 md:h-4" />
             </button>
             <button
-              class="w-11 h-11 rounded-full bg-primary text-black flex items-center justify-center transition-all shadow-[0_4px_15px_rgba(74,222,128,0.3)] hover:scale-105 active:scale-95"
+              class="w-9 h-9 md:w-11 md:h-11 rounded-full bg-primary text-black flex items-center justify-center transition-all shadow-[0_4px_15px_rgba(74,222,128,0.3)] hover:scale-105 active:scale-95"
               @click.stop="musicStore.togglePlay()">
-              <UIcon v-if="musicStore.isBuffering" name="lucide:loader-circle" class="w-5 h-5 animate-spin" />
-              <UIcon v-else :name="musicStore.isPlaying ? 'lucide:pause' : 'lucide:play'" class="w-5 h-5" />
+              <UIcon v-if="musicStore.isBuffering" name="lucide:loader-circle" class="w-4 h-4 md:w-5 md:h-5 animate-spin" />
+              <UIcon v-else :name="musicStore.isPlaying ? 'lucide:pause' : 'lucide:play'" class="w-4 h-4 md:w-5 md:h-5" />
             </button>
             <button
-              class="w-8 h-8 rounded-full flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all active:scale-90"
+              class="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all active:scale-90"
               @click.stop="musicStore.playNext">
-              <UIcon name="lucide:skip-forward" class="w-4 h-4" />
+              <UIcon name="lucide:skip-forward" class="w-3.5 h-3.5 md:w-4 md:h-4" />
             </button>
           </div>
 
-          <div class="h-4 w-[1px] bg-white/10" />
+          <div class="h-4 w-[1px] bg-white/10 hidden md:block" />
 
           <!-- 这里显示的是 CoverFlow 当前浏览的位置 -->
-          <span class="text-[10px] font-bold text-white/25 tabular-nums tracking-widest shrink-0">
+          <span class="text-[10px] font-bold text-white/25 tabular-nums tracking-widest shrink-0 hidden md:inline">
             {{ activeIndex + 1 }} / {{ tracks.length }}
           </span>
         </div>
@@ -303,7 +321,7 @@ const initAtmosphericBubbles = (app: any, layer: any) => {
     </Transition>
 
     <div
-      class="absolute top-8 right-9 z-200 flex gap-3 text-[11px] text-white/50 px-4 py-2 rounded-full bg-black/30 backdrop-blur-xl border border-white/8">
+      class="absolute top-4 right-4 md:top-8 md:right-9 z-200 hidden md:flex gap-3 text-[11px] text-white/50 px-4 py-2 rounded-full bg-black/30 backdrop-blur-xl border border-white/8">
       <span><kbd class="kbd-hint">←</kbd> <kbd class="kbd-hint">→</kbd> 切换</span>
       <span class="text-white/15">|</span>
       <span><kbd class="kbd-hint">Space</kbd> 播放</span>

@@ -7,7 +7,7 @@
       :ui="{
         overlay: 'bg-gray-900/50 backdrop-blur-sm',
         content:
-          'bg-zinc-100/80 dark:bg-zinc-900/80 backdrop-blur-xl border border-white/20 shadow-2xl',
+          'bg-zinc-100/80 dark:bg-zinc-900/80 backdrop-blur-xl border border-white/20 shadow-2xl md:max-w-md md:mx-auto',
       }"
     >
       <template #body>
@@ -117,6 +117,18 @@
               <span class="font-semibold">清理缓存</span>
             </UButton>
           </LayoutsSettingCard>
+
+          <!-- 免责声明 -->
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-4 space-y-2.5">
+            <div class="flex items-center gap-2 text-amber-400/80">
+              <UIcon name="lucide:shield-alert" class="w-5 h-5 shrink-0" />
+              <span class="text-sm font-bold">免责声明</span>
+            </div>
+            <div class="text-xs text-gray-500/70 dark:text-white/30 leading-relaxed space-y-1.5">
+              <p>该音乐源来自 <a href="https://github.com/MakcRe/KuGouMusicApi" target="_blank" rel="noopener noreferrer" class="text-primary/60 hover:text-primary underline underline-offset-2 transition-colors">KuGouMusicApi</a>，仅为学习使用，无商业情景，使用时请登录！</p>
+              <p>本 Demo 源码地址 <a href="https://github.com/3243635662/fanMusic" target="_blank" rel="noopener noreferrer" class="text-primary/60 hover:text-primary underline underline-offset-2 transition-colors">fanMusic</a></p>
+            </div>
+          </div>
         </div>
       </template>
     </UModal>

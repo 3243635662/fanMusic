@@ -1,9 +1,9 @@
 <template>
   <div class="h-full overflow-y-auto pb-24 scrollbar-hide">
     <ClientOnly>
-      <div class="p-6">
+      <div class="p-3 md:p-6">
         <AppleMusicPageHeader title="最近播放" :description="`你最近听过的 ${musicStore.recentTracks.length} 首歌曲`"
-          margin-bottom="mb-8">
+          margin-bottom="mb-5 md:mb-8">
           <template #extra>
             <LayoutsTipsButton @click="clearHistory" text="清空历史" :icon="useIcon('close')" icon-class="w-4 h-4 text-error"
               class="w-8 h-8 rounded-xl bg-error/10 hover:bg-error/20" />
@@ -13,7 +13,7 @@
         <div v-if="musicStore.recentTracks.length" class="space-y-1 mt-4">
           <!-- 表头 -->
           <div
-            class="flex items-center px-4 py-2 text-[11px] font-black text-white/20 uppercase tracking-widest border-b border-white/5 mb-2">
+            class="hidden md:flex items-center px-4 py-2 text-[11px] font-black text-white/20 uppercase tracking-widest border-b border-white/5 mb-2">
             <div class="w-8 flex justify-center">#</div>
             <div class="flex-1 pl-4">歌曲</div>
             <div class="w-24 text-right">上次收听</div>
@@ -21,14 +21,14 @@
 
           <!-- 歌曲列表 -->
           <div v-for="(song, index) in musicStore.recentTracks" :key="song.hash"
-            class="flex items-center p-3 px-4 rounded-2xl group transition-all cursor-pointer relative" :class="[
+            class="flex items-center p-2.5 md:p-3 px-3 md:px-4 rounded-xl md:rounded-2xl group transition-all cursor-pointer relative" :class="[
               musicStore.currentTrack?.hash === song.hash
                 ? 'bg-primary/10 border border-primary/20'
                 : 'hover:bg-white/5 border border-transparent',
             ]" @click="musicStore.playTrack(song)">
 
             <!-- 序号 -->
-            <div class="w-8 text-[12px] font-bold flex items-center justify-center shrink-0">
+            <div class="w-6 md:w-8 text-[11px] md:text-[12px] font-bold flex items-center justify-center shrink-0">
               <template v-if="musicStore.currentTrack?.hash === song.hash && musicStore.isPlaying">
                 <div class="flex items-end gap-0.5 h-3">
                   <div class="w-0.5 bg-primary animate-music-bar-1"></div>
@@ -43,33 +43,33 @@
 
             <!-- Album Art -->
             <div
-              class="w-11 h-11 rounded-lg bg-white/5 mx-4 overflow-hidden relative shadow-lg group-hover:scale-105 transition-transform duration-300">
+              class="w-9 h-9 md:w-11 md:h-11 rounded-lg bg-white/5 mx-2 md:mx-4 overflow-hidden relative shadow-lg group-hover:scale-105 transition-transform duration-300">
               <img :src="processCover(song.cover || '', '150')"
                 @error="(e: any) => (e.target as HTMLImageElement).src = processCover('', '150')"
                 referrerpolicy="no-referrer"
                 class="w-full h-full object-cover" alt="Track Cover" />
               <div
                 class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <UIcon :name="useIcon('PlayerPlay')" class="w-5 h-5 text-white fill-current" />
+                <UIcon :name="useIcon('PlayerPlay')" class="w-4 h-4 md:w-5 md:h-5 text-white fill-current" />
               </div>
             </div>
 
             <!-- Song Info -->
-            <div class="flex-1 min-w-0 pr-4">
-              <h3 class="text-[14px] font-bold truncate transition-colors"
+            <div class="flex-1 min-w-0 pr-2 md:pr-4">
+              <h3 class="text-[13px] md:text-[14px] font-bold truncate transition-colors"
                 :class="musicStore.currentTrack?.hash === song.hash ? 'text-primary' : 'text-white group-hover:text-primary'">
                 {{ song.name }}
               </h3>
-              <p class="text-[12px] text-white/40 truncate">
+              <p class="text-[11px] md:text-[12px] text-white/40 truncate">
                 {{ song.artist }}
               </p>
             </div>
 
             <!-- Status -->
-            <div class="w-24 text-[12px] text-white/20 text-right">
+            <div class="w-6 md:w-24 text-[11px] md:text-[12px] text-white/20 text-right">
               <UIcon v-if="musicStore.currentTrack?.hash === song.hash" :name="useIcon('music')"
                 class="w-4 h-4 text-primary animate-pulse" />
-              <span v-else class="italic font-light">Recently</span>
+              <span v-else class="italic font-light hidden md:inline">Recently</span>
             </div>
           </div>
         </div>

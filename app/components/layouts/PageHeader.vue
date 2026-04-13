@@ -1,14 +1,14 @@
 <template>
-  <div class="flex items-center mb-4 gap-4">
-    <button @click="router.back()" class="text-white/45 hover:text-white/80 transition-colors flex items-center justify-center rounded-md hover:bg-white/10 w-7 h-7">
+  <div class="flex items-center mb-3 md:mb-4 gap-2 md:gap-4">
+    <button @click="router.back()" class="text-white/45 hover:text-white/80 transition-colors flex items-center justify-center rounded-md hover:bg-white/10 w-7 h-7 active:scale-90">
       <UIcon name="line-md:chevron-small-left" class="w-5 h-5" />
     </button>
     <UBreadcrumb :items="breadcrumbItems" :ui="{
-      list: 'gap-2',
-      item: 'text-[13px] transition-colors',
+      list: 'gap-1 md:gap-2',
+      item: 'text-[12px] md:text-[13px] transition-colors',
       link: 'text-white/45 hover:text-white/80 font-medium aria-[current=page]:text-white aria-[current=page]:font-semibold data-[active=true]:text-white data-[active=true]:font-semibold',
-      linkLeadingIcon: 'w-4 h-4',
-      separatorIcon: 'w-3 h-3 text-white/30'
+      linkLeadingIcon: 'w-3.5 h-3.5 md:w-4 md:h-4',
+      separatorIcon: 'w-2.5 h-2.5 md:w-3 md:h-3 text-white/30'
     }" />
   </div>
 </template>

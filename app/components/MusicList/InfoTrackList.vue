@@ -7,7 +7,7 @@
     <div v-else-if="trackList.length" class="space-y-1">
       <!-- 表头 -->
       <div
-        class="flex items-center px-3 py-2 text-[11px] font-black text-white/20 uppercase tracking-widest border-b border-white/5 mb-2">
+        class="hidden md:flex items-center px-3 py-2 text-[11px] font-black text-white/20 uppercase tracking-widest border-b border-white/5 mb-2">
         <div class="w-8 flex justify-center">#</div>
         <div class="flex-1 pl-4">歌曲</div>
         <div class="w-20 text-right">时长</div>
@@ -15,13 +15,13 @@
       <!-- 歌曲列表 -->
       <ClientOnly>
         <div v-for="(song, index) in trackList" :key="song.hash"
-          class="flex items-center p-3 rounded-2xl group transition-all cursor-pointer relative" :class="[
+          class="flex items-center p-2.5 md:p-3 rounded-xl md:rounded-2xl group transition-all cursor-pointer relative" :class="[
             musicStore.currentTrack?.hash === song.hash
               ? 'bg-primary/10 border border-primary/20'
               : 'hover:bg-white/5 border border-transparent',
           ]" @click="playSong(song)">
           <!-- 序号 -->
-          <div class="w-8 text-[12px] font-bold flex items-center justify-center shrink-0">
+          <div class="w-6 md:w-8 text-[11px] md:text-[12px] font-bold flex items-center justify-center shrink-0">
             <template v-if="
               musicStore.currentTrack?.hash === song.hash && musicStore.isPlaying
             ">
@@ -41,33 +41,33 @@
 
           <!-- Album Art Style List -->
           <div
-            class="w-12 h-12 rounded-xl bg-white/5 mx-4 overflow-hidden relative shadow-lg group-hover:scale-105 transition-transform duration-300">
+            class="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-white/5 mx-2 md:mx-4 overflow-hidden relative shadow-lg group-hover:scale-105 transition-transform duration-300">
             <NuxtImg v-if="song.cover" :src="processCover(song.cover)" class="w-full h-full object-cover"
               alt="Track Cover" />
             <div v-else class="w-full h-full flex items-center justify-center">
-              <UIcon :name="useIcon('music')" class="w-5 h-5 text-white/10" />
+              <UIcon :name="useIcon('music')" class="w-4 h-4 md:w-5 md:h-5 text-white/10" />
             </div>
             <div
               class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <UIcon :name="useIcon('PlayerPlay')" class="w-5 h-5 text-white fill-current" />
+              <UIcon :name="useIcon('PlayerPlay')" class="w-4 h-4 md:w-5 md:h-5 text-white fill-current" />
             </div>
           </div>
 
           <!-- Song Info -->
-          <div class="flex-1 min-w-0 pr-4">
-            <h3 class="text-[14px] font-bold truncate transition-colors" :class="musicStore.currentTrack?.hash === song.hash
+          <div class="flex-1 min-w-0 pr-2 md:pr-4">
+            <h3 class="text-[13px] md:text-[14px] font-bold truncate transition-colors" :class="musicStore.currentTrack?.hash === song.hash
               ? 'text-primary'
               : 'text-white group-hover:text-primary'
               ">
               {{ song.name }}
             </h3>
-            <p class="text-[12px] text-white/40 truncate">
+            <p class="text-[11px] md:text-[12px] text-white/40 truncate">
               {{ song.artist }}
             </p>
           </div>
 
           <!-- Duration -->
-          <div class="w-20 text-[12px] text-white/20 font-mono text-right">
+          <div class="w-14 md:w-20 text-[11px] md:text-[12px] text-white/20 font-mono text-right">
             {{ song.duration }}
           </div>
         </div>

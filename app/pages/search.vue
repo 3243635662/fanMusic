@@ -5,11 +5,11 @@
 
 
     <!-- Search Bar -->
-    <div class="relative mb-8 group">
+    <div class="relative mb-6 md:mb-8 group">
       <UIcon :name="useIcon('search')"
-        class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20 group-focus-within:text-primary transition-colors" />
+        class="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-white/20 group-focus-within:text-primary transition-colors" />
       <input v-model="searchKeyword" type="text" placeholder="搜索热门歌曲..." @keyup.enter="doSearch(false)"
-        class="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 pl-12 pr-4 text-[14px] outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white/10 placeholder:text-white/20 transition-all font-medium text-white" />
+        class="w-full bg-white/5 border border-white/10 rounded-xl md:rounded-2xl py-3 pl-10 md:pl-12 pr-4 text-[13px] md:text-[14px] outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white/10 placeholder:text-white/20 transition-all font-medium text-white" />
     </div>
 
     <MusicListSkeletonForList v-if="loading" :show-index="false" />
@@ -17,13 +17,13 @@
 
     <div v-else-if="songs.length" class="space-y-1">
       <div v-for="(song, index) in songs" :key="song.hash"
-        class="flex items-center p-3 rounded-2xl group transition-all cursor-pointer relative" :class="[
+        class="flex items-center p-2.5 md:p-3 rounded-xl md:rounded-2xl group transition-all cursor-pointer relative" :class="[
           musicStore.currentTrack?.hash === song.hash
             ? 'bg-primary/10 border border-primary/20'
             : 'hover:bg-white/5 border border-transparent'
         ]" @click="playSong(song)">
         <!-- Index -->
-        <div class="w-8 text-[12px] font-bold flex items-center justify-center shrink-0">
+        <div class="w-6 md:w-8 text-[11px] md:text-[12px] font-bold flex items-center justify-center shrink-0">
           <template v-if="musicStore.currentTrack?.hash === song.hash && musicStore.isPlaying">
             <div class="flex items-end gap-0.5 h-3">
               <div class="w-0.5 bg-primary animate-music-bar-1"></div>
@@ -37,37 +37,37 @@
         </div>
 
         <!-- Album Art -->
-        <div class="w-12 h-12 rounded-xl bg-white/5 mr-4 overflow-hidden relative shadow-lg">
+        <div class="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-white/5 mr-3 md:mr-4 overflow-hidden relative shadow-lg">
           <NuxtImg v-if="song.image" :src="song.image" class="w-full h-full object-cover" alt="Song Cover" />
           <div v-else class="w-full h-full flex items-center justify-center">
-            <UIcon :name="useIcon('music')" class="w-5 h-5 text-white/10" />
+            <UIcon :name="useIcon('music')" class="w-4 h-4 md:w-5 md:h-5 text-white/10" />
           </div>
           <!-- VIP Badge -->
           <div v-if="song.isVip" class="absolute top-0 right-0 p-0.5 animate-pulse">
             <div
-              class="w-4 h-4 bg-primary rounded-full flex items-center justify-center text-[8px] font-bold text-white">
+              class="w-3 h-3 md:w-4 md:h-4 bg-primary rounded-full flex items-center justify-center text-[7px] md:text-[8px] font-bold text-white">
               VIP</div>
           </div>
         </div>
 
         <!-- Song Info -->
-        <div class="flex-1 min-w-0 pr-4">
-          <h3 class="text-[14px] font-bold truncate"
+        <div class="flex-1 min-w-0 pr-2 md:pr-4">
+          <h3 class="text-[13px] md:text-[14px] font-bold truncate"
             :class="musicStore.currentTrack?.hash === song.hash ? 'text-primary' : 'text-white'">
             {{ song.name }}
           </h3>
-          <p class="text-[12px] text-white/40 truncate">
+          <p class="text-[11px] md:text-[12px] text-white/40 truncate">
             {{ song.artist }}
           </p>
         </div>
 
         <!-- Tag -->
-        <div v-if="song.tag" class="mr-4 hidden sm:block">
+        <div v-if="song.tag" class="mr-3 md:mr-4 hidden sm:block">
           <span class="text-[9px] px-1.5 py-0.5 rounded-sm bg-white/5 border border-white/5 text-white/30">{{ song.tag
             }}</span>
         </div>
 
-        <div class="text-[12px] text-white/20 font-mono pl-4">
+        <div class="text-[11px] md:text-[12px] text-white/20 font-mono pl-2 md:pl-4">
           {{ formatDuration(song.duration) }}
         </div>
       </div>
@@ -76,9 +76,9 @@
     <!-- Empty State -->
     <div v-else-if="!loading" class="text-center py-20">
       <!-- Search Suggestions -->
-      <div v-if="!songs.length" class="flex flex-wrap justify-center gap-2 mb-8">
+      <div v-if="!songs.length" class="flex flex-wrap justify-center gap-2 mb-6 md:mb-8">
         <span v-for="tag in ['周杰伦', 'NewJeans', '告白气球', '轻音乐']" :key="tag" @click="searchKeyword = tag; doSearch(false)"
-          class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-white/50 hover:bg-primary/20 hover:text-primary transition-all cursor-pointer">
+          class="px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] md:text-xs text-white/50 hover:bg-primary/20 hover:text-primary transition-all cursor-pointer active:scale-95">
           {{ tag }}
         </span>
       </div>
