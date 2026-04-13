@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full overflow-y-auto pb-24 scrollbar-hide">
+  <div class="pb-24 scrollbar-hide">
     <ClientOnly>
       <div class="p-3 md:p-6">
         <AppleMusicPageHeader title="最近播放" :description="`你最近听过的 ${musicStore.recentTracks.length} 首歌曲`"

@@ -1,5 +1,5 @@
 <template>
-  <div ref="container" class="h-full overflow-y-auto pb-24 scrollbar-hide">
+  <div ref="container" class="pb-24 scrollbar-hide">
     <slot />
     
     <!-- 加载更多状态提示 -->
@@ -24,7 +24,7 @@ import { ref } from 'vue'
 const props = withDefaults(defineProps<{
   hasMore: boolean
   loading?: boolean
-  showEndMessage?: boolean // 初始未加载或搜索为空时，可控制不显示“已经到底啦”
+  showEndMessage?: boolean
 }>(), {
   loading: false,
   showEndMessage: true
@@ -34,10 +34,15 @@ const emit = defineEmits<{
   (e: 'loadMore'): void
 }>()
 
-const container = ref<HTMLElement | null>(null)
+// 使用父级滚动容器 #fan-main-app-box 作为无限滚动监听目标
+const scrollParent = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  scrollParent.value = document.getElementById('fan-main-app-box')
+})
 
 useInfiniteScroll(
-  container,
+  scrollParent,
   () => {
     if (props.hasMore && !props.loading) {
       emit('loadMore')

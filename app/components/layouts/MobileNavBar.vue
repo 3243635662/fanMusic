@@ -2,27 +2,11 @@
   <div
     class="fixed bottom-0 left-0 right-0 z-40 bg-black/60 backdrop-blur-2xl border-t border-white/10 safe-area-bottom">
     <nav class="flex items-center justify-around h-14 max-w-screen-sm mx-auto">
-      <NuxtLink v-for="link in libraryLinks" :key="link.to" :to="link.to"
+      <NuxtLink v-for="link in navLinks" :key="link.to" :to="link.to"
         class="flex flex-col items-center justify-center gap-0.5 flex-1 py-1 transition-all duration-200 no-underline"
         :class="isActive(link.to) ? 'text-primary' : 'text-white/40 active:text-white/70'">
         <UIcon :name="link.icon" class="w-5 h-5" />
         <span class="text-[10px] font-medium">{{ link.label }}</span>
-      </NuxtLink>
-
-      <!-- 搜索入口 -->
-      <NuxtLink to="/search"
-        class="flex flex-col items-center justify-center gap-0.5 flex-1 py-1 transition-all duration-200 no-underline"
-        :class="isActive('/search') ? 'text-primary' : 'text-white/40 active:text-white/70'">
-        <UIcon :name="useIcon('search')" class="w-5 h-5" />
-        <span class="text-[10px] font-medium">搜索</span>
-      </NuxtLink>
-
-      <!-- 我的 -->
-      <NuxtLink to="/mine"
-        class="flex flex-col items-center justify-center gap-0.5 flex-1 py-1 transition-all duration-200 no-underline"
-        :class="isActive('/mine') ? 'text-primary' : 'text-white/40 active:text-white/70'">
-        <UIcon :name="useIcon('user')" class="w-5 h-5" />
-        <span class="text-[10px] font-medium">我的</span>
       </NuxtLink>
 
       <!-- 更多功能按钮 -->
@@ -61,7 +45,13 @@
 const settingsStore = useSettingsStore()
 const { isMobileMenuOpen } = storeToRefs(settingsStore)
 const route = useRoute()
-const { libraryLinks } = useMenu()
+
+// 底部导航栏只显示 4 个核心入口 + 更多按钮
+const navLinks = [
+  { label: '推荐', icon: useIcon('recommend'), to: '/recommendation' },
+  { label: '搜索', icon: useIcon('search'), to: '/search' },
+  { label: '我的', icon: useIcon('user'), to: '/mine' },
+]
 
 function isActive(to: string) {
   if (to === '/') return route.path === '/'

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full overflow-y-auto pb-24 scrollbar-hide">
+  <div class="pb-24 scrollbar-hide">
     <!-- Header -->
     <MusicListInfoHeader :info="playlistInfo" />
 

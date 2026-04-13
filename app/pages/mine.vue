@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full overflow-y-auto pb-24 scrollbar-hide">
+  <div class="pb-24 scrollbar-hide">
     <AppleMusicPageHeader title="我的音乐" description="自建歌单与收藏">
       <template #extra>
         <LayoutsTipsButton @click="fetchPlaylists" text="刷新歌单"

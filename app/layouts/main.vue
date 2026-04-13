@@ -17,31 +17,31 @@
       </ClientOnly>
 
       <!-- 普通模式 -->
-      <div v-show="!settingsStore.boxMode" class="flex-1 flex items-center justify-center p-2 md:p-8 relative">
+      <div v-show="!settingsStore.boxMode" class="flex-1 min-h-0 flex items-center justify-center p-2 md:p-8 relative">
 
         <!-- 桌面端浮动菜单 / 移动端隐藏（由底部导航替代） -->
         <LayoutsFloatingMenu class="hidden md:flex" />
 
         <!-- 面板：移动端全屏无边框，桌面端卡片式 -->
         <div
-          class="max-w-[1100px] w-full h-full md:h-[660px] rounded-none md:rounded-4xl bg-black/10 backdrop-blur-3xl border-0 md:border border-white/0 md:border-white/20 shadow-none md:shadow-2xl flex flex-col md:flex-row relative overflow-hidden transition-all duration-500">
+          class="max-w-[1100px] w-full h-full md:h-[660px] min-h-0 rounded-none md:rounded-4xl bg-black/10 backdrop-blur-3xl border-0 md:border border-white/0 md:border-white/20 shadow-none md:shadow-2xl flex flex-col md:flex-row relative overflow-hidden transition-all duration-500">
 
           <ClientOnly>
             <!-- 桌面端：内嵌侧边栏 / 移动端：隐藏（由抽屉替代） -->
             <AppleMusicSidebar v-show="isSidebarVisible" class="hidden md:flex" />
           </ClientOnly>
 
-          <!-- 右侧面板内容区 -->
+          <!-- 右侧面板内容区（唯一滚动容器） -->
           <div id="fan-main-app-box"
-            class="flex-1 flex flex-col relative overflow-hidden bg-linear-to-br from-white/6 to-transparent transition-all duration-500"
+            class="flex-1 min-h-0 min-w-0 relative overflow-y-auto overflow-x-hidden bg-linear-to-br from-white/6 to-transparent transition-all duration-500 custom-scrollbar"
             :class="[dynamicPanelClasses, isLyricPage ? '' : 'pt-2 px-3 md:pt-8 md:px-8 pb-20 md:pb-4']">
             <LayoutsPageHeader v-show="!isLyricPage" />
             <slot />
           </div>
 
-          <!-- 桌面端：右侧纵向控制中心 / 移动端：隐藏（由底部迷你播放条替代） -->
+          <!-- 桌面端：右侧纵向控制中心 / 移动端不渲染 -->
           <ClientOnly>
-            <LayoutsThePlayer class="hidden md:flex" />
+            <LayoutsThePlayer v-if="!isMobile" class="hidden md:flex" />
           </ClientOnly>
         </div>
       </div>
