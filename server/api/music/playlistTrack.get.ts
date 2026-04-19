@@ -22,7 +22,10 @@ export default defineEventHandler(async (event) => {
           page: query.page || 1,
           pagesize: query.pagesize || 10,
         },
-        headers: getKugouHeaders(event),
+        headers: {
+          ...getKugouHeaders(event),
+          "Accept-Encoding": "gzip, deflate",
+        },
       } as any,
     );
 
@@ -36,14 +39,20 @@ export default defineEventHandler(async (event) => {
       });
     }
 
+    // 优化：使用更高效的字符串解析方法
     const formatData: MyTrackType[] = tracks.map((item: any) => {
+      // 预解析文件名，避免重复 split
+      const nameParts = item.name?.split(" - ") || [];
+      const artist = nameParts[0] || "未知歌手";
+      const songName = nameParts[1]?.split(".")[0] || "未知歌曲";
+
       return {
         id: item.id,
         hash: item.hash,
-        name: item.name.split(" - ")[1].split(".")[0] || "未知歌曲",
-        artist: item.name.split(" - ")[0] || "未知歌手",
+        name: songName,
+        artist: artist,
         cover: item.cover,
-        duration: "未知",
+        duration: item.duration || "未知",
       };
     });
     return resFormatMethod(0, formatData, "获取歌单歌曲成功");

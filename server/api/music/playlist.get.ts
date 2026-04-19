@@ -1,9 +1,10 @@
 import type { MyPlayListType } from "#shared/types/music";
 import { resFormatMethod } from "../../utils/formatResponse";
+
 export default defineEventHandler(async (event) => {
   const { page, pagesize } = getQuery(event);
   const config = useRuntimeConfig();
-
+  
   try {
     const res: any = await $fetch(
       `${config.api.kugouApiSource}/user/playlist`,
@@ -12,7 +13,10 @@ export default defineEventHandler(async (event) => {
           page,
           pagesize,
         },
-        headers: getKugouHeaders(event),
+        headers: {
+          ...getKugouHeaders(event),
+          "Accept-Encoding": "gzip, deflate",
+        },
       } as any,
     );
 

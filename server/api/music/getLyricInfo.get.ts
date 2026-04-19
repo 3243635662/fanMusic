@@ -1,12 +1,14 @@
-export default defineEventHandler(async (event) => {
+export default defineCachedEventHandler(async (event) => {
   const config = useRuntimeConfig();
   const { id, accesskey } = getQuery(event);
+  
   if (!id || !accesskey) {
     throw createError({
       statusCode: 400,
       message: "缺少参数",
     });
   }
+  
   try {
     const res: any = await $fetch(`${config.api.kugouApiSource}/lyric`, {
       query: {
@@ -15,8 +17,12 @@ export default defineEventHandler(async (event) => {
         fmt: "krc",
         decode: true,
       },
-      headers: getKugouHeaders(event),
+      headers: {
+        ...getKugouHeaders(event),
+        "Accept-Encoding": "gzip, deflate",
+      },
     } as any);
+    
     return resFormatMethod(0, res, "获取歌词成功");
   } catch (error: any) {
     if (error.statusCode) throw error;
@@ -26,4 +32,9 @@ export default defineEventHandler(async (event) => {
       statusMessage: error.statusMessage || "获取歌词失败",
     });
   }
+}, {
+  // 歌词缓存：30 分钟（歌词内容不会频繁变化）
+  maxAge: 1800,
+  swr: true,
+  vary: ["id", "accesskey"],
 });

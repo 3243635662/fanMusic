@@ -48,7 +48,7 @@ export default defineEventHandler(async (event) => {
     if (!response.ok && response.status !== 206) {
       throw createError({
         statusCode: response.status,
-        statusMessage: `源站返回错误: ${response.statusText}`,
+        statusMessage: `源站返回错误：${response.statusText}`,
       });
     }
 
@@ -81,7 +81,7 @@ export default defineEventHandler(async (event) => {
     console.error("[proxy] 代理失败:", error.message || error);
     throw createError({
       statusCode: 502,
-      statusMessage: "音频代理请求失败: " + (error.message || "未知错误"),
+      statusMessage: "音频代理请求失败：" + (error.message || "未知错误"),
     });
   }
 });
