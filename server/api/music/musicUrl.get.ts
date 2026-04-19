@@ -16,11 +16,13 @@ export default defineEventHandler(async (event) => {
         hash: hash,
         quality: 128,
       },
-      headers: {
-        ...getKugouHeaders(event),
-        "Accept-Encoding": "gzip, deflate",
-      },
+      headers: getKugouHeaders(event),
     } as any);
+
+    // 调试：记录原始响应结构（仅开发环境）
+    if (process.dev) {
+      console.log("[musicUrl] 原始响应:", JSON.stringify(res).slice(0, 500));
+    }
 
     // 酷狗接口返回的 url 是一个数组，我们取第一个
     const rawUrl: string | null = Array.isArray(res.url) ? res.url[0] : (res.url || null);
