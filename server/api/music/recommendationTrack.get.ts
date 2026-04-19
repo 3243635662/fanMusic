@@ -1,6 +1,6 @@
 import { RecommendationTrackType } from "../../../shared/types/music";
 
-export default defineEventHandler(async (event) => {
+export default defineCachedEventHandler(async (event) => {
   const query = getQuery(event);
   const config = useRuntimeConfig();
   const theme_id = query.theme_id;
@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
   if (!theme_id) {
     throw createError({
       statusCode: 400,
-      statusMessage: "缺少歌单ID",
+      statusMessage: "缺少歌单 ID",
     });
   }
 
@@ -19,7 +19,10 @@ export default defineEventHandler(async (event) => {
         query: {
           theme_id: theme_id,
         },
-        headers: getKugouHeaders(event),
+        headers: {
+          ...getKugouHeaders(event),
+          "Accept-Encoding": "gzip, deflate",
+        },
       } as any,
     );
 
@@ -29,7 +32,7 @@ export default defineEventHandler(async (event) => {
           hash: item.hash,
           name: item.songname,
           artist: item.author_name,
-          cover: item.sizable_cover, // sizable_cover: http://imge.kugou.com/stdmusic/{size}/20210817/20210817080716564241.jpg
+          cover: item.sizable_cover?.replace("{size}", "400") || "",
           duration: item.time_length,
         };
       },
@@ -43,4 +46,9 @@ export default defineEventHandler(async (event) => {
       statusMessage: error.statusMessage || "获取推荐歌单歌曲失败",
     });
   }
+}, {
+  // 推荐歌单歌曲缓存：10 分钟
+  maxAge: 600,
+  swr: true,
+  vary: ["theme_id"],
 });

@@ -1,12 +1,15 @@
 import { RecommendationPlayListType } from "../../../shared/types/music";
 
-export default defineEventHandler(async (event) => {
+export default defineCachedEventHandler(async (event) => {
   const config = useRuntimeConfig();
   try {
     const res: any = await $fetch(
       `${config.api.kugouApiSource}/theme/playlist`,
       {
-        headers: getKugouHeaders(event),
+        headers: {
+          ...getKugouHeaders(event),
+          "Accept-Encoding": "gzip, deflate",
+        },
       },
     );
 
@@ -30,4 +33,8 @@ export default defineEventHandler(async (event) => {
       statusMessage: error.statusMessage || "获取推荐歌单失败",
     });
   }
+}, {
+  // 推荐歌单缓存：10 分钟
+  maxAge: 600,
+  swr: true,
 });

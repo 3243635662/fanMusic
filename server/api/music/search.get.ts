@@ -1,7 +1,7 @@
 // server/api/music/search.get.ts
 import { resFormatMethod } from "../../utils/formatResponse";
 
-export default defineEventHandler(async (event) => {
+export default defineCachedEventHandler(async (event) => {
   const query = getQuery(event);
   const keyword = (query.keyword as string)?.trim();
   const config = useRuntimeConfig();
@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    // 3. 使用 defineCachedResponse (如果想做缓存) 或者简单的 $fetch
+    // 使用 $fetch 发起请求
     // 注意：酷狗概念版搜索接口某些版本用 keywords，某些用 keyword，请根据你测试成功的为准
     const res = await $fetch.raw(`${config.api.kugouApiSource}/search`, {
       query: {
@@ -21,13 +21,16 @@ export default defineEventHandler(async (event) => {
         page: query.page || 1,
         pagesize: 10, // 增加单页数量
       },
-      headers: getKugouHeaders(event),
-      timeout: 10000, // 10秒超时控制
+      headers: {
+        ...getKugouHeaders(event),
+        "Accept-Encoding": "gzip, deflate",
+      },
+      timeout: 10000, // 10 秒超时控制
     });
 
     const response: any = res._data;
 
-    // 4. 增强映射逻辑：处理更多边界情况
+    // 增强映射逻辑：处理更多边界情况
     if (response?.status === 1) {
       const rawList = response.data?.lists || [];
 
@@ -60,11 +63,16 @@ export default defineEventHandler(async (event) => {
 
     return resFormatMethod(-1, null, response?.error_msg || "搜索暂无结果");
   } catch (error: any) {
-    // 5. 区分错误类型：如果是 API 挂了，给一个友好的提示
+    // 区分错误类型：如果是 API 挂了，给一个友好的提示
     console.error("搜索链路异常:", error.message);
     throw createError({
       statusCode: 502,
       message: "音乐服务暂时不可用，请稍后再试",
     });
   }
+}, {
+  // 缓存配置：2 分钟
+  maxAge: 120,
+  swr: true, // Stale-While-Revalidate 模式
+  vary: ["keyword", "page"], // 根据关键词和页数区分缓存
 });
